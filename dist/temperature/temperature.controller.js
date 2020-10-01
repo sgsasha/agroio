@@ -15,8 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TemperatureController = void 0;
 const common_1 = require("@nestjs/common");
 let TemperatureController = class TemperatureController {
+    constructor() {
+        this.temperature = 0;
+    }
     setTemperature(req) {
         console.log(req.body);
+    }
+    getTemperature() {
+        return this.temperature;
     }
 };
 __decorate([
@@ -26,6 +32,12 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], TemperatureController.prototype, "setTemperature", null);
+__decorate([
+    common_1.Get(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Number)
+], TemperatureController.prototype, "getTemperature", null);
 TemperatureController = __decorate([
     common_1.Controller('temperature')
 ], TemperatureController);
