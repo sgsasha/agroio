@@ -12,6 +12,7 @@ export class TemperatureController {
 
   @Post('setTemperature')
   setTemperature(@Req() req: Request): void {
+    console.log(req.body.temperature);
     this.temperature = req.body.temperature;
   }
 

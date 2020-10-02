@@ -19,6 +19,7 @@ let TemperatureController = class TemperatureController {
         this.temperature = 0;
     }
     setTemperature(req) {
+        console.log(req.body.temperature);
         this.temperature = req.body.temperature;
     }
     getTemperature(res) {
