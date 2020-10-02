@@ -11,12 +11,13 @@ const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const temperature_controller_1 = require("./temperature/temperature.controller");
+const servo_controller_1 = require("./servo/servo.controller");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
         imports: [],
-        controllers: [app_controller_1.AppController, temperature_controller_1.TemperatureController],
+        controllers: [app_controller_1.AppController, temperature_controller_1.TemperatureController, servo_controller_1.ServoController],
         providers: [app_service_1.AppService],
     })
 ], AppModule);

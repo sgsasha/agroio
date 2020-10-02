@@ -1446,8 +1446,13 @@
         "signature": "ef5872640d4a0aee53c695b05d4968cbd8ebc4197fb77b740a2c93bed04db834",
         "affectsGlobalScope": false
       },
+      "../src/servo/servo.controller.ts": {
+        "version": "c24a8315558ab9faeb2c0f84d2c7e76472e626abec01191ff5c858d123638847",
+        "signature": "e8ca489b51d1f404c978173207015452d02ec75248afd2f5e92de023b88a1830",
+        "affectsGlobalScope": false
+      },
       "../src/app.module.ts": {
-        "version": "7343fe56a60dcc8db2daeb6e061629aae8dad994f42ff4e4d7aaead4d91a0d3d",
+        "version": "6b23f42a240b5d02e69eaaefcc0f59c28f65a4e8448e6dcdc74e68dc66164425",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644",
         "affectsGlobalScope": false
       },
@@ -3180,6 +3185,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/app.controller.ts",
         "../src/app.service.ts",
+        "../src/servo/servo.controller.ts",
         "../src/temperature/temperature.controller.ts"
       ],
       "../src/app.service.ts": [
@@ -3188,6 +3194,10 @@
       "../src/main.ts": [
         "../node_modules/@nestjs/core/index.d.ts",
         "../src/app.module.ts"
+      ],
+      "../src/servo/servo.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/express/index.d.ts"
       ],
       "../src/temperature/temperature.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -4447,6 +4457,9 @@
       ],
       "../src/app.controller.ts": [
         "../src/app.service.ts"
+      ],
+      "../src/servo/servo.controller.ts": [
+        "../node_modules/@types/express/index.d.ts"
       ],
       "../src/temperature/temperature.controller.ts": [
         "../node_modules/@types/express/index.d.ts"
