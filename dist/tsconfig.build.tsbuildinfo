@@ -1442,7 +1442,7 @@
         "affectsGlobalScope": false
       },
       "../src/temperature/temperature.controller.ts": {
-        "version": "2f7322abf2d07d80633f7e253cd716db2446d07ed1e62a2866ebfda4fa25b15c",
+        "version": "b55e25f9bdb43917d4c715a280b0a7b1241a162d9ec65f091a994e0971d17ca2",
         "signature": "9f45cdc8f6a6e4749ced71bb1f4b90a870bb260c92caf1644b0508acee429ca7",
         "affectsGlobalScope": false
       },
