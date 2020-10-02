@@ -1,5 +1,5 @@
-import { Controller, Post, Req, Get } from '@nestjs/common';
-import { Request } from 'express';
+import { Controller, Post, Req, Get, Res, HttpStatus } from '@nestjs/common';
+import { Request, Response } from 'express';
 interface IWeatherData {
   temperature: number,
   // format: string,
@@ -16,7 +16,8 @@ export class TemperatureController {
   }
 
   @Get()
-  getTemperature(): number {
-    return this.temperature;
+  getTemperature(@Res() res: Response): any {
+    // return this.temperature;
+    res.status(HttpStatus.OK).json({temperature: this.temperature});
   }
 }

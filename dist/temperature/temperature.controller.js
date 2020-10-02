@@ -21,8 +21,8 @@ let TemperatureController = class TemperatureController {
     setTemperature(req) {
         this.temperature = req.body.temperature;
     }
-    getTemperature() {
-        return this.temperature;
+    getTemperature(res) {
+        res.status(common_1.HttpStatus.OK).json({ temperature: this.temperature });
     }
 };
 __decorate([
@@ -34,9 +34,10 @@ __decorate([
 ], TemperatureController.prototype, "setTemperature", null);
 __decorate([
     common_1.Get(),
+    __param(0, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Number)
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Object)
 ], TemperatureController.prototype, "getTemperature", null);
 TemperatureController = __decorate([
     common_1.Controller('temperature')

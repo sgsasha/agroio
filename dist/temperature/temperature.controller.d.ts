@@ -1,6 +1,6 @@
-import { Request } from 'express';
+import { Request, Response } from 'express';
 export declare class TemperatureController {
     temperature: number;
     setTemperature(req: Request): void;
-    getTemperature(): number;
+    getTemperature(res: Response): any;
 }

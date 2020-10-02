@@ -1442,8 +1442,8 @@
         "affectsGlobalScope": false
       },
       "../src/temperature/temperature.controller.ts": {
-        "version": "b55e25f9bdb43917d4c715a280b0a7b1241a162d9ec65f091a994e0971d17ca2",
-        "signature": "9f45cdc8f6a6e4749ced71bb1f4b90a870bb260c92caf1644b0508acee429ca7",
+        "version": "714da7d27ea27e31f6c221ae433eee0204b3c904189c293dab10571cbe12f5a6",
+        "signature": "ef5872640d4a0aee53c695b05d4968cbd8ebc4197fb77b740a2c93bed04db834",
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
