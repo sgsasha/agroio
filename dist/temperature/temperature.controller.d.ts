@@ -1,6 +1,10 @@
-import { Request, Response } from 'express';
+import { Request } from 'express';
+import { TemperatureService } from './temperature.service';
 export declare class TemperatureController {
+    private readonly temperatureService;
     temperature: number;
+    constructor(temperatureService: TemperatureService);
     setTemperature(req: Request): void;
-    getTemperature(res: Response): any;
+    getTemperature(): Promise<ITemperatureData>;
+    getTemperatureList(): Promise<ITemperatureData[]>;
 }

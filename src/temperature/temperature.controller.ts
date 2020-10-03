@@ -1,24 +1,31 @@
 import { Controller, Post, Req, Get, Res, HttpStatus } from '@nestjs/common';
 import { Request, Response } from 'express';
-interface IWeatherData {
-  temperature: number,
-  // format: string,
-  // timestamp: Date
-}
-// TODO: connect mongodb and fetch data from/to it
+import { TemperatureService } from './temperature.service';
+
 @Controller('temperature')
 export class TemperatureController {
   public temperature: number = 0;
+  constructor(private readonly temperatureService: TemperatureService) {}
 
   @Post('setTemperature')
   setTemperature(@Req() req: Request): void {
     console.log(req.body.temperature);
     this.temperature = req.body.temperature;
+    const payload: ITemperatureData = {
+      temperature: req.body.temperature,
+      date: new Date()
+    }
+    this.temperatureService.create(payload);
   }
 
   @Get()
-  getTemperature(@Res() res: Response): any {
-    // return this.temperature;
-    res.status(HttpStatus.OK).json({temperature: this.temperature});
+  async getTemperature(): Promise<ITemperatureData> {
+    const list =  await this.temperatureService.getLatest();
+    return list[0];
+  }
+
+  @Get('list')
+  async  getTemperatureList(): Promise<ITemperatureData[]> {
+    return await this.temperatureService.findAll();
   }
 }

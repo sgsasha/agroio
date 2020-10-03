@@ -14,16 +14,27 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TemperatureController = void 0;
 const common_1 = require("@nestjs/common");
+const temperature_service_1 = require("./temperature.service");
 let TemperatureController = class TemperatureController {
-    constructor() {
+    constructor(temperatureService) {
+        this.temperatureService = temperatureService;
         this.temperature = 0;
     }
     setTemperature(req) {
         console.log(req.body.temperature);
         this.temperature = req.body.temperature;
+        const payload = {
+            temperature: req.body.temperature,
+            date: new Date()
+        };
+        this.temperatureService.create(payload);
     }
-    getTemperature(res) {
-        res.status(common_1.HttpStatus.OK).json({ temperature: this.temperature });
+    async getTemperature() {
+        const list = await this.temperatureService.getLatest();
+        return list[0];
+    }
+    async getTemperatureList() {
+        return await this.temperatureService.findAll();
     }
 };
 __decorate([
@@ -35,13 +46,19 @@ __decorate([
 ], TemperatureController.prototype, "setTemperature", null);
 __decorate([
     common_1.Get(),
-    __param(0, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Object)
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
 ], TemperatureController.prototype, "getTemperature", null);
+__decorate([
+    common_1.Get('list'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], TemperatureController.prototype, "getTemperatureList", null);
 TemperatureController = __decorate([
-    common_1.Controller('temperature')
+    common_1.Controller('temperature'),
+    __metadata("design:paramtypes", [temperature_service_1.TemperatureService])
 ], TemperatureController);
 exports.TemperatureController = TemperatureController;
 //# sourceMappingURL=temperature.controller.js.map
