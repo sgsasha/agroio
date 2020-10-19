@@ -13,13 +13,15 @@ const app_service_1 = require("./app.service");
 const servo_controller_1 = require("./servo/servo.controller");
 const mongoose_module_1 = require("@nestjs/mongoose/dist/mongoose.module");
 const temperature_module_1 = require("./temperature/temperature.module");
+const moisture_module_1 = require("./moisture/moisture.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
         imports: [
             mongoose_module_1.MongooseModule.forRoot('mongodb+srv://alex:manulkushaettravku@cluster0.04jpx.mongodb.net/agroio?retryWrites=true&w=majority'),
-            temperature_module_1.TemperatureModule
+            temperature_module_1.TemperatureModule,
+            moisture_module_1.MoistureModule
         ],
         controllers: [
             app_controller_1.AppController,

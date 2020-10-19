@@ -1571,8 +1571,28 @@
         "signature": "5b0bd3ce9c0789d91faf47859376a642c2e2b4db42ebd27cfaec208525660aee",
         "affectsGlobalScope": false
       },
+      "../src/moisture/moisture.service.ts": {
+        "version": "fb7da904eca164ca2a23eab574b054d47033e5f5944ff571b3467c7b25f65d43",
+        "signature": "873667ec82828d68273d10f75ee0240d684627c2660e282ce2ea37ccc9264033",
+        "affectsGlobalScope": false
+      },
+      "../src/moisture/moisture.controller.ts": {
+        "version": "8fe4d98f489da52cb483db545d1d94181acd21feb3357f5018ef4fb0500ce608",
+        "signature": "9d3b1d3767d51a9bc93717cbb3e664a203af16208b54e9fa64a18a8ea4f8c9df",
+        "affectsGlobalScope": false
+      },
+      "../src/moisture/moisture.schema.ts": {
+        "version": "97fbee16fff7534962bd10f6ad1faeb6181eee863b9ad35b1f64e2e4774f8fac",
+        "signature": "b90690ee95bfd8b5dd8bef53f120ef2ba19507847b320e3921b4b3028c5c268f",
+        "affectsGlobalScope": false
+      },
+      "../src/moisture/moisture.module.ts": {
+        "version": "bce65ed7e4d25fb3e812a36c9f1c6238560335d02ab2c8f930edf80b17fc24dd",
+        "signature": "70f622e0492d30eb327d089a3a20476777b71da0c8cd264b687bf5e001a896e2",
+        "affectsGlobalScope": false
+      },
       "../src/app.module.ts": {
-        "version": "679c190f0e4c6d94893c5eb269eed01e768e32483b4860648a3e192fdb07e1e1",
+        "version": "857d5e4a5ec66ad5db6adf560a0a7fb8a7979be1653284e9d07599683f0c4a60",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644",
         "affectsGlobalScope": false
       },
@@ -1760,6 +1780,11 @@
         "version": "bc65b8974a20e055c6ff99c6cadf19b1d666b4b38f59cf34f72fe74ba33a125a",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
+      },
+      "../src/moisture/types.ts": {
+        "version": "981d2c93dc1456820fbca000ff4603684256b2215042dab54f541a0b176c1aba",
+        "signature": "315de3674a96d06afb934eb5e46612fc82f3c3f5632df0f8a563a7bcb741f902",
+        "affectsGlobalScope": true
       },
       "../src/temperature/types.ts": {
         "version": "2b360f36251f2b40369ac11acbe35a68840cf61e8ea4dfa2392da38a54f7baeb",
@@ -3390,6 +3415,8 @@
         "../node_modules/@nestjs/mongoose/dist/mongoose.module.d.ts",
         "../src/app.controller.ts",
         "../src/app.service.ts",
+        "../src/moisture/moisture.controller.ts",
+        "../src/moisture/moisture.module.ts",
         "../src/servo/servo.controller.ts",
         "../src/temperature/temperature.module.ts"
       ],
@@ -3399,6 +3426,27 @@
       "../src/main.ts": [
         "../node_modules/@nestjs/core/index.d.ts",
         "../src/app.module.ts"
+      ],
+      "../src/moisture/moisture.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/express/index.d.ts",
+        "../src/moisture/moisture.service.ts"
+      ],
+      "../src/moisture/moisture.module.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../src/moisture/moisture.controller.ts",
+        "../src/moisture/moisture.schema.ts",
+        "../src/moisture/moisture.service.ts"
+      ],
+      "../src/moisture/moisture.schema.ts": [
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../src/moisture/moisture.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/servo/servo.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -4758,6 +4806,16 @@
       ],
       "../src/app.controller.ts": [
         "../src/app.service.ts"
+      ],
+      "../src/moisture/moisture.controller.ts": [
+        "../node_modules/@types/express/index.d.ts",
+        "../src/moisture/moisture.service.ts"
+      ],
+      "../src/moisture/moisture.schema.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../src/moisture/moisture.service.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/servo/servo.controller.ts": [
         "../node_modules/@types/express/index.d.ts"
