@@ -12,7 +12,7 @@ export class MoistureController {
     console.log(req.body.moisture);
     this.temperature = req.body.moisture;
     const payload: IMoistureData = {
-      moisture: req.body.moisture,
+      moisture: req.body.moisture < 0 ? 0 : req.body.moisture,
       date: new Date()
     }
     this.moistureService.create(payload);
