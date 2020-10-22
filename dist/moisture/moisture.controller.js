@@ -18,22 +18,21 @@ const moisture_service_1 = require("./moisture.service");
 let MoistureController = class MoistureController {
     constructor(moistureService) {
         this.moistureService = moistureService;
-        this.temperature = 0;
     }
     setTemperature(req) {
         console.log(req.body.moisture);
-        this.temperature = req.body.moisture;
         const payload = {
             moisture: req.body.moisture < 0 ? 0 : req.body.moisture,
+            deviceId: req.body.deviceId,
             date: new Date()
         };
         this.moistureService.create(payload);
     }
-    async getTemperature() {
+    async getLatestMoisture() {
         const list = await this.moistureService.getLatest();
         return list[0];
     }
-    async getTemperatureList() {
+    async getMoistureList() {
         return await this.moistureService.findAll();
     }
 };
@@ -49,13 +48,13 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], MoistureController.prototype, "getTemperature", null);
+], MoistureController.prototype, "getLatestMoisture", null);
 __decorate([
     common_1.Get('list'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], MoistureController.prototype, "getTemperatureList", null);
+], MoistureController.prototype, "getMoistureList", null);
 MoistureController = __decorate([
     common_1.Controller('moisture'),
     __metadata("design:paramtypes", [moisture_service_1.MoistureService])

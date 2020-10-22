@@ -7,17 +7,15 @@ export class MoistureService {
   constructor(@InjectModel('Moisture') private moistureModel: Model<any>) {}
 
   async create(moistureDto: IMoistureData): Promise<void> {
-    
     const createdMoistureModel = new this.moistureModel(moistureDto);
-    console.log(createdMoistureModel);
     return createdMoistureModel.save();
   }
 
-  async findAll(): Promise<ITemperatureData[]> {
+  async findAll(): Promise<IMoistureData[]> {
     return this.moistureModel.find().exec();
   }
 
-  async getLatest(): Promise<ITemperatureData[]> {
+  async getLatest(): Promise<IMoistureData[]> {
     return this.moistureModel.find().limit(1).sort({$natural:-1}).exec();
   }
 }

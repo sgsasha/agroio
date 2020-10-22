@@ -1166,6 +1166,16 @@
         "signature": "ef022c91ea9e75ab4082f2e881f9c4db7b346be2da706e876b253bebce5e6140",
         "affectsGlobalScope": false
       },
+      "../node_modules/@nestjs/mongoose/dist/interfaces/model-definition.interface.d.ts": {
+        "version": "d2744f1996bebb498314d3c70f23fe84a5b4d30734ea3c2df862c0a9633611c2",
+        "signature": "d2744f1996bebb498314d3c70f23fe84a5b4d30734ea3c2df862c0a9633611c2",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/mongoose/dist/interfaces/async-model-factory.interface.d.ts": {
+        "version": "5e3848c0da812f18dc386e371c0c336331798013c2879a7529a0137fa757421c",
+        "signature": "5e3848c0da812f18dc386e371c0c336331798013c2879a7529a0137fa757421c",
+        "affectsGlobalScope": false
+      },
       "../node_modules/@types/node/globals.d.ts": {
         "version": "7445e72f48c68a1343819c5d375ef8d2ff486fccd0230bb998cd9ab908fff19c",
         "signature": "7445e72f48c68a1343819c5d375ef8d2ff486fccd0230bb998cd9ab908fff19c",
@@ -1401,61 +1411,6 @@
         "signature": "c486ff9af79b8a4b2a47a283add6da60eead5000142a4e92872d422ec9a5026d",
         "affectsGlobalScope": false
       },
-      "../node_modules/@types/range-parser/index.d.ts": {
-        "version": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
-        "signature": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/qs/index.d.ts": {
-        "version": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
-        "signature": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/express-serve-static-core/index.d.ts": {
-        "version": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
-        "signature": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
-        "affectsGlobalScope": true
-      },
-      "../node_modules/@types/mime/index.d.ts": {
-        "version": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
-        "signature": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/serve-static/index.d.ts": {
-        "version": "adde1c915ab3b61a2821c72f226546c6c119a061a2ff4d6f90b3d61c005ae1f8",
-        "signature": "adde1c915ab3b61a2821c72f226546c6c119a061a2ff4d6f90b3d61c005ae1f8",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/connect/index.d.ts": {
-        "version": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
-        "signature": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/body-parser/index.d.ts": {
-        "version": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
-        "signature": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/express/index.d.ts": {
-        "version": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
-        "signature": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
-        "affectsGlobalScope": false
-      },
-      "../src/servo/servo.controller.ts": {
-        "version": "c24a8315558ab9faeb2c0f84d2c7e76472e626abec01191ff5c858d123638847",
-        "signature": "e8ca489b51d1f404c978173207015452d02ec75248afd2f5e92de023b88a1830",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/mongoose/dist/interfaces/model-definition.interface.d.ts": {
-        "version": "d2744f1996bebb498314d3c70f23fe84a5b4d30734ea3c2df862c0a9633611c2",
-        "signature": "d2744f1996bebb498314d3c70f23fe84a5b4d30734ea3c2df862c0a9633611c2",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/mongoose/dist/interfaces/async-model-factory.interface.d.ts": {
-        "version": "5e3848c0da812f18dc386e371c0c336331798013c2879a7529a0137fa757421c",
-        "signature": "5e3848c0da812f18dc386e371c0c336331798013c2879a7529a0137fa757421c",
-        "affectsGlobalScope": false
-      },
       "../node_modules/@types/bson/index.d.ts": {
         "version": "3994ebfd11faa4018d8e1b879190046588f41f5cd60438e642ca39a705c726be",
         "signature": "3994ebfd11faa4018d8e1b879190046588f41f5cd60438e642ca39a705c726be",
@@ -1551,6 +1506,46 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "affectsGlobalScope": false
       },
+      "../node_modules/@types/range-parser/index.d.ts": {
+        "version": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
+        "signature": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/qs/index.d.ts": {
+        "version": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
+        "signature": "c236451df6139a965bb9b8fba15a43a8bebf4400ca589998e2bdc5e1291fa0f9",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/express-serve-static-core/index.d.ts": {
+        "version": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
+        "signature": "495cc9f802a6bce4aa21dddf13f8e61b4f0b7976621af90e31c58a4dfe4802ef",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@types/mime/index.d.ts": {
+        "version": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
+        "signature": "be27a64e821a3e5af838650e4aa25805c60f057d0c37a9762c378d19d364b3e6",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/serve-static/index.d.ts": {
+        "version": "adde1c915ab3b61a2821c72f226546c6c119a061a2ff4d6f90b3d61c005ae1f8",
+        "signature": "adde1c915ab3b61a2821c72f226546c6c119a061a2ff4d6f90b3d61c005ae1f8",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/connect/index.d.ts": {
+        "version": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
+        "signature": "e6ffa74698f0a1d23e4223242ed7dcdb89d02bbbb063a1930e9f91d0385abe16",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/body-parser/index.d.ts": {
+        "version": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
+        "signature": "ebddbd167c2fabd0151f50e5df94ca6d845149c47521280d8867afe3429dd078",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/express/index.d.ts": {
+        "version": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
+        "signature": "088d420a09a36d241f1ddbdcb553951c02ef0844014727a29712d2ced57edd22",
+        "affectsGlobalScope": false
+      },
       "../src/temperature/temperature.service.ts": {
         "version": "45b21894ffa64ed312d3f7e65ed4a07352059a7dec46ef4a8852bb90748f6c3e",
         "signature": "35cfc7a37cb3d0b1044e26f2e67f51fabd905224a70a6359178bcd5d43bcae2d",
@@ -1572,13 +1567,13 @@
         "affectsGlobalScope": false
       },
       "../src/moisture/moisture.service.ts": {
-        "version": "fb7da904eca164ca2a23eab574b054d47033e5f5944ff571b3467c7b25f65d43",
-        "signature": "873667ec82828d68273d10f75ee0240d684627c2660e282ce2ea37ccc9264033",
+        "version": "0f0b3b3f144bb6415bec2568bf18de726f378ff82825a249bab1bc330637809c",
+        "signature": "06eaea479829be2a072aa0b0092d092d2c071539bbffefc65d958c2e636a5d85",
         "affectsGlobalScope": false
       },
       "../src/moisture/moisture.controller.ts": {
-        "version": "7a845c6148316a98f597ef10abb77cdda92c4c2c62fe750c3d51b8fdbdf84277",
-        "signature": "9d3b1d3767d51a9bc93717cbb3e664a203af16208b54e9fa64a18a8ea4f8c9df",
+        "version": "d1de9300b261f5387f1df965e2220dc811713afceebfb6eb925cbccb3186be27",
+        "signature": "0137730c1b64549ada9b871e360edfe759d5518a12f8485b60e9ec39e8f66626",
         "affectsGlobalScope": false
       },
       "../src/moisture/moisture.schema.ts": {
@@ -1591,8 +1586,28 @@
         "signature": "70f622e0492d30eb327d089a3a20476777b71da0c8cd264b687bf5e001a896e2",
         "affectsGlobalScope": false
       },
+      "../src/pump/pump.service.ts": {
+        "version": "7d05240b5663c9b351259dc1ac72230287cd0868f5301abaaa83ed7c7c040988",
+        "signature": "7c1489deb165d8630a3b5574344ed6b6dcab676d1a56ca6dc903c9886ae1bd9d",
+        "affectsGlobalScope": false
+      },
+      "../src/pump/pump.controller.ts": {
+        "version": "1cc1a4c05a720060bd2760b5d069b16eea4a441dfb68f66d94acc94576634467",
+        "signature": "973b5b8a2a66b5b916d5c96413e8af97781ef43a9bb739d9af610ca0e04f4eb0",
+        "affectsGlobalScope": false
+      },
+      "../src/pump/pump.schema.ts": {
+        "version": "94e14f0f2d82a3a41ccdeaedf4018af3f452e3c7b2ec9d40ea9bf6d8d025f00a",
+        "signature": "d64c0340edf11cf6cb3275f84d46c9692b473a2a782bdaf49a916b290a5e2664",
+        "affectsGlobalScope": false
+      },
+      "../src/pump/pump.module.ts": {
+        "version": "aa2667141960e3fb87ca2a6aa7dc45074c9c406d51c84442422fb75cf6425f09",
+        "signature": "5e837675a8daa105a056915fac499ca333e6d6c4e76f40ca6ae54303862d224a",
+        "affectsGlobalScope": false
+      },
       "../src/app.module.ts": {
-        "version": "857d5e4a5ec66ad5db6adf560a0a7fb8a7979be1653284e9d07599683f0c4a60",
+        "version": "c95e291e69378f3a2b33e7adf5f3677729844a0bb7a33d5669a8c8bfeb5b7f13",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644",
         "affectsGlobalScope": false
       },
@@ -1782,8 +1797,13 @@
         "affectsGlobalScope": false
       },
       "../src/moisture/types.ts": {
-        "version": "981d2c93dc1456820fbca000ff4603684256b2215042dab54f541a0b176c1aba",
-        "signature": "315de3674a96d06afb934eb5e46612fc82f3c3f5632df0f8a563a7bcb741f902",
+        "version": "14331c57e3ee2bb3eb82cf2cf1e14cfe41b0314b440304f114a17941306794c1",
+        "signature": "be6acbcc2ec4c5b5ead3c542adf52672e2b93074985d4691a08a174709a48eb4",
+        "affectsGlobalScope": true
+      },
+      "../src/pump/types.ts": {
+        "version": "402ec4287afe3a4fe582a9a5b98dcc3ee2c32551be4a16ea4ffaa6d4db7ec1b4",
+        "signature": "4ee5beddb894f86a4535565788f5ea08077cf7eeeff02f72b3013753edeee74d",
         "affectsGlobalScope": true
       },
       "../src/temperature/types.ts": {
@@ -3415,9 +3435,8 @@
         "../node_modules/@nestjs/mongoose/dist/mongoose.module.d.ts",
         "../src/app.controller.ts",
         "../src/app.service.ts",
-        "../src/moisture/moisture.controller.ts",
         "../src/moisture/moisture.module.ts",
-        "../src/servo/servo.controller.ts",
+        "../src/pump/pump.module.ts",
         "../src/temperature/temperature.module.ts"
       ],
       "../src/app.service.ts": [
@@ -3448,9 +3467,26 @@
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts"
       ],
-      "../src/servo/servo.controller.ts": [
+      "../src/pump/pump.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@types/express/index.d.ts"
+        "../node_modules/@types/express/index.d.ts",
+        "../src/pump/pump.service.ts"
+      ],
+      "../src/pump/pump.module.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../src/pump/pump.controller.ts",
+        "../src/pump/pump.schema.ts",
+        "../src/pump/pump.service.ts"
+      ],
+      "../src/pump/pump.schema.ts": [
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../src/pump/pump.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/temperature/temperature.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -4817,8 +4853,15 @@
       "../src/moisture/moisture.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
-      "../src/servo/servo.controller.ts": [
-        "../node_modules/@types/express/index.d.ts"
+      "../src/pump/pump.controller.ts": [
+        "../node_modules/@types/express/index.d.ts",
+        "../src/pump/pump.service.ts"
+      ],
+      "../src/pump/pump.schema.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
+      ],
+      "../src/pump/pump.service.ts": [
+        "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/temperature/temperature.controller.ts": [
         "../node_modules/@types/express/index.d.ts",
