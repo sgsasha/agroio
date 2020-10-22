@@ -1,22 +1,22 @@
-import { Controller, Post, Req, Get, Res, HttpStatus } from '@nestjs/common';
+import { Controller, Post, Req, Get, Res, HttpStatus, Param } from '@nestjs/common';
 import { Response, Request } from 'express';
 
-enum ServoStatuses {
+enum PupmStatuses {
   START = "start",
   STOP = "stop"
 }
 
-@Controller('servo')
-export class ServoController {
+@Controller('pump')
+export class PumpController {
   private runServo: boolean = false;
 
   @Post('updateStatus')
   setTemperature(@Req() req: Request, @Res() res: Response): void {
     const status = req.body.status;
     let isError = false;
-    if (status === ServoStatuses.START || status === ServoStatuses.STOP) {
+    if (status === PupmStatuses.START || status === PupmStatuses.STOP) {
       console.log(`Updating status with value: '${req.body.status}'`);
-      this.runServo = req.body.status === ServoStatuses.START;
+      this.runServo = req.body.status === PupmStatuses.START;
     } else {
       isError = true;
       console.error(`ERROR: unknown status: '${req.body.status}'`);
@@ -24,8 +24,9 @@ export class ServoController {
     res.status(isError ? HttpStatus.NOT_ACCEPTABLE : HttpStatus.OK).send();
   }
 
-  @Get('status')
-  getTemperature(@Res() res: Response): void {
+  @Get(':id')
+  getTemperature(@Param() params ,@Res() res: Response): any {
+    console.log(params.id);
     res.status(HttpStatus.OK).json({runServo: this.runServo});
   }
 }
