@@ -32,8 +32,8 @@ let MoistureController = class MoistureController {
         const list = await this.moistureService.getLatest();
         return list[0];
     }
-    async getMoistureList() {
-        return await this.moistureService.findAll();
+    async getMoistureList(params) {
+        return await this.moistureService.findAll({ deviceId: params.id });
     }
 };
 __decorate([
@@ -50,9 +50,10 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], MoistureController.prototype, "getLatestMoisture", null);
 __decorate([
-    common_1.Get('list'),
+    common_1.Get(':id'),
+    __param(0, common_1.Param()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], MoistureController.prototype, "getMoistureList", null);
 MoistureController = __decorate([

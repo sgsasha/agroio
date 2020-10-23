@@ -21,6 +21,10 @@ __decorate([
     mongoose_1.Prop(),
     __metadata("design:type", Date)
 ], TemperatureData.prototype, "date", void 0);
+__decorate([
+    mongoose_1.Prop(),
+    __metadata("design:type", Number)
+], TemperatureData.prototype, "deviceId", void 0);
 TemperatureData = __decorate([
     mongoose_1.Schema()
 ], TemperatureData);

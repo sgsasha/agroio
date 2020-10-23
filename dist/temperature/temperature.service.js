@@ -24,8 +24,8 @@ let TemperatureService = class TemperatureService {
         const createdTemperatureModel = new this.temperatureModel(temperatureDto);
         return createdTemperatureModel.save();
     }
-    async findAll() {
-        return this.temperatureModel.find().exec();
+    async findAll(query = {}) {
+        return this.temperatureModel.find(query).exec();
     }
     async getLatest() {
         return this.temperatureModel.find().limit(1).sort({ $natural: -1 }).exec();

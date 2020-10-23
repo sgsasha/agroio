@@ -12,30 +12,21 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TemperatureController = void 0;
+exports.DevicesController = void 0;
 const common_1 = require("@nestjs/common");
-const temperature_service_1 = require("./temperature.service");
-let TemperatureController = class TemperatureController {
-    constructor(temperatureService) {
-        this.temperatureService = temperatureService;
-        this.temperature = 0;
+const devices_service_1 = require("./devices.service");
+let DevicesController = class DevicesController {
+    constructor(devicesService) {
+        this.devicesService = devicesService;
     }
     setTemperature(req) {
-        console.log(req.body.temperature);
-        this.temperature = req.body.temperature;
-        const payload = {
-            temperature: req.body.temperature,
-            deviceId: req.body.deviceId,
-            date: new Date()
-        };
-        this.temperatureService.create(payload);
+        this.devicesService.create(req.body);
     }
-    async getTemperature() {
-        const list = await this.temperatureService.getLatest();
-        return list[0];
+    async getMoistureList() {
+        return await this.devicesService.findAll();
     }
-    async getTemperatureList(params) {
-        return await this.temperatureService.findAll({ deviceId: params.id });
+    async getDeviceById(params) {
+        return await this.devicesService.findOne({ deviceId: params.id });
     }
 };
 __decorate([
@@ -44,23 +35,23 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], TemperatureController.prototype, "setTemperature", null);
+], DevicesController.prototype, "setTemperature", null);
 __decorate([
-    common_1.Get(),
+    common_1.Get('list'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], TemperatureController.prototype, "getTemperature", null);
+], DevicesController.prototype, "getMoistureList", null);
 __decorate([
     common_1.Get(':id'),
     __param(0, common_1.Param()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], TemperatureController.prototype, "getTemperatureList", null);
-TemperatureController = __decorate([
-    common_1.Controller('temperature'),
-    __metadata("design:paramtypes", [temperature_service_1.TemperatureService])
-], TemperatureController);
-exports.TemperatureController = TemperatureController;
-//# sourceMappingURL=temperature.controller.js.map
+], DevicesController.prototype, "getDeviceById", null);
+DevicesController = __decorate([
+    common_1.Controller('devices'),
+    __metadata("design:paramtypes", [devices_service_1.DevicesService])
+], DevicesController);
+exports.DevicesController = DevicesController;
+//# sourceMappingURL=devices.controller.js.map

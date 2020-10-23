@@ -1,4 +1,4 @@
-import { Controller, Post, Req, Get, Res, HttpStatus } from '@nestjs/common';
+import { Controller, Post, Req, Get, Res, HttpStatus, Param } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { TemperatureService } from './temperature.service';
 
@@ -7,12 +7,13 @@ export class TemperatureController {
   public temperature: number = 0;
   constructor(private readonly temperatureService: TemperatureService) {}
 
-  @Post('setTemperature')
+  @Post('set')
   setTemperature(@Req() req: Request): void {
     console.log(req.body.temperature);
     this.temperature = req.body.temperature;
     const payload: ITemperatureData = {
       temperature: req.body.temperature,
+      deviceId: req.body.deviceId,
       date: new Date()
     }
     this.temperatureService.create(payload);
@@ -24,8 +25,8 @@ export class TemperatureController {
     return list[0];
   }
 
-  @Get('list')
-  async  getTemperatureList(): Promise<ITemperatureData[]> {
-    return await this.temperatureService.findAll();
+  @Get(':id')
+  async getTemperatureList(@Param() params): Promise<ITemperatureData[]> {
+    return await this.temperatureService.findAll({deviceId: params.id});
   }
 }

@@ -11,8 +11,8 @@ export class MoistureService {
     return createdMoistureModel.save();
   }
 
-  async findAll(): Promise<IMoistureData[]> {
-    return this.moistureModel.find().exec();
+  async findAll(query: Object = {}): Promise<IMoistureData[]> {
+    return this.moistureModel.find(query).exec();
   }
 
   async getLatest(): Promise<IMoistureData[]> {

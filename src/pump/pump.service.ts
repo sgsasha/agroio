@@ -7,8 +7,6 @@ export class PumpService {
   constructor(@InjectModel('PumpStatus') private pumpModel: Model<any>) {}
 
   async create(pumpStatus: IPumpStatus): Promise<void> {
-    // const createdPumpStatusModel = new this.pumpModel(pumpStatus);
-    console.log(pumpStatus);
     const query = { 
       deviceId: pumpStatus.deviceId
     };
@@ -23,7 +21,6 @@ export class PumpService {
   }
 
   async getDevicePumpStatus(id: string): Promise<IPumpStatus> {
-    // console.log(id);
     return this.pumpModel.findOne({deviceId: id}).exec();
   }
 
@@ -31,12 +28,3 @@ export class PumpService {
     return this.pumpModel.find().limit(1).sort({$natural:-1}).exec();
   }
 }
-
-
-// {
-//   deviceId: "asd",
-//   //currentTemperature: 12,
-//   currentSoilMoisture: 60,
-//   isOnline: true,
-//   isPumpRunning: false
-// }

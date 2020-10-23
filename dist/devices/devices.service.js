@@ -12,37 +12,29 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PumpService = void 0;
+exports.DevicesService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
-let PumpService = class PumpService {
-    constructor(pumpModel) {
-        this.pumpModel = pumpModel;
+let DevicesService = class DevicesService {
+    constructor(deviceModel) {
+        this.deviceModel = deviceModel;
     }
-    async create(pumpStatus) {
-        const query = {
-            deviceId: pumpStatus.deviceId
-        };
-        const options = {
-            upsert: true
-        };
-        return await this.pumpModel.findOneAndUpdate(query, pumpStatus, options);
+    async create(deviceDto) {
+        const createdTemperatureModel = new this.deviceModel(deviceDto);
+        return createdTemperatureModel.save();
     }
     async findAll() {
-        return this.pumpModel.find().exec();
+        return this.deviceModel.find().exec();
     }
-    async getDevicePumpStatus(id) {
-        return this.pumpModel.findOne({ deviceId: id }).exec();
-    }
-    async getLatest() {
-        return this.pumpModel.find().limit(1).sort({ $natural: -1 }).exec();
+    async findOne(query) {
+        return this.deviceModel.findOne(query).exec();
     }
 };
-PumpService = __decorate([
+DevicesService = __decorate([
     common_1.Injectable(),
-    __param(0, mongoose_1.InjectModel('PumpStatus')),
+    __param(0, mongoose_1.InjectModel('Device')),
     __metadata("design:paramtypes", [mongoose_2.Model])
-], PumpService);
-exports.PumpService = PumpService;
-//# sourceMappingURL=pump.service.js.map
+], DevicesService);
+exports.DevicesService = DevicesService;
+//# sourceMappingURL=devices.service.js.map

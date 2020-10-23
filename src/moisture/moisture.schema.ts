@@ -10,6 +10,9 @@ export class MoistureData {
 
   @Prop()
   date: Date;
+
+  @Prop()
+  deviceId: number;
 }
 
 export const MoistureSchema = SchemaFactory.createForClass(MoistureData);

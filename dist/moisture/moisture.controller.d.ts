@@ -5,5 +5,5 @@ export declare class MoistureController {
     constructor(moistureService: MoistureService);
     setTemperature(req: Request): void;
     getLatestMoisture(): Promise<IMoistureData>;
-    getMoistureList(): Promise<IMoistureData[]>;
+    getMoistureList(params: any): Promise<IMoistureData[]>;
 }

@@ -3,6 +3,6 @@ export declare class MoistureService {
     private moistureModel;
     constructor(moistureModel: Model<any>);
     create(moistureDto: IMoistureData): Promise<void>;
-    findAll(): Promise<IMoistureData[]>;
+    findAll(query?: Object): Promise<IMoistureData[]>;
     getLatest(): Promise<IMoistureData[]>;
 }

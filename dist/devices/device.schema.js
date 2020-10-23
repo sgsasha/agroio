@@ -9,25 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MoistureSchema = exports.MoistureData = void 0;
+exports.DeviceSchema = exports.DeviceDto = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-let MoistureData = class MoistureData {
+let DeviceDto = class DeviceDto {
 };
 __decorate([
     mongoose_1.Prop(),
     __metadata("design:type", Number)
-], MoistureData.prototype, "moisture", void 0);
+], DeviceDto.prototype, "deviceId", void 0);
 __decorate([
     mongoose_1.Prop(),
-    __metadata("design:type", Date)
-], MoistureData.prototype, "date", void 0);
+    __metadata("design:type", Boolean)
+], DeviceDto.prototype, "isOnline", void 0);
+__decorate([
+    mongoose_1.Prop(),
+    __metadata("design:type", Boolean)
+], DeviceDto.prototype, "isPumpRunning", void 0);
 __decorate([
     mongoose_1.Prop(),
     __metadata("design:type", Number)
-], MoistureData.prototype, "deviceId", void 0);
-MoistureData = __decorate([
+], DeviceDto.prototype, "temperature", void 0);
+__decorate([
+    mongoose_1.Prop(),
+    __metadata("design:type", Number)
+], DeviceDto.prototype, "moisture", void 0);
+DeviceDto = __decorate([
     mongoose_1.Schema()
-], MoistureData);
-exports.MoistureData = MoistureData;
-exports.MoistureSchema = mongoose_1.SchemaFactory.createForClass(MoistureData);
-//# sourceMappingURL=moisture.schema.js.map
+], DeviceDto);
+exports.DeviceDto = DeviceDto;
+exports.DeviceSchema = mongoose_1.SchemaFactory.createForClass(DeviceDto);
+//# sourceMappingURL=device.schema.js.map

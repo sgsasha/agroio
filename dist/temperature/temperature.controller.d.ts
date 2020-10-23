@@ -6,5 +6,5 @@ export declare class TemperatureController {
     constructor(temperatureService: TemperatureService);
     setTemperature(req: Request): void;
     getTemperature(): Promise<ITemperatureData>;
-    getTemperatureList(): Promise<ITemperatureData[]>;
+    getTemperatureList(params: any): Promise<ITemperatureData[]>;
 }

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Req } from '@nestjs/common';
+import { Controller, Get, Param, Post, Req } from '@nestjs/common';
 import { MoistureService } from './moisture.service';
 import { Request, Response } from 'express';
 
@@ -23,8 +23,8 @@ export class MoistureController {
     return list[0];
   }
 
-  @Get('list')
-  async getMoistureList(): Promise<IMoistureData[]> {
-    return await this.moistureService.findAll();
+  @Get(':id')
+  async getMoistureList(@Param() params): Promise<IMoistureData[]> {
+    return await this.moistureService.findAll({deviceId: params.id});
   }
 }

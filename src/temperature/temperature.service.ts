@@ -11,8 +11,8 @@ export class TemperatureService {
     return createdTemperatureModel.save();
   }
 
-  async findAll(): Promise<ITemperatureData[]> {
-    return this.temperatureModel.find().exec();
+  async findAll(query: Object = {}): Promise<ITemperatureData[]> {
+    return this.temperatureModel.find(query).exec();
   }
 
   async getLatest(): Promise<ITemperatureData[]> {

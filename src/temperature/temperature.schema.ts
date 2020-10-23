@@ -10,6 +10,9 @@ export class TemperatureData {
 
   @Prop()
   date: Date;
+
+  @Prop()
+  deviceId: number;
 }
 
 export const TemperatureSchema = SchemaFactory.createForClass(TemperatureData);

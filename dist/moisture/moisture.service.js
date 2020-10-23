@@ -24,8 +24,8 @@ let MoistureService = class MoistureService {
         const createdMoistureModel = new this.moistureModel(moistureDto);
         return createdMoistureModel.save();
     }
-    async findAll() {
-        return this.moistureModel.find().exec();
+    async findAll(query = {}) {
+        return this.moistureModel.find(query).exec();
     }
     async getLatest() {
         return this.moistureModel.find().limit(1).sort({ $natural: -1 }).exec();
