@@ -1567,8 +1567,8 @@
         "affectsGlobalScope": false
       },
       "../src/devices/device.schema.ts": {
-        "version": "e7cdd7e254439ce33be18a393c9cadf01893be049a5b31332aec6a3e491f4e1a",
-        "signature": "f6744b6a4cfd5327d3edbb3bc67ca85bcc9754fa87862043571a51100d6497e4",
+        "version": "50382c2c9b4332aeee0b68c0b45f08056d6132fa6d8d64f4639e05dfe6c5f97b",
+        "signature": "4e6a59a176d0fea424781d3e1a1d50bef0cf0dd373eccb5e7e9b45f0f0542d73",
         "affectsGlobalScope": false
       },
       "../src/devices/devices.service.ts": {
@@ -1802,8 +1802,8 @@
         "affectsGlobalScope": false
       },
       "../src/devices/types.ts": {
-        "version": "f013732856d27fd4b4195bb2ec1cb005f541d6bd5b05f891acf4b03ae0b0fd7e",
-        "signature": "f51d6fbe1ce4f8ac4b39740840fe1203580e89f5edcb09b438d39c1be790f962",
+        "version": "bc8384c0f40a34644bc375cf4aa82b8b871134ec29435bdda771e66ac02284dd",
+        "signature": "a94e13823ca1cfe6218d157b55665411f91e77d6a9fec1e3643cc85ab28b9e8e",
         "affectsGlobalScope": true
       },
       "../src/moisture/types.ts": {

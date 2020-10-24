@@ -36,7 +36,7 @@ __decorate([
 __decorate([
     mongoose_1.Prop(),
     __metadata("design:type", Boolean)
-], DeviceDto.prototype, "isMoistureThreasholdEnabled", void 0);
+], DeviceDto.prototype, "isMoistureThresholdEnabled", void 0);
 __decorate([
     mongoose_1.Prop(),
     __metadata("design:type", Number)

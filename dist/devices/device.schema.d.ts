@@ -6,7 +6,7 @@ export declare class DeviceDto {
     isPumpRunning: boolean;
     temperature: number;
     moisture: number;
-    isMoistureThreasholdEnabled: boolean;
+    isMoistureThresholdEnabled: boolean;
     minMoistureThreshold: number;
     maxMoistureThreshold: number;
 }

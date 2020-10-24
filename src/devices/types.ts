@@ -4,7 +4,7 @@ interface IDevice {
   isPumpRunning: boolean,
   moisture: number,
   temperature: number,
-  isMoistureThreasholdEnabled: boolean,
+  isMoistureThresholdEnabled: boolean,
   minMoistureThreshold?: number,
   maxMoistureThreshold?: number
 }

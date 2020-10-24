@@ -21,7 +21,7 @@ export class DeviceDto {
   moisture: number;
 
   @Prop()
-  isMoistureThreasholdEnabled: boolean;
+  isMoistureThresholdEnabled: boolean;
 
   @Prop()
   minMoistureThreshold: number;
