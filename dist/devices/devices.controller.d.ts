@@ -1,10 +1,13 @@
 import { DevicesService } from './devices.service';
 import { Request } from 'express';
+import { MoistureService } from 'src/moisture/moisture.service';
 export declare class DevicesController {
     private readonly devicesService;
-    constructor(devicesService: DevicesService);
+    private readonly moistureService;
+    constructor(devicesService: DevicesService, moistureService: MoistureService);
     setDevice(req: Request): void;
     updateDevice(req: Request): void;
     getDeviceList(): Promise<IDevice[]>;
     getDeviceById(params: any): Promise<IDevice>;
+    private checkOnlineStatus;
 }

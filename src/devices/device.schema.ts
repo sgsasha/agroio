@@ -21,7 +21,13 @@ export class DeviceDto {
   moisture: number;
 
   @Prop()
-  moistureThreshold: number;
+  isMoistureThreasholdEnabled: boolean;
+
+  @Prop()
+  minMoistureThreshold: number;
+
+  @Prop()
+  maxMoistureThreshold: number;
 }
 
 export const DeviceSchema = SchemaFactory.createForClass(DeviceDto);

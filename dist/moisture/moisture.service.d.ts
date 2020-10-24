@@ -4,5 +4,5 @@ export declare class MoistureService {
     constructor(moistureModel: Model<any>);
     create(moistureDto: IMoistureData): Promise<void>;
     findAll(query?: Object): Promise<IMoistureData[]>;
-    getLatest(): Promise<IMoistureData[]>;
+    getLatest(query?: Object): Promise<IMoistureData>;
 }

@@ -27,8 +27,9 @@ let MoistureService = class MoistureService {
     async findAll(query = {}) {
         return this.moistureModel.find(query).exec();
     }
-    async getLatest() {
-        return this.moistureModel.find().limit(1).sort({ $natural: -1 }).exec();
+    async getLatest(query = {}) {
+        const moistureData = await this.moistureModel.find(query).limit(1).sort({ $natural: -1 }).exec();
+        return moistureData[0];
     }
 };
 MoistureService = __decorate([

@@ -15,7 +15,9 @@ export class MoistureService {
     return this.moistureModel.find(query).exec();
   }
 
-  async getLatest(): Promise<IMoistureData[]> {
-    return this.moistureModel.find().limit(1).sort({$natural:-1}).exec();
+  async getLatest(query: Object = {}): Promise<IMoistureData> {
+    const moistureData = await this.moistureModel.find(query).limit(1).sort({$natural:-1}).exec();
+    // console.log(moistureData);
+    return moistureData[0];
   }
 }
