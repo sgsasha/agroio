@@ -34,18 +34,6 @@ let MoistureController = class MoistureController {
             moisture: moisture
         });
         const deviceData = await this.devicesService.findOne({ deviceId: req.body.deviceId });
-        if (moisture <= deviceData.moistureThreshold) {
-            this.devicesService.update({
-                deviceId: req.body.deviceId,
-                isPumpRunning: true
-            });
-        }
-        else {
-            this.devicesService.update({
-                deviceId: req.body.deviceId,
-                isPumpRunning: false
-            });
-        }
     }
     async getLatestMoisture() {
         const list = await this.moistureService.getLatest();
