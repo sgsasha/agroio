@@ -15,18 +15,37 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MoistureController = void 0;
 const common_1 = require("@nestjs/common");
 const moisture_service_1 = require("./moisture.service");
+const devices_service_1 = require("../devices/devices.service");
 let MoistureController = class MoistureController {
-    constructor(moistureService) {
+    constructor(moistureService, devicesService) {
         this.moistureService = moistureService;
+        this.devicesService = devicesService;
     }
-    setTemperature(req) {
-        console.log(req.body.moisture);
+    async setMoisture(req) {
+        const moisture = req.body.moisture < 0 ? 0 : req.body.moisture;
         const payload = {
-            moisture: req.body.moisture < 0 ? 0 : req.body.moisture,
+            moisture: moisture,
             deviceId: req.body.deviceId,
             date: new Date()
         };
         this.moistureService.create(payload);
+        this.devicesService.update({
+            deviceId: req.body.deviceId,
+            moisture: moisture
+        });
+        const deviceData = await this.devicesService.findOne({ deviceId: req.body.deviceId });
+        if (moisture <= deviceData.moistureThreshold) {
+            this.devicesService.update({
+                deviceId: req.body.deviceId,
+                isPumpRunning: true
+            });
+        }
+        else {
+            this.devicesService.update({
+                deviceId: req.body.deviceId,
+                isPumpRunning: false
+            });
+        }
     }
     async getLatestMoisture() {
         const list = await this.moistureService.getLatest();
@@ -41,8 +60,8 @@ __decorate([
     __param(0, common_1.Req()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], MoistureController.prototype, "setTemperature", null);
+    __metadata("design:returntype", Promise)
+], MoistureController.prototype, "setMoisture", null);
 __decorate([
     common_1.Get(),
     __metadata("design:type", Function),
@@ -58,7 +77,8 @@ __decorate([
 ], MoistureController.prototype, "getMoistureList", null);
 MoistureController = __decorate([
     common_1.Controller('moisture'),
-    __metadata("design:paramtypes", [moisture_service_1.MoistureService])
+    __metadata("design:paramtypes", [moisture_service_1.MoistureService,
+        devices_service_1.DevicesService])
 ], MoistureController);
 exports.MoistureController = MoistureController;
 //# sourceMappingURL=moisture.controller.js.map

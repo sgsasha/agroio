@@ -6,9 +6,19 @@ import { Model } from 'mongoose';
 export class DevicesService {
   constructor(@InjectModel('Device') private deviceModel: Model<any>) {}
 
-  async create(deviceDto: any): Promise<void> {
+  async create(deviceDto: IDevice): Promise<void> {
     const createdTemperatureModel = new this.deviceModel(deviceDto);
     return createdTemperatureModel.save();
+  }
+
+  async update(deviceData: Partial<IDevice>): Promise<void> {
+    const query = { 
+      deviceId: deviceData.deviceId
+    };
+    const options = {
+      upsert: true
+    };
+    return await this.deviceModel.findOneAndUpdate(query, deviceData, options);
   }
 
   async findAll(): Promise<IDevice[]> {

@@ -33,6 +33,10 @@ __decorate([
     mongoose_1.Prop(),
     __metadata("design:type", Number)
 ], DeviceDto.prototype, "moisture", void 0);
+__decorate([
+    mongoose_1.Prop(),
+    __metadata("design:type", Number)
+], DeviceDto.prototype, "moistureThreshold", void 0);
 DeviceDto = __decorate([
     mongoose_1.Schema()
 ], DeviceDto);

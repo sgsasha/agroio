@@ -1566,14 +1566,24 @@
         "signature": "5b0bd3ce9c0789d91faf47859376a642c2e2b4db42ebd27cfaec208525660aee",
         "affectsGlobalScope": false
       },
+      "../src/devices/device.schema.ts": {
+        "version": "160eba47c3da5b0518cc35d95c3c26a3860e12208181ed379901960e4eafa69f",
+        "signature": "46c777551790b03f71b46c60d27655dab3cb027199381ecd0d304b3d55fb16a4",
+        "affectsGlobalScope": false
+      },
+      "../src/devices/devices.service.ts": {
+        "version": "180291c19782b3c53d3166791db910e9e566891f4a2208bd19d6e3bca36d7f3d",
+        "signature": "89be51a1b97b16cf1e0c0adeb3177b4caa7adfc55b2e91f75743da15e64bc355",
+        "affectsGlobalScope": false
+      },
       "../src/moisture/moisture.service.ts": {
         "version": "c0b83045f78b7d406be6d91306827bb9e665a0e5e3b9112221fc67979f0b365b",
         "signature": "a041db32ce8533adaf7879658ad16b9adeb5ee6f2bc3bf00b0985b8a6047a22b",
         "affectsGlobalScope": false
       },
       "../src/moisture/moisture.controller.ts": {
-        "version": "bc556f29895e3c48988e24c41520878bbb6d24809bbe9fa3c00a41f3ef3d5a98",
-        "signature": "681227bfccc6b9d36fa0596a8c92d48115e6e04c0c2e65d7fcbefcd8f9c0ec64",
+        "version": "d75d074f1984b38ea004528b5ebef451604ba7cc4f6e195be63e72907111c4d6",
+        "signature": "522e81a99859632c6f9e5acd936dd002594c9cea97bc78364d91f818d8afc919",
         "affectsGlobalScope": false
       },
       "../src/moisture/moisture.schema.ts": {
@@ -1582,43 +1592,13 @@
         "affectsGlobalScope": false
       },
       "../src/moisture/moisture.module.ts": {
-        "version": "bce65ed7e4d25fb3e812a36c9f1c6238560335d02ab2c8f930edf80b17fc24dd",
+        "version": "bec65e5a3a09f20fd8ab5a4959dbeb7696694985445abc6a7b74284dc23b6989",
         "signature": "70f622e0492d30eb327d089a3a20476777b71da0c8cd264b687bf5e001a896e2",
         "affectsGlobalScope": false
       },
-      "../src/pump/pump.service.ts": {
-        "version": "c94c32399c68721cab9270c27840db5ee0da7c6f8e32024a10674b0aa741552e",
-        "signature": "7c1489deb165d8630a3b5574344ed6b6dcab676d1a56ca6dc903c9886ae1bd9d",
-        "affectsGlobalScope": false
-      },
-      "../src/pump/pump.controller.ts": {
-        "version": "1cc1a4c05a720060bd2760b5d069b16eea4a441dfb68f66d94acc94576634467",
-        "signature": "973b5b8a2a66b5b916d5c96413e8af97781ef43a9bb739d9af610ca0e04f4eb0",
-        "affectsGlobalScope": false
-      },
-      "../src/pump/pump.schema.ts": {
-        "version": "94e14f0f2d82a3a41ccdeaedf4018af3f452e3c7b2ec9d40ea9bf6d8d025f00a",
-        "signature": "d64c0340edf11cf6cb3275f84d46c9692b473a2a782bdaf49a916b290a5e2664",
-        "affectsGlobalScope": false
-      },
-      "../src/pump/pump.module.ts": {
-        "version": "aa2667141960e3fb87ca2a6aa7dc45074c9c406d51c84442422fb75cf6425f09",
-        "signature": "5e837675a8daa105a056915fac499ca333e6d6c4e76f40ca6ae54303862d224a",
-        "affectsGlobalScope": false
-      },
-      "../src/devices/device.schema.ts": {
-        "version": "692081f56e3b7fef4db2b22341804ebc996b31e9a5506967dda9414237206709",
-        "signature": "b67624de1ba6924a69f84e907782baca09b25b1208d788f8ed7149354b5e8397",
-        "affectsGlobalScope": false
-      },
-      "../src/devices/devices.service.ts": {
-        "version": "2b1c624eb65a7f83c3a46d74b4ca3739017d141a2551c0c4013fd72e216b0983",
-        "signature": "9d75004eec04f52a254e18a087dd2f89ac3af9ba2e181a650cc03da23a7e3081",
-        "affectsGlobalScope": false
-      },
       "../src/devices/devices.controller.ts": {
-        "version": "f608d2ce7a55ed27a4232c0164120b48ceec1f002e355207327d92549f6ce5ae",
-        "signature": "861e3fd251399ce167a1022a9c9f602a32c563e2b350c4948510362b7655f5b4",
+        "version": "10356eae0e7f448d8b005768c4a95df8e1704b006fc6c0a20cd8a2382109685f",
+        "signature": "4bd590f70e1664db228449a5b3e97e94532572dc8db39f4274b38c9e80d0eaef",
         "affectsGlobalScope": false
       },
       "../src/devices/devices.module.ts": {
@@ -1627,7 +1607,7 @@
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
-        "version": "47de810d57cebf2a31793c91959479815c914ceaa2e66b8bc0bbfa635e431e43",
+        "version": "d7a848112b844ec4c365e2ed7cfaebd6c567b71c5fdd2046b21e1d952e30e07f",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644",
         "affectsGlobalScope": false
       },
@@ -1817,18 +1797,13 @@
         "affectsGlobalScope": false
       },
       "../src/devices/types.ts": {
-        "version": "74526d72e27426da0aef7a846235aba76c4ddf9293242461413c7281129b6765",
-        "signature": "4ea8f71cb1db90427990cb22ac864280c86a4deff67a81ae5df0312ffc0859cd",
+        "version": "f796e66647d004a4e9497967e9c63916f15d92230302527be3626d9e5d24da00",
+        "signature": "a19d145931b81144cdea0d3997ae8eaaca82ee61eec5ce130d633d3b9d95c7e8",
         "affectsGlobalScope": true
       },
       "../src/moisture/types.ts": {
         "version": "14331c57e3ee2bb3eb82cf2cf1e14cfe41b0314b440304f114a17941306794c1",
         "signature": "be6acbcc2ec4c5b5ead3c542adf52672e2b93074985d4691a08a174709a48eb4",
-        "affectsGlobalScope": true
-      },
-      "../src/pump/types.ts": {
-        "version": "402ec4287afe3a4fe582a9a5b98dcc3ee2c32551be4a16ea4ffaa6d4db7ec1b4",
-        "signature": "4ee5beddb894f86a4535565788f5ea08077cf7eeeff02f72b3013753edeee74d",
         "affectsGlobalScope": true
       },
       "../src/temperature/types.ts": {
@@ -3462,7 +3437,6 @@
         "../src/app.service.ts",
         "../src/devices/devices.module.ts",
         "../src/moisture/moisture.module.ts",
-        "../src/pump/pump.module.ts",
         "../src/temperature/temperature.module.ts"
       ],
       "../src/app.service.ts": [
@@ -3496,11 +3470,14 @@
       "../src/moisture/moisture.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/express/index.d.ts",
+        "../src/devices/devices.service.ts",
         "../src/moisture/moisture.service.ts"
       ],
       "../src/moisture/moisture.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../src/devices/device.schema.ts",
+        "../src/devices/devices.service.ts",
         "../src/moisture/moisture.controller.ts",
         "../src/moisture/moisture.schema.ts",
         "../src/moisture/moisture.service.ts"
@@ -3510,27 +3487,6 @@
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/moisture/moisture.service.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/mongoose/index.d.ts",
-        "../node_modules/@types/mongoose/index.d.ts"
-      ],
-      "../src/pump/pump.controller.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@types/express/index.d.ts",
-        "../src/pump/pump.service.ts"
-      ],
-      "../src/pump/pump.module.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/mongoose/index.d.ts",
-        "../src/pump/pump.controller.ts",
-        "../src/pump/pump.schema.ts",
-        "../src/pump/pump.service.ts"
-      ],
-      "../src/pump/pump.schema.ts": [
-        "../node_modules/@nestjs/mongoose/index.d.ts",
-        "../node_modules/@types/mongoose/index.d.ts"
-      ],
-      "../src/pump/pump.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts"
@@ -4902,22 +4858,13 @@
       ],
       "../src/moisture/moisture.controller.ts": [
         "../node_modules/@types/express/index.d.ts",
+        "../src/devices/devices.service.ts",
         "../src/moisture/moisture.service.ts"
       ],
       "../src/moisture/moisture.schema.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/moisture/moisture.service.ts": [
-        "../node_modules/@types/mongoose/index.d.ts"
-      ],
-      "../src/pump/pump.controller.ts": [
-        "../node_modules/@types/express/index.d.ts",
-        "../src/pump/pump.service.ts"
-      ],
-      "../src/pump/pump.schema.ts": [
-        "../node_modules/@types/mongoose/index.d.ts"
-      ],
-      "../src/pump/pump.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/temperature/temperature.controller.ts": [

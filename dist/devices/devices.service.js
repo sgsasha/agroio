@@ -24,6 +24,15 @@ let DevicesService = class DevicesService {
         const createdTemperatureModel = new this.deviceModel(deviceDto);
         return createdTemperatureModel.save();
     }
+    async update(deviceData) {
+        const query = {
+            deviceId: deviceData.deviceId
+        };
+        const options = {
+            upsert: true
+        };
+        return await this.deviceModel.findOneAndUpdate(query, deviceData, options);
+    }
     async findAll() {
         return this.deviceModel.find().exec();
     }

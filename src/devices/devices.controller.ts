@@ -7,12 +7,17 @@ export class DevicesController {
   constructor(private readonly devicesService: DevicesService) {}
 
   @Post('set')
-  setTemperature(@Req() req: Request) {
+  setDevice(@Req() req: Request) {
     this.devicesService.create(req.body);
   }
 
+  @Post('update')
+  updateDevice(@Req() req: Request) {
+    this.devicesService.update(req.body);
+  }
+
   @Get('list')
-  async getMoistureList(): Promise<IDevice[]> {
+  async getDeviceList(): Promise<IDevice[]> {
     return await this.devicesService.findAll();
   }
 

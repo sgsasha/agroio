@@ -19,10 +19,13 @@ let DevicesController = class DevicesController {
     constructor(devicesService) {
         this.devicesService = devicesService;
     }
-    setTemperature(req) {
+    setDevice(req) {
         this.devicesService.create(req.body);
     }
-    async getMoistureList() {
+    updateDevice(req) {
+        this.devicesService.update(req.body);
+    }
+    async getDeviceList() {
         return await this.devicesService.findAll();
     }
     async getDeviceById(params) {
@@ -35,13 +38,20 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], DevicesController.prototype, "setTemperature", null);
+], DevicesController.prototype, "setDevice", null);
+__decorate([
+    common_1.Post('update'),
+    __param(0, common_1.Req()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], DevicesController.prototype, "updateDevice", null);
 __decorate([
     common_1.Get('list'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], DevicesController.prototype, "getMoistureList", null);
+], DevicesController.prototype, "getDeviceList", null);
 __decorate([
     common_1.Get(':id'),
     __param(0, common_1.Param()),

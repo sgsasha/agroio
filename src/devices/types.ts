@@ -3,5 +3,6 @@ interface IDevice {
   isOnline: boolean,
   isPumpRunning: boolean,
   moisture: number,
-  temperature: number
+  temperature: number,
+  moistureThreshold?: number
 }
