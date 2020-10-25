@@ -34,6 +34,20 @@ let MoistureController = class MoistureController {
             moisture: moisture
         });
         const deviceData = await this.devicesService.findOne({ deviceId: req.body.deviceId });
+        if (deviceData.isMoistureThresholdEnabled) {
+            if (moisture <= deviceData.minMoistureThreshold) {
+                this.devicesService.update({
+                    deviceId: req.body.deviceId,
+                    isPumpRunning: true
+                });
+            }
+            if (moisture >= deviceData.maxMoistureThreshold) {
+                this.devicesService.update({
+                    deviceId: req.body.deviceId,
+                    isPumpRunning: false
+                });
+            }
+        }
     }
     async getLatestMoisture() {
         const list = await this.moistureService.getLatest();

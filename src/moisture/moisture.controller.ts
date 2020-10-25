@@ -22,17 +22,21 @@ export class MoistureController {
       moisture: moisture
     });
     const deviceData = await this.devicesService.findOne({deviceId: req.body.deviceId});
-    // if (moisture <= deviceData.moistureThreshold) {
-    //   this.devicesService.update({
-    //     deviceId: req.body.deviceId,
-    //     isPumpRunning: true
-    //   })
-    // } else {
-    //   this.devicesService.update({
-    //     deviceId: req.body.deviceId,
-    //     isPumpRunning: false
-    //   })
-    // }
+
+    if (deviceData.isMoistureThresholdEnabled) {
+      if (moisture <= deviceData.minMoistureThreshold) {
+        this.devicesService.update({
+          deviceId: req.body.deviceId,
+          isPumpRunning: true
+        })
+      }
+      if (moisture >= deviceData.maxMoistureThreshold) {
+        this.devicesService.update({
+          deviceId: req.body.deviceId,
+          isPumpRunning: false
+        })
+      }
+    }
   }
 
   @Get()

@@ -1582,7 +1582,7 @@
         "affectsGlobalScope": false
       },
       "../src/moisture/moisture.controller.ts": {
-        "version": "6bb9824bd96d336c9538e99f3091f92b139a3da3c41da0ffeea5e13ccb6d5851",
+        "version": "d62dfcbd94bdf7e38ebe4d150c16652a997740cd9b0f224255c60fa84ef6f9ce",
         "signature": "522e81a99859632c6f9e5acd936dd002594c9cea97bc78364d91f818d8afc919",
         "affectsGlobalScope": false
       },
