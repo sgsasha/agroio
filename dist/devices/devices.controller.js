@@ -51,6 +51,13 @@ let DevicesController = class DevicesController {
                     });
                     resolve();
                 }
+                else {
+                    this.devicesService.update({
+                        deviceId: device.deviceId,
+                        isOnline: true
+                    });
+                    resolve();
+                }
             }));
         });
         await Promise.all(promisesArray);

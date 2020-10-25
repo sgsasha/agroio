@@ -44,8 +44,14 @@ export class DevicesController {
             this.devicesService.update({
               deviceId: device.deviceId,
               isOnline: false
-           });
+            });
            resolve();
+          } else {
+            this.devicesService.update({
+              deviceId: device.deviceId,
+              isOnline: true
+            });
+            resolve();
           }
         })
       );
