@@ -27,6 +27,9 @@ let DevicesController = class DevicesController {
     }
     updateDevice(req) {
         this.devicesService.update(req.body);
+        if (req.body.moisture) {
+            this.moistureService.create(req.body);
+        }
     }
     async getDeviceList() {
         const allDevices = await this.devicesService.findAll();

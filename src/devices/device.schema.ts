@@ -28,6 +28,9 @@ export class DeviceDto {
 
   @Prop()
   maxMoistureThreshold: number;
+  
+  @Prop()
+  waterLevel: number;
 }
 
 export const DeviceSchema = SchemaFactory.createForClass(DeviceDto);

@@ -9,5 +9,6 @@ export declare class DeviceDto {
     isMoistureThresholdEnabled: boolean;
     minMoistureThreshold: number;
     maxMoistureThreshold: number;
+    waterLevel: number;
 }
 export declare const DeviceSchema: import("mongoose").Schema<any>;

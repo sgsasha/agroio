@@ -6,5 +6,6 @@ interface IDevice {
   temperature: number,
   isMoistureThresholdEnabled: boolean,
   minMoistureThreshold?: number,
-  maxMoistureThreshold?: number
+  maxMoistureThreshold?: number,
+  waterLevel: number
 }

@@ -17,6 +17,9 @@ export class DevicesController {
   @Post('update')
   updateDevice(@Req() req: Request) {
     this.devicesService.update(req.body);
+    if (req.body.moisture) {
+      this.moistureService.create(req.body);
+    }
   }
 
   @Get('list')
@@ -45,7 +48,7 @@ export class DevicesController {
               deviceId: device.deviceId,
               isOnline: false
             });
-           resolve();
+            resolve();
           } else {
             this.devicesService.update({
               deviceId: device.deviceId,

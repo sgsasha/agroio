@@ -7,4 +7,5 @@ interface IDevice {
     isMoistureThresholdEnabled: boolean;
     minMoistureThreshold?: number;
     maxMoistureThreshold?: number;
+    waterLevel: number;
 }
