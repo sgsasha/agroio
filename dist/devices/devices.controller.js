@@ -27,6 +27,7 @@ let DevicesController = class DevicesController {
     }
     updateDevice(req) {
         this.devicesService.update(req.body);
+        console.log(req.body);
         if (req.body.moisture) {
             this.moistureService.create(Object.assign(Object.assign({}, req.body), { date: new Date() }));
         }

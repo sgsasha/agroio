@@ -17,6 +17,7 @@ export class DevicesController {
   @Post('update')
   updateDevice(@Req() req: Request) {
     this.devicesService.update(req.body);
+    console.log(req.body);
     if (req.body.moisture) {
       this.moistureService.create({
         ...req.body,
