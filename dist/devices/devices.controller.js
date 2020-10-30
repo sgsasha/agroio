@@ -28,7 +28,7 @@ let DevicesController = class DevicesController {
     updateDevice(req) {
         this.devicesService.update(req.body);
         if (req.body.moisture) {
-            this.moistureService.create(req.body);
+            this.moistureService.create(Object.assign(Object.assign({}, req.body), { date: new Date() }));
         }
     }
     async getDeviceList() {
@@ -43,26 +43,34 @@ let DevicesController = class DevicesController {
     }
     async checkOnlineStatus(devices) {
         const promisesArray = [];
-        devices.forEach(async (device) => {
+        for (let device of devices) {
             promisesArray.push(new Promise(async (resolve) => {
-                const lastMoistureReport = await this.moistureService.getLatest({ deviceId: device.deviceId });
-                const lastActivityDate = lastMoistureReport.date;
-                if (date_fns_1.differenceInMinutes(new Date(), new Date(lastActivityDate)) > 5) {
-                    this.devicesService.update({
-                        deviceId: device.deviceId,
-                        isOnline: false
-                    });
-                    resolve();
+                const lastMoistureReport = await this.moistureService.getLatest({ deviceId: device.deviceId, date: { $exists: true } });
+                if (lastMoistureReport) {
+                    const lastActivityDate = lastMoistureReport.date;
+                    if (date_fns_1.differenceInMinutes(new Date(), new Date(lastActivityDate)) > 5) {
+                        this.devicesService.update({
+                            deviceId: device.deviceId,
+                            isOnline: false
+                        });
+                    }
+                    else {
+                        this.devicesService.update({
+                            deviceId: device.deviceId,
+                            isOnline: true
+                        });
+                    }
                 }
                 else {
                     this.devicesService.update({
                         deviceId: device.deviceId,
-                        isOnline: true
+                        isOnline: false
                     });
-                    resolve();
                 }
+                resolve();
             }));
-        });
+        }
+        ;
         await Promise.all(promisesArray);
     }
     ;

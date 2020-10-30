@@ -18,7 +18,10 @@ export class DevicesController {
   updateDevice(@Req() req: Request) {
     this.devicesService.update(req.body);
     if (req.body.moisture) {
-      this.moistureService.create(req.body);
+      this.moistureService.create({
+        ...req.body,
+        date: new Date()
+      });
     }
   }
 
@@ -38,27 +41,33 @@ export class DevicesController {
 
   private async checkOnlineStatus(devices: IDevice[]) {
     const promisesArray= [];
-    devices.forEach(async (device) => {
+    for (let device of devices) {
       promisesArray.push(
         new Promise(async (resolve) => {
-          const lastMoistureReport = await this.moistureService.getLatest({deviceId: device.deviceId});
-          const lastActivityDate = lastMoistureReport.date;
-          if (differenceInMinutes(new Date(), new Date(lastActivityDate)) > 5) {
+          const lastMoistureReport = await this.moistureService.getLatest({deviceId: device.deviceId, date: { $exists: true }});
+          if (lastMoistureReport) {
+            const lastActivityDate = lastMoistureReport.date;
+            if (differenceInMinutes(new Date(), new Date(lastActivityDate)) > 5) {
+              this.devicesService.update({
+                deviceId: device.deviceId,
+                isOnline: false
+              });
+            } else {
+              this.devicesService.update({
+                deviceId: device.deviceId,
+                isOnline: true
+              });
+            }
+          } else {
             this.devicesService.update({
               deviceId: device.deviceId,
               isOnline: false
             });
-            resolve();
-          } else {
-            this.devicesService.update({
-              deviceId: device.deviceId,
-              isOnline: true
-            });
-            resolve();
           }
+          resolve();
         })
       );
-    });
+    };
     await Promise.all(promisesArray);
   };
 }
