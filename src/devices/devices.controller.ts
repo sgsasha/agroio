@@ -18,15 +18,11 @@ export class DevicesController {
   async updateDevice(@Req() req: Request) {
     this.devicesService.update(req.body);
     console.log(req.body);
-    const lastMoistureReport = await this.moistureService.getLatest({deviceId: req.body.deviceId});
-    if (lastMoistureReport) {
-      const lastActivityDate = lastMoistureReport.date;
-      if (differenceInMinutes(new Date(), new Date(lastActivityDate)) > 4 && req.body.moisture) {
-        this.moistureService.create({
-          ...req.body,
-          date: new Date()
-        });
-      }
+    if (req.body.moisture) {
+      this.moistureService.create({
+        ...req.body,
+        date: new Date()
+      });
     }
   }
 
