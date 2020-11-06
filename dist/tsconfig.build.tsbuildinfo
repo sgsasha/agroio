@@ -1602,7 +1602,7 @@
         "affectsGlobalScope": true
       },
       "../src/devices/devices.controller.ts": {
-        "version": "eb68d8520346618c58f68c09b8bbaa03097727f3e22bbe85777ad317b86ffd1f",
+        "version": "621e8bc0ac7cdd281873d4a6cea3116afc84b639de5384325ac561ba0095d8f2",
         "signature": "79ad5571335a132434f90d1d1932d2deceb687fa145300cfe77e7991e32e06ea",
         "affectsGlobalScope": false
       },

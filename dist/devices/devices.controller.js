@@ -27,9 +27,12 @@ let DevicesController = class DevicesController {
     }
     async updateDevice(req) {
         this.devicesService.update(req.body);
-        const latestMoisture = await this.moistureService.getLatest({ deviceId: req.body.deviceId });
-        if (req.body.moisture && date_fns_1.differenceInMinutes(new Date(), new Date(latestMoisture.date)) > 3) {
-            this.moistureService.create(Object.assign(Object.assign({}, req.body), { date: new Date() }));
+        const lastMoistureReport = await this.moistureService.getLatest({ deviceId: req.body.deviceId });
+        if (lastMoistureReport) {
+            const lastActivityDate = lastMoistureReport.date;
+            if (date_fns_1.differenceInMinutes(new Date(), new Date(lastActivityDate)) > 4 && req.body.moisture) {
+                this.moistureService.create(Object.assign(Object.assign({}, req.body), { date: new Date() }));
+            }
         }
     }
     async getDeviceList() {
