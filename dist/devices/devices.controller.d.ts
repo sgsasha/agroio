@@ -10,4 +10,5 @@ export declare class DevicesController {
     getDeviceList(): Promise<IDevice[]>;
     getDeviceById(params: any): Promise<IDevice>;
     private checkOnlineStatus;
+    private addMoisture;
 }

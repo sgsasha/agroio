@@ -18,11 +18,15 @@ export class DevicesController {
   async updateDevice(@Req() req: Request) {
     this.devicesService.update(req.body);
     console.log(req.body);
-    if (req.body.moisture) {
-      this.moistureService.create({
-        ...req.body,
-        date: new Date()
-      });
+    const lastMoistureReport = await this.moistureService.getLatest({deviceId: req.body.deviceId});
+    // if there is a report, add one once in 4 mins, otherwise create moisture report
+    if (lastMoistureReport) {
+      const lastActivityDate = lastMoistureReport.date;
+      if (differenceInMinutes(new Date(), new Date(lastActivityDate)) > 4) {
+        this.addMoisture(req);
+      }
+    } else {
+      this.addMoisture(req);
     }
   }
 
@@ -71,4 +75,13 @@ export class DevicesController {
     };
     await Promise.all(promisesArray);
   };
+
+  private addMoisture (req: Request) {
+    if (req.body.moisture) {
+      this.moistureService.create({
+        ...req.body,
+        date: new Date()
+      });
+    }
+  }
 }
