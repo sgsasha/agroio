@@ -12,12 +12,12 @@ export class DevicesController {
   @Post('set')
   setDevice(@Req() req: Request) {
     this.devicesService.create(req.body);
-    
   }
 
   @Post('update')
   async updateDevice(@Req() req: Request) {
     this.devicesService.update(req.body);
+    console.log(req.body);
     const lastMoistureReport = await this.moistureService.getLatest({deviceId: req.body.deviceId});
     if (lastMoistureReport) {
       const lastActivityDate = lastMoistureReport.date;
