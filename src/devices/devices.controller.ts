@@ -12,6 +12,7 @@ export class DevicesController {
   @Post('set')
   setDevice(@Req() req: Request) {
     this.devicesService.create(req.body);
+    
   }
 
   @Post('update')
