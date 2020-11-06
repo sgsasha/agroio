@@ -25,10 +25,10 @@ let DevicesController = class DevicesController {
     setDevice(req) {
         this.devicesService.create(req.body);
     }
-    updateDevice(req) {
+    async updateDevice(req) {
         this.devicesService.update(req.body);
-        console.log(req.body);
-        if (req.body.moisture) {
+        const latestMoisture = await this.moistureService.getLatest({ deviceId: req.body.deviceId });
+        if (req.body.moisture && date_fns_1.differenceInMinutes(new Date(), new Date(latestMoisture.date)) > 3) {
             this.moistureService.create(Object.assign(Object.assign({}, req.body), { date: new Date() }));
         }
     }
@@ -88,7 +88,7 @@ __decorate([
     __param(0, common_1.Req()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], DevicesController.prototype, "updateDevice", null);
 __decorate([
     common_1.Get('list'),

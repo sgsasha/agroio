@@ -15,10 +15,10 @@ export class DevicesController {
   }
 
   @Post('update')
-  updateDevice(@Req() req: Request) {
+  async updateDevice(@Req() req: Request) {
     this.devicesService.update(req.body);
-    console.log(req.body);
-    if (req.body.moisture) {
+    const latestMoisture = await this.moistureService.getLatest({deviceId: req.body.deviceId});
+    if (req.body.moisture && differenceInMinutes(new Date(), new Date(latestMoisture.date)) > 3) {
       this.moistureService.create({
         ...req.body,
         date: new Date()

@@ -6,7 +6,7 @@ export declare class DevicesController {
     private readonly moistureService;
     constructor(devicesService: DevicesService, moistureService: MoistureService);
     setDevice(req: Request): void;
-    updateDevice(req: Request): void;
+    updateDevice(req: Request): Promise<void>;
     getDeviceList(): Promise<IDevice[]>;
     getDeviceById(params: any): Promise<IDevice>;
     private checkOnlineStatus;
