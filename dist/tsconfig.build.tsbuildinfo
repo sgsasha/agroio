@@ -1577,13 +1577,13 @@
         "affectsGlobalScope": false
       },
       "../src/moisture/moisture.service.ts": {
-        "version": "5778f8c26aa676e5c9dee7ca17098834675033eaeb8b59fc8940b492b8d60a78",
-        "signature": "c8c580861460bc581721bb4d06c6cff7bb769d26dd8054840983d1fb119ec418",
+        "version": "9c1d36fbc28e59aeba831ed6c8b37f6b3845680d0dc93aedbc082dc775f685c5",
+        "signature": "00dd80a93d8521d86fb94c66183a556c96bc157acba2db86a5555cb497020b4a",
         "affectsGlobalScope": false
       },
       "../src/moisture/moisture.controller.ts": {
-        "version": "d62dfcbd94bdf7e38ebe4d150c16652a997740cd9b0f224255c60fa84ef6f9ce",
-        "signature": "522e81a99859632c6f9e5acd936dd002594c9cea97bc78364d91f818d8afc919",
+        "version": "97e01dfe46f4d3a70c5553b044f8bc23e0752348a7b29df2f4c55a66a55405a4",
+        "signature": "25bb28568b489e837850427ee362fcfa17e2f17c8d69a6689132020c9a9b4ecf",
         "affectsGlobalScope": false
       },
       "../src/moisture/moisture.schema.ts": {
@@ -4175,6 +4175,7 @@
       "../src/moisture/moisture.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/express/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
         "../node_modules/date-fns/typings.d.ts"
       ],
@@ -6234,6 +6235,7 @@
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/moisture/moisture.service.ts": [
+        "../node_modules/@types/express/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/temperature/temperature.controller.ts": [

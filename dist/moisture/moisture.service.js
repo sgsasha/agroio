@@ -31,6 +31,23 @@ let MoistureService = class MoistureService {
         const moistureData = await this.moistureModel.find(query).limit(1).sort({ $natural: -1 }).exec();
         return moistureData[0];
     }
+    getFilterQuery(req) {
+        const query = {};
+        const body = req.body;
+        if (body.filters) {
+            const filters = body.filters;
+            if (filters.deviceId) {
+                query["deviceId"] = filters.deviceId;
+            }
+            if (filters.fromDate && filters.toDate) {
+                query["date"] = {
+                    $gte: new Date(filters.fromDate).toISOString(),
+                    $lte: new Date(filters.toDate).toISOString()
+                };
+            }
+        }
+        return query;
+    }
 };
 MoistureService = __decorate([
     common_1.Injectable(),

@@ -49,4 +49,10 @@ export class MoistureController {
   async getMoistureList(@Param() params): Promise<IMoistureData[]> {
     return await this.moistureService.findAll({deviceId: params.id});
   }
+
+  @Post('list')
+  async getFilteredMoistureList(@Req() req: Request): Promise<IMoistureData[]> {
+    const query = this.moistureService.getFilterQuery(req);
+    return await this.moistureService.findAll(query);
+  }
 }

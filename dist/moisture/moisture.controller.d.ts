@@ -8,4 +8,5 @@ export declare class MoistureController {
     setMoisture(req: Request): Promise<void>;
     getLatestMoisture(): Promise<IMoistureData>;
     getMoistureList(params: any): Promise<IMoistureData[]>;
+    getFilteredMoistureList(req: Request): Promise<IMoistureData[]>;
 }
