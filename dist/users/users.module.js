@@ -6,26 +6,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TemperatureModule = void 0;
+exports.UsersModule = void 0;
 const common_1 = require("@nestjs/common");
+const users_service_1 = require("./users.service");
 const mongoose_1 = require("@nestjs/mongoose");
-const temperature_controller_1 = require("./temperature.controller");
-const temperature_schema_1 = require("./temperature.schema");
-const temperature_service_1 = require("./temperature.service");
-let TemperatureModule = class TemperatureModule {
+const user_schema_1 = require("./user.schema");
+let UsersModule = class UsersModule {
 };
-TemperatureModule = __decorate([
+UsersModule = __decorate([
     common_1.Module({
         imports: [
-            mongoose_1.MongooseModule.forFeature([{ name: 'Temperature', schema: temperature_schema_1.TemperatureSchema }])
+            mongoose_1.MongooseModule.forFeature([
+                { name: 'User', schema: user_schema_1.UserSchema }
+            ]),
         ],
-        controllers: [
-            temperature_controller_1.TemperatureController
-        ],
-        providers: [
-            temperature_service_1.TemperatureService
-        ]
+        providers: [users_service_1.UsersService],
+        exports: [users_service_1.UsersService]
     })
-], TemperatureModule);
-exports.TemperatureModule = TemperatureModule;
-//# sourceMappingURL=temperature.module.js.map
+], UsersModule);
+exports.UsersModule = UsersModule;
+//# sourceMappingURL=users.module.js.map

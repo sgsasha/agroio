@@ -1,36 +1,46 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { ApiProperty } from "@nestjs/swagger";
 
 export type DeviceDocument = DeviceDto & Document;
 
 @Schema()
 export class DeviceDto {
   @Prop()
+  @ApiProperty()
   deviceId: number;
 
   @Prop()
-  isOnline: boolean;
+  @ApiProperty()
+  isOnline?: boolean;
 
   @Prop()
-  isPumpRunning: boolean;
+  @ApiProperty()
+  isPumpRunning?: boolean;
 
   @Prop()
-  temperature: number;
+  @ApiProperty()
+  temperature?: number;
 
   @Prop()
-  moisture: number;
+  @ApiProperty()
+  moisture?: number;
 
   @Prop()
-  isMoistureThresholdEnabled: boolean;
+  @ApiProperty()
+  isMoistureThresholdEnabled?: boolean;
 
   @Prop()
-  minMoistureThreshold: number;
+  @ApiProperty()
+  minMoistureThreshold?: number;
 
   @Prop()
-  maxMoistureThreshold: number;
+  @ApiProperty()
+  maxMoistureThreshold?: number;
   
   @Prop()
-  waterLevel: number;
+  @ApiProperty()
+  waterLevel?: number;
 }
 
 export const DeviceSchema = SchemaFactory.createForClass(DeviceDto);

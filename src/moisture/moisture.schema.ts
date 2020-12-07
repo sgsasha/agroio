@@ -1,18 +1,36 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { ApiProperty } from "@nestjs/swagger";
 
-export type MoistureDataDocument = MoistureData & Document;
+export type MoistureDataDocument = MoistureDto & Document;
 
 @Schema()
-export class MoistureData {
+export class MoistureDto {
   @Prop()
+  @ApiProperty()
   moisture: number;
 
   @Prop()
+  @ApiProperty()
   date: Date;
 
   @Prop()
+  @ApiProperty()
   deviceId: number;
 }
 
-export const MoistureSchema = SchemaFactory.createForClass(MoistureData);
+export abstract class MoistureFilterDto {
+  @ApiProperty()
+  deviceId: number;
+  @ApiProperty()
+  fromDate: Date;
+  @ApiProperty()
+  toDate: Date
+}
+
+export abstract class MoistureRequestDto {
+  @ApiProperty()
+  filters: MoistureFilterDto
+}
+
+export const MoistureSchema = SchemaFactory.createForClass(MoistureDto);

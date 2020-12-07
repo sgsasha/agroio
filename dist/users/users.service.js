@@ -12,29 +12,38 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TemperatureService = void 0;
+exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
-let TemperatureService = class TemperatureService {
-    constructor(temperatureModel) {
-        this.temperatureModel = temperatureModel;
+let UsersService = class UsersService {
+    constructor(userModel) {
+        this.userModel = userModel;
+        this.users = [
+            {
+                userId: 1,
+                username: 'john',
+                password: 'changeme',
+            },
+            {
+                userId: 2,
+                username: 'maria',
+                password: 'guess',
+            },
+        ];
     }
-    async create(temperatureDto) {
-        const createdTemperatureModel = new this.temperatureModel(temperatureDto);
-        return createdTemperatureModel.save();
+    async findOne(email) {
+        return this.userModel.findOne({ email: email }).exec();
     }
-    async findAll(query = {}) {
-        return this.temperatureModel.find(query).exec();
-    }
-    async getLatest() {
-        return this.temperatureModel.find().limit(1).sort({ $natural: -1 }).exec();
+    async create(userDto) {
+        const createdUserModel = new this.userModel(userDto);
+        return createdUserModel.save();
     }
 };
-TemperatureService = __decorate([
+UsersService = __decorate([
     common_1.Injectable(),
-    __param(0, mongoose_1.InjectModel('Temperature')),
+    __param(0, mongoose_1.InjectModel('User')),
     __metadata("design:paramtypes", [mongoose_2.Model])
-], TemperatureService);
-exports.TemperatureService = TemperatureService;
-//# sourceMappingURL=temperature.service.js.map
+], UsersService);
+exports.UsersService = UsersService;
+//# sourceMappingURL=users.service.js.map

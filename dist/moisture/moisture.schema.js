@@ -9,25 +9,51 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MoistureSchema = exports.MoistureData = void 0;
+exports.MoistureSchema = exports.MoistureRequestDto = exports.MoistureFilterDto = exports.MoistureDto = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-let MoistureData = class MoistureData {
+const swagger_1 = require("@nestjs/swagger");
+let MoistureDto = class MoistureDto {
 };
 __decorate([
     mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
     __metadata("design:type", Number)
-], MoistureData.prototype, "moisture", void 0);
+], MoistureDto.prototype, "moisture", void 0);
 __decorate([
     mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
     __metadata("design:type", Date)
-], MoistureData.prototype, "date", void 0);
+], MoistureDto.prototype, "date", void 0);
 __decorate([
     mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
     __metadata("design:type", Number)
-], MoistureData.prototype, "deviceId", void 0);
-MoistureData = __decorate([
+], MoistureDto.prototype, "deviceId", void 0);
+MoistureDto = __decorate([
     mongoose_1.Schema()
-], MoistureData);
-exports.MoistureData = MoistureData;
-exports.MoistureSchema = mongoose_1.SchemaFactory.createForClass(MoistureData);
+], MoistureDto);
+exports.MoistureDto = MoistureDto;
+class MoistureFilterDto {
+}
+__decorate([
+    swagger_1.ApiProperty(),
+    __metadata("design:type", Number)
+], MoistureFilterDto.prototype, "deviceId", void 0);
+__decorate([
+    swagger_1.ApiProperty(),
+    __metadata("design:type", Date)
+], MoistureFilterDto.prototype, "fromDate", void 0);
+__decorate([
+    swagger_1.ApiProperty(),
+    __metadata("design:type", Date)
+], MoistureFilterDto.prototype, "toDate", void 0);
+exports.MoistureFilterDto = MoistureFilterDto;
+class MoistureRequestDto {
+}
+__decorate([
+    swagger_1.ApiProperty(),
+    __metadata("design:type", MoistureFilterDto)
+], MoistureRequestDto.prototype, "filters", void 0);
+exports.MoistureRequestDto = MoistureRequestDto;
+exports.MoistureSchema = mongoose_1.SchemaFactory.createForClass(MoistureDto);
 //# sourceMappingURL=moisture.schema.js.map

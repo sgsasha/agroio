@@ -16,6 +16,8 @@ exports.MoistureController = void 0;
 const common_1 = require("@nestjs/common");
 const moisture_service_1 = require("./moisture.service");
 const devices_service_1 = require("../devices/devices.service");
+const swagger_1 = require("@nestjs/swagger");
+const moisture_schema_1 = require("./moisture.schema");
 let MoistureController = class MoistureController {
     constructor(moistureService, devicesService) {
         this.moistureService = moistureService;
@@ -28,8 +30,8 @@ let MoistureController = class MoistureController {
             deviceId: req.body.deviceId,
             date: new Date()
         };
-        this.moistureService.create(payload);
-        this.devicesService.update({
+        await this.moistureService.create(payload);
+        await this.devicesService.update({
             deviceId: req.body.deviceId,
             moisture: moisture
         });
@@ -49,19 +51,16 @@ let MoistureController = class MoistureController {
             }
         }
     }
-    async getLatestMoisture() {
-        const list = await this.moistureService.getLatest();
-        return list[0];
-    }
     async getMoistureList(params) {
         return await this.moistureService.findAll({ deviceId: params.id });
     }
-    async getFilteredMoistureList(req) {
-        const query = this.moistureService.getFilterQuery(req);
+    async getFilteredMoistureList(data) {
+        const query = this.moistureService.getFilterQuery(data);
         return await this.moistureService.findAll(query);
     }
 };
 __decorate([
+    swagger_1.ApiExcludeEndpoint(),
     common_1.Post('set'),
     __param(0, common_1.Req()),
     __metadata("design:type", Function),
@@ -69,13 +68,9 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], MoistureController.prototype, "setMoisture", null);
 __decorate([
-    common_1.Get(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], MoistureController.prototype, "getLatestMoisture", null);
-__decorate([
     common_1.Get(':id'),
+    swagger_1.ApiBearerAuth(),
+    swagger_1.ApiResponse({ status: 200, type: moisture_schema_1.MoistureDto }),
     __param(0, common_1.Param()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -83,9 +78,11 @@ __decorate([
 ], MoistureController.prototype, "getMoistureList", null);
 __decorate([
     common_1.Post('list'),
-    __param(0, common_1.Req()),
+    swagger_1.ApiBearerAuth(),
+    swagger_1.ApiResponse({ status: 200, type: moisture_schema_1.MoistureDto, isArray: true }),
+    __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [moisture_schema_1.MoistureRequestDto]),
     __metadata("design:returntype", Promise)
 ], MoistureController.prototype, "getFilteredMoistureList", null);
 MoistureController = __decorate([

@@ -1,52 +1,61 @@
-import { Controller, Get, Param, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { DevicesService } from './devices.service';
-import { Request } from 'express';
 import { MoistureService } from 'src/moisture/moisture.service';
 import { differenceInMinutes } from 'date-fns';
+import { JwtAuthGuard } from "../auth/jwt-auth.guard";
+import { DeviceDto } from "./device.schema";
+import { ApiBearerAuth, ApiExcludeEndpoint, ApiResponse } from "@nestjs/swagger";
 
 @Controller('devices')
 export class DevicesController {
   constructor(private readonly devicesService: DevicesService,
               private readonly moistureService: MoistureService) {}
 
+  @ApiExcludeEndpoint()
   @Post('set')
-  setDevice(@Req() req: Request) {
-    this.devicesService.create(req.body);
+  async setDevice(@Body() device: DeviceDto): Promise<void> {
+    await this.devicesService.create(device);
   }
 
+  @ApiExcludeEndpoint()
   @Post('update')
-  async updateDevice(@Req() req: Request) {
-    this.devicesService.update(req.body);
-    console.log(req.body);
-    const lastMoistureReport = await this.moistureService.getLatest({deviceId: req.body.deviceId});
+  async updateDevice(@Body() device: DeviceDto): Promise<void> {
+    await this.devicesService.update(device);
+    const lastMoistureReport = await this.moistureService.getLatest({deviceId: device.deviceId});
     // if there is a report, add one once in 4 mins, otherwise create moisture report
     if (lastMoistureReport) {
       const lastActivityDate = lastMoistureReport.date;
       if (differenceInMinutes(new Date(), new Date(lastActivityDate)) > 4) {
-        this.addMoisture(req);
+        this.addMoisture(device);
       }
     } else {
-      this.addMoisture(req);
+      this.addMoisture(device);
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('list')
-  async getDeviceList(): Promise<IDevice[]> {
+  @ApiBearerAuth()
+  @ApiResponse({ status: 200, type: DeviceDto, isArray: true })
+  async getDeviceList(): Promise<DeviceDto[]> {
     const allDevices = await this.devicesService.findAll();
     await this.checkOnlineStatus(allDevices);
     return await this.devicesService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
-  async getDeviceById(@Param() params): Promise<IDevice> {
+  @ApiBearerAuth()
+  @ApiResponse({ status: 200, type: DeviceDto })
+  async getDeviceById(@Param() params): Promise<DeviceDto> {
     const device = await this.devicesService.findOne({deviceId: params.id});
     this.checkOnlineStatus([device]);
     return await this.devicesService.findOne({deviceId: params.id});
   }
 
-  private async checkOnlineStatus(devices: IDevice[]) {
+  private async checkOnlineStatus(devices: DeviceDto[]) {
     const promisesArray= [];
-    for (let device of devices) {
+    for (const device of devices) {
       promisesArray.push(
         new Promise(async (resolve) => {
           const lastMoistureReport = await this.moistureService.getLatest({deviceId: device.deviceId, date: { $exists: true }});
@@ -72,14 +81,15 @@ export class DevicesController {
           resolve();
         })
       );
-    };
+    }
     await Promise.all(promisesArray);
   };
 
-  private addMoisture (req: Request) {
-    if (req.body.moisture) {
+  private addMoisture (device: DeviceDto) {
+    if (device.moisture) {
       this.moistureService.create({
-        ...req.body,
+        moisture: device.moisture,
+        deviceId: device.deviceId,
         date: new Date()
       });
     }

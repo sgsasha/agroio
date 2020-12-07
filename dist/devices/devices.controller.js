@@ -17,26 +17,28 @@ const common_1 = require("@nestjs/common");
 const devices_service_1 = require("./devices.service");
 const moisture_service_1 = require("../moisture/moisture.service");
 const date_fns_1 = require("date-fns");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
+const device_schema_1 = require("./device.schema");
+const swagger_1 = require("@nestjs/swagger");
 let DevicesController = class DevicesController {
     constructor(devicesService, moistureService) {
         this.devicesService = devicesService;
         this.moistureService = moistureService;
     }
-    setDevice(req) {
-        this.devicesService.create(req.body);
+    async setDevice(device) {
+        await this.devicesService.create(device);
     }
-    async updateDevice(req) {
-        this.devicesService.update(req.body);
-        console.log(req.body);
-        const lastMoistureReport = await this.moistureService.getLatest({ deviceId: req.body.deviceId });
+    async updateDevice(device) {
+        await this.devicesService.update(device);
+        const lastMoistureReport = await this.moistureService.getLatest({ deviceId: device.deviceId });
         if (lastMoistureReport) {
             const lastActivityDate = lastMoistureReport.date;
             if (date_fns_1.differenceInMinutes(new Date(), new Date(lastActivityDate)) > 4) {
-                this.addMoisture(req);
+                this.addMoisture(device);
             }
         }
         else {
-            this.addMoisture(req);
+            this.addMoisture(device);
         }
     }
     async getDeviceList() {
@@ -51,7 +53,7 @@ let DevicesController = class DevicesController {
     }
     async checkOnlineStatus(devices) {
         const promisesArray = [];
-        for (let device of devices) {
+        for (const device of devices) {
             promisesArray.push(new Promise(async (resolve) => {
                 const lastMoistureReport = await this.moistureService.getLatest({ deviceId: device.deviceId, date: { $exists: true } });
                 if (lastMoistureReport) {
@@ -78,38 +80,49 @@ let DevicesController = class DevicesController {
                 resolve();
             }));
         }
-        ;
         await Promise.all(promisesArray);
     }
     ;
-    addMoisture(req) {
-        if (req.body.moisture) {
-            this.moistureService.create(Object.assign(Object.assign({}, req.body), { date: new Date() }));
+    addMoisture(device) {
+        if (device.moisture) {
+            this.moistureService.create({
+                moisture: device.moisture,
+                deviceId: device.deviceId,
+                date: new Date()
+            });
         }
     }
 };
 __decorate([
+    swagger_1.ApiExcludeEndpoint(),
     common_1.Post('set'),
-    __param(0, common_1.Req()),
+    __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:paramtypes", [device_schema_1.DeviceDto]),
+    __metadata("design:returntype", Promise)
 ], DevicesController.prototype, "setDevice", null);
 __decorate([
+    swagger_1.ApiExcludeEndpoint(),
     common_1.Post('update'),
-    __param(0, common_1.Req()),
+    __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [device_schema_1.DeviceDto]),
     __metadata("design:returntype", Promise)
 ], DevicesController.prototype, "updateDevice", null);
 __decorate([
+    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Get('list'),
+    swagger_1.ApiBearerAuth(),
+    swagger_1.ApiResponse({ status: 200, type: device_schema_1.DeviceDto, isArray: true }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], DevicesController.prototype, "getDeviceList", null);
 __decorate([
+    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Get(':id'),
+    swagger_1.ApiBearerAuth(),
+    swagger_1.ApiResponse({ status: 200, type: device_schema_1.DeviceDto }),
     __param(0, common_1.Param()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

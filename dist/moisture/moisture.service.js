@@ -31,9 +31,8 @@ let MoistureService = class MoistureService {
         const moistureData = await this.moistureModel.find(query).limit(1).sort({ $natural: -1 }).exec();
         return moistureData[0];
     }
-    getFilterQuery(req) {
+    getFilterQuery(body) {
         const query = {};
-        const body = req.body;
         if (body.filters) {
             const filters = body.filters;
             if (filters.deviceId) {

@@ -11,18 +11,22 @@ const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const mongoose_module_1 = require("@nestjs/mongoose/dist/mongoose.module");
-const temperature_module_1 = require("./temperature/temperature.module");
 const moisture_module_1 = require("./moisture/moisture.module");
 const devices_module_1 = require("./devices/devices.module");
+const auth_module_1 = require("./auth/auth.module");
+const users_module_1 = require("./users/users.module");
+const config_1 = require("@nestjs/config");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
         imports: [
             mongoose_module_1.MongooseModule.forRoot('mongodb+srv://alex:manulkushaettravku@cluster0.04jpx.mongodb.net/agroio?retryWrites=true&w=majority'),
-            temperature_module_1.TemperatureModule,
+            config_1.ConfigModule.forRoot(),
             moisture_module_1.MoistureModule,
-            devices_module_1.DevicesModule
+            devices_module_1.DevicesModule,
+            auth_module_1.AuthModule,
+            users_module_1.UsersModule
         ],
         controllers: [
             app_controller_1.AppController,

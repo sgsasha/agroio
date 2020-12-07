@@ -11,42 +11,52 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeviceSchema = exports.DeviceDto = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
+const swagger_1 = require("@nestjs/swagger");
 let DeviceDto = class DeviceDto {
 };
 __decorate([
     mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
     __metadata("design:type", Number)
 ], DeviceDto.prototype, "deviceId", void 0);
 __decorate([
     mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
     __metadata("design:type", Boolean)
 ], DeviceDto.prototype, "isOnline", void 0);
 __decorate([
     mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
     __metadata("design:type", Boolean)
 ], DeviceDto.prototype, "isPumpRunning", void 0);
 __decorate([
     mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
     __metadata("design:type", Number)
 ], DeviceDto.prototype, "temperature", void 0);
 __decorate([
     mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
     __metadata("design:type", Number)
 ], DeviceDto.prototype, "moisture", void 0);
 __decorate([
     mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
     __metadata("design:type", Boolean)
 ], DeviceDto.prototype, "isMoistureThresholdEnabled", void 0);
 __decorate([
     mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
     __metadata("design:type", Number)
 ], DeviceDto.prototype, "minMoistureThreshold", void 0);
 __decorate([
     mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
     __metadata("design:type", Number)
 ], DeviceDto.prototype, "maxMoistureThreshold", void 0);
 __decorate([
     mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
     __metadata("design:type", Number)
 ], DeviceDto.prototype, "waterLevel", void 0);
 DeviceDto = __decorate([
