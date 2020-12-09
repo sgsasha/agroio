@@ -49,7 +49,7 @@ let DevicesController = class DevicesController {
             res.sendStatus(409);
         }
     }
-    async updateDevice(device, req) {
+    async updateDevice(device) {
         const deviceToChange = await this.devicesService.findOne({ deviceId: device.deviceId });
         const deviceToUpdate = Object.assign(Object.assign({}, device), { user: deviceToChange.user });
         await this.devicesService.update(deviceToUpdate);
@@ -90,11 +90,16 @@ let DevicesController = class DevicesController {
         await this.checkOnlineStatus(allDevices);
         return await this.devicesService.findAll(authenticatedUserEmail);
     }
-    async getFilteredDeviceList(device, req) {
+    async getFilteredDeviceList(deviceData, req) {
         const authenticatedUserEmail = this.authService.getUserFromToken(req);
-        const allDevices = await this.devicesService.getFilteredList({ user: authenticatedUserEmail }, device.filters.paging);
+        const allDevices = await this.devicesService.getFilteredList({ user: authenticatedUserEmail }, deviceData.filters.paging);
         await this.checkOnlineStatus(allDevices);
-        return await this.devicesService.getFilteredList({ user: authenticatedUserEmail }, device.filters.paging);
+        const data = await this.devicesService.getFilteredList({ user: authenticatedUserEmail }, deviceData.filters.paging);
+        const allItems = await this.devicesService.findAll(authenticatedUserEmail);
+        return {
+            items: data,
+            total: allItems.length
+        };
     }
     async deleteDevice(params, req, res) {
         const authenticatedUserEmail = this.authService.getUserFromToken(req);
@@ -180,9 +185,9 @@ __decorate([
 ], DevicesController.prototype, "setDevice", null);
 __decorate([
     common_1.Post('update'),
-    __param(0, common_1.Body()), __param(1, common_1.Req()),
+    __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [device_schema_1.DeviceDto, Object]),
+    __metadata("design:paramtypes", [device_schema_1.DeviceDto]),
     __metadata("design:returntype", Promise)
 ], DevicesController.prototype, "updateDevice", null);
 __decorate([
@@ -207,7 +212,7 @@ __decorate([
     common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Post('list2'),
     swagger_1.ApiBearerAuth(),
-    swagger_1.ApiResponse({ status: 200, type: device_schema_1.DeviceDto, isArray: true }),
+    swagger_1.ApiResponse({ status: 200, type: device_schema_1.IDeviceListResponse, isArray: true }),
     __param(0, common_1.Body()), __param(1, common_1.Req()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [device_schema_1.IDeviceListReqData, Object]),

@@ -81,4 +81,11 @@ export abstract class IDeviceListReqData {
   filters: IDeviceFilters;
 }
 
+export abstract class IDeviceListResponse {
+  @ApiProperty()
+  items: DeviceDto[];
+  @ApiProperty()
+  total: number;
+}
+
 export const DeviceSchema = SchemaFactory.createForClass(DeviceDto);

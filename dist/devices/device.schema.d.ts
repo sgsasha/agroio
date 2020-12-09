@@ -29,4 +29,8 @@ export declare abstract class IDeviceFilters {
 export declare abstract class IDeviceListReqData {
     filters: IDeviceFilters;
 }
+export declare abstract class IDeviceListResponse {
+    items: DeviceDto[];
+    total: number;
+}
 export declare const DeviceSchema: import("mongoose").Schema<any>;

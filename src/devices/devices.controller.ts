@@ -3,7 +3,13 @@ import { DevicesService } from './devices.service';
 import { MoistureService } from 'src/moisture/moisture.service';
 import { differenceInMinutes } from 'date-fns';
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
-import { DeviceDto, IChangeDeviceUserData, ICreateDeviceData, IDeviceListReqData } from "./device.schema";
+import {
+  DeviceDto,
+  IChangeDeviceUserData,
+  ICreateDeviceData,
+  IDeviceListReqData,
+  IDeviceListResponse
+} from "./device.schema";
 import { ApiBearerAuth, ApiResponse} from "@nestjs/swagger";
 import { AuthService } from "../auth/auth.service";
 
@@ -38,7 +44,7 @@ export class DevicesController {
   }
 
   @Post('update')
-  async updateDevice(@Body() device: DeviceDto, @Req() req): Promise<void> {
+  async updateDevice(@Body() device: DeviceDto): Promise<void> {
     const deviceToChange = await this.devicesService.findOne({deviceId: device.deviceId});
     const deviceToUpdate = {
       ...device,
@@ -97,12 +103,17 @@ export class DevicesController {
   @UseGuards(JwtAuthGuard)
   @Post('list2')
   @ApiBearerAuth()
-  @ApiResponse({ status: 200, type: DeviceDto, isArray: true })
-  async getFilteredDeviceList(@Body() device: IDeviceListReqData, @Req() req): Promise<DeviceDto[]> {
+  @ApiResponse({ status: 200, type: IDeviceListResponse, isArray: true })
+  async getFilteredDeviceList(@Body() deviceData: IDeviceListReqData, @Req() req): Promise<IDeviceListResponse> {
     const authenticatedUserEmail = this.authService.getUserFromToken(req);
-    const allDevices = await this.devicesService.getFilteredList({user: authenticatedUserEmail}, device.filters.paging);
+    const allDevices = await this.devicesService.getFilteredList({user: authenticatedUserEmail}, deviceData.filters.paging);
     await this.checkOnlineStatus(allDevices);
-    return await this.devicesService.getFilteredList({user: authenticatedUserEmail}, device.filters.paging);
+    const data = await this.devicesService.getFilteredList({user: authenticatedUserEmail}, deviceData.filters.paging);
+    const allItems = await this.devicesService.findAll(authenticatedUserEmail);
+    return {
+      items: data,
+      total: allItems.length
+    }
   }
 
   @UseGuards(JwtAuthGuard)
