@@ -39,10 +39,10 @@ export class DevicesController {
 
   @Post('update')
   async updateDevice(@Body() device: DeviceDto, @Req() req): Promise<void> {
-    const authenticatedUserEmail = this.authService.getUserFromToken(req);
+    const deviceToChange = await this.devicesService.findOne({deviceId: device.deviceId});
     const deviceToUpdate = {
       ...device,
-      user: authenticatedUserEmail,
+      user: deviceToChange.user,
     };
     await this.devicesService.update(deviceToUpdate);
     const lastMoistureReport = await this.moistureService.getLatest({deviceId: device.deviceId});

@@ -50,8 +50,8 @@ let DevicesController = class DevicesController {
         }
     }
     async updateDevice(device, req) {
-        const authenticatedUserEmail = this.authService.getUserFromToken(req);
-        const deviceToUpdate = Object.assign(Object.assign({}, device), { user: authenticatedUserEmail });
+        const deviceToChange = await this.devicesService.findOne({ deviceId: device.deviceId });
+        const deviceToUpdate = Object.assign(Object.assign({}, device), { user: deviceToChange.user });
         await this.devicesService.update(deviceToUpdate);
         const lastMoistureReport = await this.moistureService.getLatest({ deviceId: device.deviceId });
         if (lastMoistureReport) {
