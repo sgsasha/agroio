@@ -72,6 +72,10 @@ let DevicesController = class DevicesController {
             return;
         }
         const deviceToUpdate = Object.assign(Object.assign({}, JSON.parse(JSON.stringify(deviceToChange))), { user: data.user });
+        if (!deviceToChange) {
+            res.sendStatus(404);
+            return;
+        }
         if (deviceToChange.user !== authenticatedUserEmail) {
             res.sendStatus(401);
         }
@@ -86,9 +90,20 @@ let DevicesController = class DevicesController {
         await this.checkOnlineStatus(allDevices);
         return await this.devicesService.findAll(authenticatedUserEmail);
     }
-    async getDeviceById(params, req, res) {
+    async getFilteredDeviceList(device, req) {
+        const authenticatedUserEmail = this.authService.getUserFromToken(req);
+        const allDevices = await this.devicesService.getFilteredList({ user: authenticatedUserEmail }, device.filters.paging);
+        await this.checkOnlineStatus(allDevices);
+        return await this.devicesService.getFilteredList({ user: authenticatedUserEmail }, device.filters.paging);
+    }
+    async deleteDevice(params, req, res) {
         const authenticatedUserEmail = this.authService.getUserFromToken(req);
         const device = await this.devicesService.findOne({ deviceId: params.id });
+        console.log(device);
+        if (!device) {
+            res.sendStatus(404);
+            return;
+        }
         if (device.user !== authenticatedUserEmail) {
             res.sendStatus(401);
         }
@@ -96,6 +111,21 @@ let DevicesController = class DevicesController {
             this.checkOnlineStatus([device]);
             const deviceToSend = await this.devicesService.findOne({ deviceId: params.id });
             res.json(deviceToSend);
+        }
+    }
+    async getDeviceById(params, req, res) {
+        const authenticatedUserEmail = this.authService.getUserFromToken(req);
+        const device = await this.devicesService.findOne({ deviceId: params.id });
+        if (!device) {
+            res.sendStatus(404);
+            return;
+        }
+        if (device.user !== authenticatedUserEmail) {
+            res.sendStatus(401);
+        }
+        else {
+            this.devicesService.delete({ deviceId: params.id });
+            res.sendStatus(204);
         }
     }
     async checkOnlineStatus(devices) {
@@ -175,9 +205,29 @@ __decorate([
 ], DevicesController.prototype, "getDeviceList", null);
 __decorate([
     common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
+    common_1.Post('list2'),
+    swagger_1.ApiBearerAuth(),
+    swagger_1.ApiResponse({ status: 200, type: device_schema_1.DeviceDto, isArray: true }),
+    __param(0, common_1.Body()), __param(1, common_1.Req()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [device_schema_1.IDeviceListReqData, Object]),
+    __metadata("design:returntype", Promise)
+], DevicesController.prototype, "getFilteredDeviceList", null);
+__decorate([
+    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Get(':id'),
     swagger_1.ApiBearerAuth(),
     swagger_1.ApiResponse({ status: 200, type: device_schema_1.DeviceDto }),
+    __param(0, common_1.Param()), __param(1, common_1.Req()), __param(2, common_1.Res()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object, Object]),
+    __metadata("design:returntype", Promise)
+], DevicesController.prototype, "deleteDevice", null);
+__decorate([
+    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
+    common_1.Delete(':id'),
+    swagger_1.ApiBearerAuth(),
+    swagger_1.ApiResponse({ status: 204 }),
     __param(0, common_1.Param()), __param(1, common_1.Req()), __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object, Object]),

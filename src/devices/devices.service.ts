@@ -26,8 +26,24 @@ export class DevicesService {
     return await this.deviceModel.findOneAndUpdate(query, deviceData, options);
   }
 
+  // todo: deprecate
   async findAll(email: string): Promise<DeviceDto[]> {
     return this.deviceModel.find({user: email}).exec();
+  }
+
+  async getFilteredList(query: any, pagination: any): Promise<DeviceDto[]> {
+    return this.deviceModel
+        .find(query)
+        .limit(pagination.pageSize)
+        .skip(pagination.pageSize * pagination.page)
+        .exec();
+  }
+
+  async delete(query: any): Promise<DeviceDto[]> {
+    return this.deviceModel
+        .find(query)
+        .remove()
+        .exec();
   }
 
   async findOne(query: any): Promise<DeviceDto> {

@@ -19,4 +19,14 @@ export declare abstract class IChangeDeviceUserData {
     deviceId: number;
     user: string;
 }
+export declare abstract class IPagination {
+    page: number;
+    pageSize: number;
+}
+export declare abstract class IDeviceFilters {
+    paging: IPagination;
+}
+export declare abstract class IDeviceListReqData {
+    filters: IDeviceFilters;
+}
 export declare const DeviceSchema: import("mongoose").Schema<any>;

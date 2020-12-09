@@ -1,9 +1,9 @@
-import { Body, Controller, Get, Param, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { DevicesService } from './devices.service';
 import { MoistureService } from 'src/moisture/moisture.service';
 import { differenceInMinutes } from 'date-fns';
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
-import { DeviceDto, IChangeDeviceUserData, ICreateDeviceData } from "./device.schema";
+import { DeviceDto, IChangeDeviceUserData, ICreateDeviceData, IDeviceListReqData } from "./device.schema";
 import { ApiBearerAuth, ApiResponse} from "@nestjs/swagger";
 import { AuthService } from "../auth/auth.service";
 
@@ -70,6 +70,10 @@ export class DevicesController {
       ...JSON.parse(JSON.stringify(deviceToChange)),
       user: data.user,
     };
+    if (!deviceToChange) {
+      res.sendStatus(404);
+      return;
+    }
     if (deviceToChange.user !== authenticatedUserEmail) {
       res.sendStatus(401);
     } else {
@@ -78,6 +82,7 @@ export class DevicesController {
     }
   }
 
+  // todo: deprecate
   @UseGuards(JwtAuthGuard)
   @Get('list')
   @ApiBearerAuth()
@@ -90,18 +95,53 @@ export class DevicesController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Post('list2')
+  @ApiBearerAuth()
+  @ApiResponse({ status: 200, type: DeviceDto, isArray: true })
+  async getFilteredDeviceList(@Body() device: IDeviceListReqData, @Req() req): Promise<DeviceDto[]> {
+    const authenticatedUserEmail = this.authService.getUserFromToken(req);
+    const allDevices = await this.devicesService.getFilteredList({user: authenticatedUserEmail}, device.filters.paging);
+    await this.checkOnlineStatus(allDevices);
+    return await this.devicesService.getFilteredList({user: authenticatedUserEmail}, device.filters.paging);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   @ApiBearerAuth()
   @ApiResponse({ status: 200, type: DeviceDto })
-  async getDeviceById(@Param() params, @Req() req, @Res() res): Promise<void> {
+  async deleteDevice(@Param() params, @Req() req, @Res() res): Promise<void> {
     const authenticatedUserEmail = this.authService.getUserFromToken(req);
     const device = await this.devicesService.findOne({deviceId: params.id});
+    console.log(device);
+    if (!device) {
+      res.sendStatus(404);
+      return;
+    }
     if (device.user !== authenticatedUserEmail) {
       res.sendStatus(401);
     } else {
       this.checkOnlineStatus([device]);
       const deviceToSend = await this.devicesService.findOne({deviceId: params.id});
       res.json(deviceToSend);
+    }
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete(':id')
+  @ApiBearerAuth()
+  @ApiResponse({ status: 204 })
+  async getDeviceById(@Param() params, @Req() req, @Res() res): Promise<void> {
+    const authenticatedUserEmail = this.authService.getUserFromToken(req);
+    const device = await this.devicesService.findOne({deviceId: params.id});
+    if (!device) {
+      res.sendStatus(404);
+      return;
+    }
+    if (device.user !== authenticatedUserEmail) {
+      res.sendStatus(401);
+    } else {
+      this.devicesService.delete({deviceId: params.id});
+      res.sendStatus(204);
     }
   }
 

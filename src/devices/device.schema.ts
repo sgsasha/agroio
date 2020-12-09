@@ -51,19 +51,34 @@ export class DeviceDto {
 }
 
 export abstract class ICreateDeviceData {
-  @Prop()
   @ApiProperty()
   deviceId: number;
 }
 
 export abstract class IChangeDeviceUserData {
-  @Prop()
   @ApiProperty()
   deviceId: number;
 
-  @Prop()
   @ApiProperty()
   user: string;
+}
+
+export abstract class IPagination {
+  @ApiProperty()
+  page: number;
+
+  @ApiProperty()
+  pageSize: number;
+}
+
+export abstract class IDeviceFilters {
+  @ApiProperty()
+  paging: IPagination;
+}
+
+export abstract class IDeviceListReqData {
+  @ApiProperty()
+  filters: IDeviceFilters;
 }
 
 export const DeviceSchema = SchemaFactory.createForClass(DeviceDto);

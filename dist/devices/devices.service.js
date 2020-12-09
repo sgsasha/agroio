@@ -41,6 +41,19 @@ let DevicesService = class DevicesService {
     async findAll(email) {
         return this.deviceModel.find({ user: email }).exec();
     }
+    async getFilteredList(query, pagination) {
+        return this.deviceModel
+            .find(query)
+            .limit(pagination.pageSize)
+            .skip(pagination.pageSize * pagination.page)
+            .exec();
+    }
+    async delete(query) {
+        return this.deviceModel
+            .find(query)
+            .remove()
+            .exec();
+    }
     async findOne(query) {
         return this.deviceModel.findOne(query).exec();
     }
