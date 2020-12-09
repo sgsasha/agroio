@@ -27,7 +27,7 @@ export class DevicesService {
   }
 
   async findAll(email: string): Promise<DeviceDto[]> {
-    return this.deviceModel.find({email: email}).exec();
+    return this.deviceModel.find({user: email}).exec();
   }
 
   async findOne(query: any): Promise<DeviceDto> {

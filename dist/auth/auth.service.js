@@ -68,7 +68,7 @@ let AuthService = class AuthService {
     getUserFromToken(req) {
         const token = req.headers.authorization.replace("Bearer ", "");
         const decodedToken = this.jwtService.decode(token);
-        return decodedToken["username"];
+        return decodedToken["email"];
     }
 };
 __decorate([
