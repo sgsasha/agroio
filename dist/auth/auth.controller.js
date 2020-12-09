@@ -20,9 +20,11 @@ const user_schema_1 = require("../users/user.schema");
 const local_auth_guard_1 = require("./local-auth.guard");
 const swagger_1 = require("@nestjs/swagger");
 const auth_schema_1 = require("./auth.schema");
+const jwt_1 = require("@nestjs/jwt");
 let AuthController = class AuthController {
-    constructor(authService, usersService) {
+    constructor(authService, jwtService, usersService) {
         this.authService = authService;
+        this.jwtService = jwtService;
         this.usersService = usersService;
     }
     async login(user) {
@@ -59,6 +61,7 @@ __decorate([
 AuthController = __decorate([
     common_1.Controller('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService,
+        jwt_1.JwtService,
         users_service_1.UsersService])
 ], AuthController);
 exports.AuthController = AuthController;

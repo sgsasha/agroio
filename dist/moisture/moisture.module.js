@@ -14,6 +14,7 @@ const devices_service_1 = require("../devices/devices.service");
 const moisture_controller_1 = require("./moisture.controller");
 const moisture_schema_1 = require("./moisture.schema");
 const moisture_service_1 = require("./moisture.service");
+const auth_module_1 = require("../auth/auth.module");
 let MoistureModule = class MoistureModule {
 };
 MoistureModule = __decorate([
@@ -23,6 +24,7 @@ MoistureModule = __decorate([
                 { name: 'Moisture', schema: moisture_schema_1.MoistureSchema },
                 { name: 'Device', schema: device_schema_1.DeviceSchema }
             ]),
+            auth_module_1.AuthModule
         ],
         controllers: [
             moisture_controller_1.MoistureController

@@ -1,13 +1,15 @@
-import { Body, Controller, Get, Param, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Req, Res } from '@nestjs/common';
 import { MoistureService } from './moisture.service';
 import { Request } from 'express';
 import { DevicesService } from 'src/devices/devices.service';
 import { ApiBearerAuth, ApiExcludeEndpoint, ApiResponse } from "@nestjs/swagger";
 import { MoistureDto, MoistureRequestDto } from "./moisture.schema";
+import { AuthService } from "../auth/auth.service";
 
 @Controller('moisture')
 export class MoistureController {
   constructor(private readonly moistureService: MoistureService,
+              private authService: AuthService,
               private readonly devicesService: DevicesService) {}
 
   @ApiExcludeEndpoint()
@@ -51,8 +53,16 @@ export class MoistureController {
   @Post('list')
   @ApiBearerAuth()
   @ApiResponse({ status: 200, type: MoistureDto, isArray: true })
-  async getFilteredMoistureList(@Body() data: MoistureRequestDto): Promise<IMoistureData[]> {
+  async getFilteredMoistureList(@Body() data: MoistureRequestDto, @Req() req, @Res() res): Promise<void> {
+    console.log(data);
     const query = this.moistureService.getFilterQuery(data);
-    return await this.moistureService.findAll(query);
+    const authenticatedUserEmail = this.authService.getUserFromToken(req);
+    const device = await this.devicesService.findOne({deviceId: data.filters.deviceId});
+    if (device.user !== authenticatedUserEmail) {
+      res.sendStatus(401);
+    } else {
+      const moistureToSend = await this.moistureService.findAll(query);
+      res.json(moistureToSend);
+    }
   }
 }

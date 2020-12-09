@@ -5,6 +5,6 @@ export declare class DevicesService {
     constructor(deviceModel: Model<any>);
     create(deviceDto: DeviceDto): Promise<void>;
     update(deviceData: Partial<DeviceDto>): Promise<void>;
-    findAll(): Promise<DeviceDto[]>;
+    findAll(email: string): Promise<DeviceDto[]>;
     findOne(query: any): Promise<DeviceDto>;
 }

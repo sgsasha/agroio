@@ -18,9 +18,11 @@ const moisture_service_1 = require("./moisture.service");
 const devices_service_1 = require("../devices/devices.service");
 const swagger_1 = require("@nestjs/swagger");
 const moisture_schema_1 = require("./moisture.schema");
+const auth_service_1 = require("../auth/auth.service");
 let MoistureController = class MoistureController {
-    constructor(moistureService, devicesService) {
+    constructor(moistureService, authService, devicesService) {
         this.moistureService = moistureService;
+        this.authService = authService;
         this.devicesService = devicesService;
     }
     async setMoisture(req) {
@@ -54,9 +56,18 @@ let MoistureController = class MoistureController {
     async getMoistureList(params) {
         return await this.moistureService.findAll({ deviceId: params.id });
     }
-    async getFilteredMoistureList(data) {
+    async getFilteredMoistureList(data, req, res) {
+        console.log(data);
         const query = this.moistureService.getFilterQuery(data);
-        return await this.moistureService.findAll(query);
+        const authenticatedUserEmail = this.authService.getUserFromToken(req);
+        const device = await this.devicesService.findOne({ deviceId: data.filters.deviceId });
+        if (device.user !== authenticatedUserEmail) {
+            res.sendStatus(401);
+        }
+        else {
+            const moistureToSend = await this.moistureService.findAll(query);
+            res.json(moistureToSend);
+        }
     }
 };
 __decorate([
@@ -80,14 +91,15 @@ __decorate([
     common_1.Post('list'),
     swagger_1.ApiBearerAuth(),
     swagger_1.ApiResponse({ status: 200, type: moisture_schema_1.MoistureDto, isArray: true }),
-    __param(0, common_1.Body()),
+    __param(0, common_1.Body()), __param(1, common_1.Req()), __param(2, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [moisture_schema_1.MoistureRequestDto]),
+    __metadata("design:paramtypes", [moisture_schema_1.MoistureRequestDto, Object, Object]),
     __metadata("design:returntype", Promise)
 ], MoistureController.prototype, "getFilteredMoistureList", null);
 MoistureController = __decorate([
     common_1.Controller('moisture'),
     __metadata("design:paramtypes", [moisture_service_1.MoistureService,
+        auth_service_1.AuthService,
         devices_service_1.DevicesService])
 ], MoistureController);
 exports.MoistureController = MoistureController;

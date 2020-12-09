@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DeviceSchema = exports.DeviceDto = void 0;
+exports.DeviceSchema = exports.IChangeDeviceUserData = exports.ICreateDeviceData = exports.DeviceDto = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const swagger_1 = require("@nestjs/swagger");
 let DeviceDto = class DeviceDto {
@@ -19,6 +19,11 @@ __decorate([
     swagger_1.ApiProperty(),
     __metadata("design:type", Number)
 ], DeviceDto.prototype, "deviceId", void 0);
+__decorate([
+    mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
+    __metadata("design:type", String)
+], DeviceDto.prototype, "user", void 0);
 __decorate([
     mongoose_1.Prop(),
     swagger_1.ApiProperty(),
@@ -63,5 +68,26 @@ DeviceDto = __decorate([
     mongoose_1.Schema()
 ], DeviceDto);
 exports.DeviceDto = DeviceDto;
+class ICreateDeviceData {
+}
+__decorate([
+    mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
+    __metadata("design:type", Number)
+], ICreateDeviceData.prototype, "deviceId", void 0);
+exports.ICreateDeviceData = ICreateDeviceData;
+class IChangeDeviceUserData {
+}
+__decorate([
+    mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
+    __metadata("design:type", Number)
+], IChangeDeviceUserData.prototype, "deviceId", void 0);
+__decorate([
+    mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
+    __metadata("design:type", String)
+], IChangeDeviceUserData.prototype, "user", void 0);
+exports.IChangeDeviceUserData = IChangeDeviceUserData;
 exports.DeviceSchema = mongoose_1.SchemaFactory.createForClass(DeviceDto);
 //# sourceMappingURL=device.schema.js.map

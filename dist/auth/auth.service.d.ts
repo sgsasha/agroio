@@ -14,4 +14,5 @@ export declare class AuthService {
     }>;
     hashPassword(password: string): Promise<string>;
     comparePasswords(newPassword: string, passwordHash: string): Promise<boolean>;
+    getUserFromToken(req: any): any;
 }

@@ -20,36 +20,73 @@ const date_fns_1 = require("date-fns");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 const device_schema_1 = require("./device.schema");
 const swagger_1 = require("@nestjs/swagger");
+const auth_service_1 = require("../auth/auth.service");
 let DevicesController = class DevicesController {
-    constructor(devicesService, moistureService) {
+    constructor(devicesService, authService, moistureService) {
         this.devicesService = devicesService;
+        this.authService = authService;
         this.moistureService = moistureService;
     }
-    async setDevice(device) {
-        await this.devicesService.create(device);
+    async setDevice(device, req) {
+        const authenticatedUserEmail = this.authService.getUserFromToken(req);
+        const deviceToCreate = {
+            deviceId: device.deviceId,
+            user: authenticatedUserEmail,
+            isOnline: false,
+            isPumpRunning: false,
+            temperature: 0,
+            moisture: 0,
+            isMoistureThresholdEnabled: false,
+            minMoistureThreshold: 0,
+            maxMoistureThreshold: 0,
+            waterLevel: 0
+        };
+        await this.devicesService.create(deviceToCreate);
     }
-    async updateDevice(device) {
-        await this.devicesService.update(device);
+    async updateDevice(device, req) {
+        const authenticatedUserEmail = this.authService.getUserFromToken(req);
+        const deviceToUpdate = Object.assign(Object.assign({}, device), { user: authenticatedUserEmail });
+        await this.devicesService.update(deviceToUpdate);
         const lastMoistureReport = await this.moistureService.getLatest({ deviceId: device.deviceId });
         if (lastMoistureReport) {
             const lastActivityDate = lastMoistureReport.date;
             if (date_fns_1.differenceInMinutes(new Date(), new Date(lastActivityDate)) > 4) {
-                this.addMoisture(device);
+                this.addMoisture(deviceToUpdate);
             }
         }
         else {
-            this.addMoisture(device);
+            this.addMoisture(deviceToUpdate);
         }
     }
-    async getDeviceList() {
-        const allDevices = await this.devicesService.findAll();
-        await this.checkOnlineStatus(allDevices);
-        return await this.devicesService.findAll();
+    async updateDeviceUser(data, req, res) {
+        const authenticatedUserEmail = this.authService.getUserFromToken(req);
+        const deviceToChange = await this.devicesService.findOne({ deviceId: data.deviceId });
+        const deviceToUpdate = Object.assign(Object.assign({}, deviceToChange), { user: data.user });
+        if (deviceToChange.user !== authenticatedUserEmail) {
+            res.sendStatus(401);
+        }
+        else {
+            await this.devicesService.update(deviceToUpdate);
+            res.sendStatus(200);
+        }
     }
-    async getDeviceById(params) {
+    async getDeviceList(req) {
+        const authenticatedUserEmail = this.authService.getUserFromToken(req);
+        const allDevices = await this.devicesService.findAll(authenticatedUserEmail);
+        await this.checkOnlineStatus(allDevices);
+        return await this.devicesService.findAll(authenticatedUserEmail);
+    }
+    async getDeviceById(params, req, res) {
+        const authenticatedUserEmail = this.authService.getUserFromToken(req);
         const device = await this.devicesService.findOne({ deviceId: params.id });
-        this.checkOnlineStatus([device]);
-        return await this.devicesService.findOne({ deviceId: params.id });
+        if (device.user !== authenticatedUserEmail) {
+            res.sendStatus(401);
+        }
+        else {
+            this.checkOnlineStatus([device]);
+            const deviceToSend = await this.devicesService.findOne({ deviceId: params.id });
+            res.json(deviceToSend);
+        }
     }
     async checkOnlineStatus(devices) {
         const promisesArray = [];
@@ -94,28 +131,36 @@ let DevicesController = class DevicesController {
     }
 };
 __decorate([
-    swagger_1.ApiExcludeEndpoint(),
-    common_1.Post('set'),
-    __param(0, common_1.Body()),
+    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
+    common_1.Post('create'),
+    __param(0, common_1.Body()), __param(1, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [device_schema_1.DeviceDto]),
+    __metadata("design:paramtypes", [device_schema_1.ICreateDeviceData, Object]),
     __metadata("design:returntype", Promise)
 ], DevicesController.prototype, "setDevice", null);
 __decorate([
-    swagger_1.ApiExcludeEndpoint(),
     common_1.Post('update'),
-    __param(0, common_1.Body()),
+    __param(0, common_1.Body()), __param(1, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [device_schema_1.DeviceDto]),
+    __metadata("design:paramtypes", [device_schema_1.DeviceDto, Object]),
     __metadata("design:returntype", Promise)
 ], DevicesController.prototype, "updateDevice", null);
+__decorate([
+    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
+    common_1.Post('change-user'),
+    __param(0, common_1.Body()), __param(1, common_1.Req()), __param(2, common_1.Res()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [device_schema_1.IChangeDeviceUserData, Object, Object]),
+    __metadata("design:returntype", Promise)
+], DevicesController.prototype, "updateDeviceUser", null);
 __decorate([
     common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Get('list'),
     swagger_1.ApiBearerAuth(),
     swagger_1.ApiResponse({ status: 200, type: device_schema_1.DeviceDto, isArray: true }),
+    __param(0, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], DevicesController.prototype, "getDeviceList", null);
 __decorate([
@@ -123,14 +168,15 @@ __decorate([
     common_1.Get(':id'),
     swagger_1.ApiBearerAuth(),
     swagger_1.ApiResponse({ status: 200, type: device_schema_1.DeviceDto }),
-    __param(0, common_1.Param()),
+    __param(0, common_1.Param()), __param(1, common_1.Req()), __param(2, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, Object, Object]),
     __metadata("design:returntype", Promise)
 ], DevicesController.prototype, "getDeviceById", null);
 DevicesController = __decorate([
     common_1.Controller('devices'),
     __metadata("design:paramtypes", [devices_service_1.DevicesService,
+        auth_service_1.AuthService,
         moisture_service_1.MoistureService])
 ], DevicesController);
 exports.DevicesController = DevicesController;

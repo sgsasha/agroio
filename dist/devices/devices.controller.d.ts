@@ -1,14 +1,17 @@
 import { DevicesService } from './devices.service';
 import { MoistureService } from 'src/moisture/moisture.service';
-import { DeviceDto } from "./device.schema";
+import { DeviceDto, IChangeDeviceUserData, ICreateDeviceData } from "./device.schema";
+import { AuthService } from "../auth/auth.service";
 export declare class DevicesController {
     private readonly devicesService;
+    private authService;
     private readonly moistureService;
-    constructor(devicesService: DevicesService, moistureService: MoistureService);
-    setDevice(device: DeviceDto): Promise<void>;
-    updateDevice(device: DeviceDto): Promise<void>;
-    getDeviceList(): Promise<DeviceDto[]>;
-    getDeviceById(params: any): Promise<DeviceDto>;
+    constructor(devicesService: DevicesService, authService: AuthService, moistureService: MoistureService);
+    setDevice(device: ICreateDeviceData, req: any): Promise<void>;
+    updateDevice(device: DeviceDto, req: any): Promise<void>;
+    updateDeviceUser(data: IChangeDeviceUserData, req: any, res: any): Promise<void>;
+    getDeviceList(req: any): Promise<DeviceDto[]>;
+    getDeviceById(params: any, req: any, res: any): Promise<void>;
     private checkOnlineStatus;
     private addMoisture;
 }

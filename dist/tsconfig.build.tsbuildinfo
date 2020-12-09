@@ -1156,14 +1156,14 @@
         "signature": "ceadf8ae9b705cdfa854ab0efc44d22509e8e2a0d9ff35206bde3a954e469f07",
         "affectsGlobalScope": false
       },
+      "../src/app.controller.ts": {
+        "version": "10cd3a95ae79bd4c13324225c8efbb4d2b19c429176d32680acafc6eb154540d",
+        "signature": "a292802277ee3066b9217d176eca4cd070e745ebe43c20e4a0ceb44c7fdf07f5",
+        "affectsGlobalScope": false
+      },
       "../src/app.service.ts": {
         "version": "eaf8514ce110fa428a93a27408df4d06d133dbd9ed0a775c315ddfdd507853a9",
         "signature": "653711fba8904aa27fd8911b63cf526e7b334e13a292da4cefdbbe179ac3f3f2",
-        "affectsGlobalScope": false
-      },
-      "../src/app.controller.ts": {
-        "version": "2f417a88c20f23171ffdf54bfca6c20c62cd43075b0daf4301d701ecd266fd69",
-        "signature": "ef022c91ea9e75ab4082f2e881f9c4db7b346be2da706e876b253bebce5e6140",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/mongoose/dist/interfaces/model-definition.interface.d.ts": {
@@ -1687,13 +1687,13 @@
         "affectsGlobalScope": false
       },
       "../src/devices/device.schema.ts": {
-        "version": "d5ad29b8ba780260ea00ea42961903a8723f4a5eddebe19369d180d0423eb6f2",
-        "signature": "982a05f3bc61330324e77df951be7862fe8834a3b7916c91795ff7692b247b49",
+        "version": "1369c67190b16eb74bd41f8319bcf322ffe1f344a84f5ec3edfdf5b6c7506e9c",
+        "signature": "0edeb0a783d053b3223a3ad7071feab3418cc35f0f7b684ff75d94b2eb2fc839",
         "affectsGlobalScope": false
       },
       "../src/devices/devices.service.ts": {
-        "version": "5ab4f46a9029214b10456355af92b4e09d5008c7479be7f7ff6c5857cd31dc0c",
-        "signature": "5daf42a27416f6f2dcf78f45bc1a1456d79a9a25a049798c542b06350f81d7b8",
+        "version": "53652302a0d196989b3d4504438ae7d3829663cb7432f4aec8aba98b43d2bf99",
+        "signature": "7a4698f769d651fed5e93783f47312285d14204fda91daa610b712c84dca6e33",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/range-parser/index.d.ts": {
@@ -1746,20 +1746,65 @@
         "signature": "59994a0eee8a79e56bba6d664f2f51b0482c0023748057a0fa09930ce4e2af9e",
         "affectsGlobalScope": false
       },
+      "../src/users/user.schema.ts": {
+        "version": "bbbeb79a55a8950aebf88a5a32fffc0f0d4a086b427930482a4a6d9895802565",
+        "signature": "ec871a3026dd30514a350245d769963a036ccd459571685f9af36a7564825854",
+        "affectsGlobalScope": false
+      },
+      "../src/users/users.service.ts": {
+        "version": "6647f4e9794ff3f3004c4131c10273e012c343a7fb436e3e6bd1638ca3d98de5",
+        "signature": "20ac83490a81197ab6db43d5c8c4770de28d1972a904d3cefb3470f39e8f60ac",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/jsonwebtoken/index.d.ts": {
+        "version": "f67c920eba6ab8e4558cb9ab661d900188f101c5657e19b1e15829a1d491d46e",
+        "signature": "f67c920eba6ab8e4558cb9ab661d900188f101c5657e19b1e15829a1d491d46e",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/jwt/dist/interfaces/jwt-module-options.interface.d.ts": {
+        "version": "fc0140cf41d169b3b77e09831c9d2eed1cdb131aa34f4fa27e4c01896ec97ad6",
+        "signature": "fc0140cf41d169b3b77e09831c9d2eed1cdb131aa34f4fa27e4c01896ec97ad6",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/jwt/dist/interfaces/index.d.ts": {
+        "version": "7c14e702387296711c1a829bc95052ff02f533d4aa27d53cc0186c795094a3a9",
+        "signature": "7c14e702387296711c1a829bc95052ff02f533d4aa27d53cc0186c795094a3a9",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/jwt/dist/jwt.module.d.ts": {
+        "version": "579f8828da42ae02db6915a0223d23b0da07157ff484fecdbf8a96fffa0fa4df",
+        "signature": "579f8828da42ae02db6915a0223d23b0da07157ff484fecdbf8a96fffa0fa4df",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/jwt/dist/jwt.service.d.ts": {
+        "version": "d1e16a1778a336ae49607ca0becd8688e74a020bea949047dcfcbb1bd2dc0f5a",
+        "signature": "d1e16a1778a336ae49607ca0becd8688e74a020bea949047dcfcbb1bd2dc0f5a",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/jwt/dist/index.d.ts": {
+        "version": "a13aac535101a942283e3d00bce50f483bfa9bed6e1f8dfda33a3bb072498776",
+        "signature": "a13aac535101a942283e3d00bce50f483bfa9bed6e1f8dfda33a3bb072498776",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@nestjs/jwt/index.d.ts": {
+        "version": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
+        "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
+        "affectsGlobalScope": false
+      },
+      "../src/auth/auth.service.ts": {
+        "version": "3b8d0f46b5f208cbd2952430f839ceee4d1c201e39ead4ea1b75a8c10cb77ea2",
+        "signature": "f78fcf74477206460f4642c774a2e44e9a5e2b2f962b2289f7ab6245b524ca6a",
+        "affectsGlobalScope": false
+      },
       "../src/moisture/moisture.controller.ts": {
-        "version": "41e59f7af069f5c6043494c6fc8aa96e9d3e0aee0a4a1d824911bf42f606ef36",
-        "signature": "e936461b12f4c5257d4ef1a5b7a20e458d4dfc1b2f8cf2577b32ead9daa650f9",
+        "version": "fa10c70436102293ee0a7fdbfcf455d53c11efa4ded790e46312dd92a2a5cda9",
+        "signature": "04cf3b1d7ef9661bdb25ab07931a62a01f54bd3d5c55dbdeb12876cedd7e5a8d",
         "affectsGlobalScope": false
       },
-      "../src/moisture/moisture.module.ts": {
-        "version": "bec65e5a3a09f20fd8ab5a4959dbeb7696694985445abc6a7b74284dc23b6989",
-        "signature": "70f622e0492d30eb327d089a3a20476777b71da0c8cd264b687bf5e001a896e2",
+      "../src/users/users.module.ts": {
+        "version": "fb2ce77e68bb1723fc4b13eb31bd6887b76f928b08b9f15eaf5ed76c890d696b",
+        "signature": "aa1725e38b5a0b4009f6a74f296f173e7926c119a60454dbd2e523861735df69",
         "affectsGlobalScope": false
-      },
-      "../node_modules/date-fns/typings.d.ts": {
-        "version": "b44ccf907564571b6044083a8afb2c22b6f3422dc61c58ff8b75d2736e673239",
-        "signature": "b44ccf907564571b6044083a8afb2c22b6f3422dc61c58ff8b75d2736e673239",
-        "affectsGlobalScope": true
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
         "version": "ba63131c5e91f797736444933af16ffa42f9f8c150d859ec65f568f037a416ea",
@@ -1814,76 +1859,6 @@
       "../node_modules/@nestjs/passport/index.d.ts": {
         "version": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
-        "affectsGlobalScope": false
-      },
-      "../src/auth/jwt-auth.guard.ts": {
-        "version": "ad9ad7d381f17b064be49649f3ae3fef747048155bf9ca6714e497b7ef46d522",
-        "signature": "e9629b89f6cd33a040577695d89edf882e66287d30c87121f5fc07f404decd25",
-        "affectsGlobalScope": false
-      },
-      "../src/devices/devices.controller.ts": {
-        "version": "f45cf7096b3bd3efb19fddf946ee3e9a0ba7939f9a9b7976385d25ca6c61cf1d",
-        "signature": "15a33eea93dd37f9610e90ab06676c68855e012f19baf3442888274761c0d7f6",
-        "affectsGlobalScope": false
-      },
-      "../src/devices/devices.module.ts": {
-        "version": "087cc09b52c9abd7bb01ef5bbf6a0fd9ee3cc3bcc77fc36a1a778f7378ed51ec",
-        "signature": "e815fc8b6f04b7836ec152fb2db31d34c30eacda6b83d07d698fa99fb9c928ba",
-        "affectsGlobalScope": false
-      },
-      "../src/users/user.schema.ts": {
-        "version": "bbbeb79a55a8950aebf88a5a32fffc0f0d4a086b427930482a4a6d9895802565",
-        "signature": "ec871a3026dd30514a350245d769963a036ccd459571685f9af36a7564825854",
-        "affectsGlobalScope": false
-      },
-      "../src/users/users.service.ts": {
-        "version": "6647f4e9794ff3f3004c4131c10273e012c343a7fb436e3e6bd1638ca3d98de5",
-        "signature": "20ac83490a81197ab6db43d5c8c4770de28d1972a904d3cefb3470f39e8f60ac",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@types/jsonwebtoken/index.d.ts": {
-        "version": "f67c920eba6ab8e4558cb9ab661d900188f101c5657e19b1e15829a1d491d46e",
-        "signature": "f67c920eba6ab8e4558cb9ab661d900188f101c5657e19b1e15829a1d491d46e",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/jwt/dist/interfaces/jwt-module-options.interface.d.ts": {
-        "version": "fc0140cf41d169b3b77e09831c9d2eed1cdb131aa34f4fa27e4c01896ec97ad6",
-        "signature": "fc0140cf41d169b3b77e09831c9d2eed1cdb131aa34f4fa27e4c01896ec97ad6",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/jwt/dist/interfaces/index.d.ts": {
-        "version": "7c14e702387296711c1a829bc95052ff02f533d4aa27d53cc0186c795094a3a9",
-        "signature": "7c14e702387296711c1a829bc95052ff02f533d4aa27d53cc0186c795094a3a9",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/jwt/dist/jwt.module.d.ts": {
-        "version": "579f8828da42ae02db6915a0223d23b0da07157ff484fecdbf8a96fffa0fa4df",
-        "signature": "579f8828da42ae02db6915a0223d23b0da07157ff484fecdbf8a96fffa0fa4df",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/jwt/dist/jwt.service.d.ts": {
-        "version": "d1e16a1778a336ae49607ca0becd8688e74a020bea949047dcfcbb1bd2dc0f5a",
-        "signature": "d1e16a1778a336ae49607ca0becd8688e74a020bea949047dcfcbb1bd2dc0f5a",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/jwt/dist/index.d.ts": {
-        "version": "a13aac535101a942283e3d00bce50f483bfa9bed6e1f8dfda33a3bb072498776",
-        "signature": "a13aac535101a942283e3d00bce50f483bfa9bed6e1f8dfda33a3bb072498776",
-        "affectsGlobalScope": false
-      },
-      "../node_modules/@nestjs/jwt/index.d.ts": {
-        "version": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
-        "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
-        "affectsGlobalScope": false
-      },
-      "../src/auth/auth.service.ts": {
-        "version": "4906004f7c9127764cf0a4b31ea729532737c4190a06e603eeef476820d25681",
-        "signature": "94bbdff86d072d1c6d74527670e144171725af4aa6d99d818afb7bad51fb5c26",
-        "affectsGlobalScope": false
-      },
-      "../src/users/users.module.ts": {
-        "version": "fb2ce77e68bb1723fc4b13eb31bd6887b76f928b08b9f15eaf5ed76c890d696b",
-        "signature": "aa1725e38b5a0b4009f6a74f296f173e7926c119a60454dbd2e523861735df69",
         "affectsGlobalScope": false
       },
       "../src/auth/local.strategy.ts": {
@@ -1982,13 +1957,38 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.controller.ts": {
-        "version": "afb3baae64848df747e246a618aaa101ef69a8344f284c608b1aa20391984e99",
-        "signature": "b730cd6d4a3468cbd00050898a833f8dbfc56791e95e4c98709fa524bba909db",
+        "version": "91ca123aa93de7cae6816efb17fd96666c6108c30b39151e6118b13903b2e618",
+        "signature": "f576c54737a92f066a224a00ec377165db38c967f3d0dfcfa67b850cac58214b",
         "affectsGlobalScope": false
       },
       "../src/auth/auth.module.ts": {
         "version": "9ef5f64b334cdee6200facf180055984324d2858f46829a544931c9928fd7c8a",
         "signature": "a28b5c0c372fb375910b3fe3c3ce4331509bc18ccef7cc39c9ee9d8daf8225d1",
+        "affectsGlobalScope": false
+      },
+      "../src/moisture/moisture.module.ts": {
+        "version": "698e1ee04cbb2e6e949be96a9e0b719acfa11593fc11dedf505dd449e1b5a7a4",
+        "signature": "70f622e0492d30eb327d089a3a20476777b71da0c8cd264b687bf5e001a896e2",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/date-fns/typings.d.ts": {
+        "version": "b44ccf907564571b6044083a8afb2c22b6f3422dc61c58ff8b75d2736e673239",
+        "signature": "b44ccf907564571b6044083a8afb2c22b6f3422dc61c58ff8b75d2736e673239",
+        "affectsGlobalScope": true
+      },
+      "../src/auth/jwt-auth.guard.ts": {
+        "version": "ad9ad7d381f17b064be49649f3ae3fef747048155bf9ca6714e497b7ef46d522",
+        "signature": "e9629b89f6cd33a040577695d89edf882e66287d30c87121f5fc07f404decd25",
+        "affectsGlobalScope": false
+      },
+      "../src/devices/devices.controller.ts": {
+        "version": "f11036a0c6a77a680c0cb2e0161aa3b8d974b02031990125b4e3f74c1e883957",
+        "signature": "97739fd9981fce66f8f08d6d0213327716abbcf18a6fcaef6e1cb89aa7686d63",
+        "affectsGlobalScope": false
+      },
+      "../src/devices/devices.module.ts": {
+        "version": "8d4f347fccb9622506d1a6d76610a5c72d7f3805bde842853377f119999665ff",
+        "signature": "e815fc8b6f04b7836ec152fb2db31d34c30eacda6b83d07d698fa99fb9c928ba",
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
@@ -2182,7 +2182,7 @@
         "affectsGlobalScope": false
       },
       "../src/devices/types.ts": {
-        "version": "20299b5754f54b0353e983acb38f52c8e82eed820895b4dbcc6f9e4bd51119fe",
+        "version": "f6e1938e37b87635ee647824501ae4c4f821e2635b54efaab097648e44a639a3",
         "signature": "1e92ed952762f9ac6b48208c9b194c91a6b2c2f65079f9a42ce29a70e603e725",
         "affectsGlobalScope": true
       },
@@ -4782,8 +4782,7 @@
       ],
       "../src/app.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/date-fns/typings.d.ts",
-        "../src/app.service.ts"
+        "../node_modules/date-fns/typings.d.ts"
       ],
       "../src/app.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -4803,6 +4802,7 @@
       ],
       "../src/auth/auth.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/jwt/index.d.ts",
         "../node_modules/@nestjs/swagger/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
         "../src/auth/auth.schema.ts",
@@ -4870,6 +4870,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/swagger/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
+        "../src/auth/auth.service.ts",
         "../src/auth/jwt-auth.guard.ts",
         "../src/devices/device.schema.ts",
         "../src/devices/devices.service.ts",
@@ -4879,6 +4880,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
+        "../src/auth/auth.module.ts",
         "../src/devices/device.schema.ts",
         "../src/devices/devices.controller.ts",
         "../src/devices/devices.service.ts",
@@ -4906,6 +4908,7 @@
         "../node_modules/@nestjs/swagger/index.d.ts",
         "../node_modules/@types/express/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
+        "../src/auth/auth.service.ts",
         "../src/devices/devices.service.ts",
         "../src/moisture/moisture.schema.ts",
         "../src/moisture/moisture.service.ts"
@@ -4914,6 +4917,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/date-fns/typings.d.ts",
+        "../src/auth/auth.module.ts",
         "../src/devices/device.schema.ts",
         "../src/devices/devices.service.ts",
         "../src/moisture/moisture.controller.ts",
@@ -7267,10 +7271,8 @@
       "../node_modules/typescript/lib/lib.webworker.importscripts.d.ts": [
         "../node_modules/date-fns/typings.d.ts"
       ],
-      "../src/app.controller.ts": [
-        "../src/app.service.ts"
-      ],
       "../src/auth/auth.controller.ts": [
+        "../node_modules/@nestjs/jwt/index.d.ts",
         "../src/auth/auth.service.ts",
         "../src/users/user.schema.ts",
         "../src/users/users.service.ts"
@@ -7296,6 +7298,7 @@
         "../node_modules/@types/mongoose/index.d.ts"
       ],
       "../src/devices/devices.controller.ts": [
+        "../src/auth/auth.service.ts",
         "../src/devices/device.schema.ts",
         "../src/devices/devices.service.ts",
         "../src/moisture/moisture.service.ts"
@@ -7306,6 +7309,7 @@
       ],
       "../src/moisture/moisture.controller.ts": [
         "../node_modules/@types/express/index.d.ts",
+        "../src/auth/auth.service.ts",
         "../src/devices/devices.service.ts",
         "../src/moisture/moisture.schema.ts",
         "../src/moisture/moisture.service.ts"

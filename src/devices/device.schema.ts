@@ -12,6 +12,10 @@ export class DeviceDto {
 
   @Prop()
   @ApiProperty()
+  user: string;
+
+  @Prop()
+  @ApiProperty()
   isOnline?: boolean;
 
   @Prop()
@@ -41,6 +45,22 @@ export class DeviceDto {
   @Prop()
   @ApiProperty()
   waterLevel?: number;
+}
+
+export abstract class ICreateDeviceData {
+  @Prop()
+  @ApiProperty()
+  deviceId: number;
+}
+
+export abstract class IChangeDeviceUserData {
+  @Prop()
+  @ApiProperty()
+  deviceId: number;
+
+  @Prop()
+  @ApiProperty()
+  user: string;
 }
 
 export const DeviceSchema = SchemaFactory.createForClass(DeviceDto);

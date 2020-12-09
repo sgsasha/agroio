@@ -22,8 +22,8 @@ export class DevicesService {
     return await this.deviceModel.findOneAndUpdate(query, deviceData, options);
   }
 
-  async findAll(): Promise<DeviceDto[]> {
-    return this.deviceModel.find().exec();
+  async findAll(email: string): Promise<DeviceDto[]> {
+    return this.deviceModel.find({email: email}).exec();
   }
 
   async findOne(query: any): Promise<DeviceDto> {

@@ -33,8 +33,8 @@ let DevicesService = class DevicesService {
         };
         return await this.deviceModel.findOneAndUpdate(query, deviceData, options);
     }
-    async findAll() {
-        return this.deviceModel.find().exec();
+    async findAll(email) {
+        return this.deviceModel.find({ email: email }).exec();
     }
     async findOne(query) {
         return this.deviceModel.findOne(query).exec();

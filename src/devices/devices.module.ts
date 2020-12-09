@@ -5,6 +5,7 @@ import { MoistureService } from 'src/moisture/moisture.service';
 import { DeviceSchema } from './device.schema';
 import { DevicesController } from './devices.controller';
 import { DevicesService } from './devices.service';
+import { AuthModule } from "../auth/auth.module";
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { DevicesService } from './devices.service';
       { name: 'Moisture', schema: MoistureSchema },
       { name: 'Device', schema: DeviceSchema }
     ]),
+    AuthModule
   ],
   controllers: [DevicesController],
   providers: [

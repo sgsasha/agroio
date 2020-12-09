@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable, Req} from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import {UserDto} from "../users/user.schema";
@@ -44,5 +44,11 @@ export class AuthService {
 
     comparePasswords(newPassword: string, passwordHash: string): Promise<boolean> {
       return bcrypt.compare(newPassword, passwordHash);
+    }
+
+    getUserFromToken(@Req() req) {
+        const token = req.headers.authorization.replace("Bearer ","");
+        const decodedToken = this.jwtService.decode(token);
+        return decodedToken["username"];
     }
 }
