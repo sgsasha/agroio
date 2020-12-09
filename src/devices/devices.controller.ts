@@ -15,7 +15,7 @@ export class DevicesController {
 
   @UseGuards(JwtAuthGuard)
   @Post('create')
-  async setDevice(@Body() device: ICreateDeviceData, @Req() req): Promise<void> {
+  async setDevice(@Body() device: ICreateDeviceData, @Req() req, @Res() res): Promise<void> {
     const authenticatedUserEmail = this.authService.getUserFromToken(req);
     const deviceToCreate = {
       deviceId: device.deviceId,
@@ -29,7 +29,12 @@ export class DevicesController {
       maxMoistureThreshold: 0,
       waterLevel: 0
     };
-    await this.devicesService.create(deviceToCreate);
+    try {
+      await this.devicesService.create(deviceToCreate);
+      res.sendStatus(200);
+    } catch (e) {
+      res.sendStatus(409);
+    }
   }
 
   @Post('update')
@@ -53,12 +58,16 @@ export class DevicesController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Post('change-user')
+  @Post('changeUser')
   async updateDeviceUser(@Body() data: IChangeDeviceUserData, @Req() req, @Res() res): Promise<void> {
     const authenticatedUserEmail = this.authService.getUserFromToken(req);
     const deviceToChange = await this.devicesService.findOne({deviceId: data.deviceId});
+    if (!deviceToChange) {
+      res.sendStatus(404);
+      return;
+    }
     const deviceToUpdate = {
-      ...deviceToChange,
+      ...JSON.parse(JSON.stringify(deviceToChange)),
       user: data.user,
     };
     if (deviceToChange.user !== authenticatedUserEmail) {

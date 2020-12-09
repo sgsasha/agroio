@@ -9,7 +9,11 @@ export class DevicesService {
 
   async create(deviceDto: DeviceDto): Promise<void> {
     const createdTemperatureModel = new this.deviceModel(deviceDto);
-    return createdTemperatureModel.save();
+    try {
+      await createdTemperatureModel.save();
+    } catch (e) {
+      throw new Error("Duplicated device");
+    }
   }
 
   async update(deviceData: Partial<DeviceDto>): Promise<void> {
@@ -17,7 +21,7 @@ export class DevicesService {
       deviceId: deviceData.deviceId
     };
     const options = {
-      upsert: true
+      upsert: false
     };
     return await this.deviceModel.findOneAndUpdate(query, deviceData, options);
   }

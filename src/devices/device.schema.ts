@@ -6,7 +6,10 @@ export type DeviceDocument = DeviceDto & Document;
 
 @Schema()
 export class DeviceDto {
-  @Prop()
+  @Prop({
+    unique: true,
+    required: true
+  })
   @ApiProperty()
   deviceId: number;
 

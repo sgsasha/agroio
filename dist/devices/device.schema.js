@@ -15,7 +15,10 @@ const swagger_1 = require("@nestjs/swagger");
 let DeviceDto = class DeviceDto {
 };
 __decorate([
-    mongoose_1.Prop(),
+    mongoose_1.Prop({
+        unique: true,
+        required: true
+    }),
     swagger_1.ApiProperty(),
     __metadata("design:type", Number)
 ], DeviceDto.prototype, "deviceId", void 0);

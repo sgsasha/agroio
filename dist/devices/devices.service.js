@@ -22,14 +22,19 @@ let DevicesService = class DevicesService {
     }
     async create(deviceDto) {
         const createdTemperatureModel = new this.deviceModel(deviceDto);
-        return createdTemperatureModel.save();
+        try {
+            await createdTemperatureModel.save();
+        }
+        catch (e) {
+            throw new Error("Duplicated device");
+        }
     }
     async update(deviceData) {
         const query = {
             deviceId: deviceData.deviceId
         };
         const options = {
-            upsert: true
+            upsert: false
         };
         return await this.deviceModel.findOneAndUpdate(query, deviceData, options);
     }

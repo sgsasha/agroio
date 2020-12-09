@@ -27,7 +27,7 @@ let DevicesController = class DevicesController {
         this.authService = authService;
         this.moistureService = moistureService;
     }
-    async setDevice(device, req) {
+    async setDevice(device, req, res) {
         const authenticatedUserEmail = this.authService.getUserFromToken(req);
         const deviceToCreate = {
             deviceId: device.deviceId,
@@ -41,7 +41,13 @@ let DevicesController = class DevicesController {
             maxMoistureThreshold: 0,
             waterLevel: 0
         };
-        await this.devicesService.create(deviceToCreate);
+        try {
+            await this.devicesService.create(deviceToCreate);
+            res.sendStatus(200);
+        }
+        catch (e) {
+            res.sendStatus(409);
+        }
     }
     async updateDevice(device, req) {
         const authenticatedUserEmail = this.authService.getUserFromToken(req);
@@ -61,7 +67,11 @@ let DevicesController = class DevicesController {
     async updateDeviceUser(data, req, res) {
         const authenticatedUserEmail = this.authService.getUserFromToken(req);
         const deviceToChange = await this.devicesService.findOne({ deviceId: data.deviceId });
-        const deviceToUpdate = Object.assign(Object.assign({}, deviceToChange), { user: data.user });
+        if (!deviceToChange) {
+            res.sendStatus(404);
+            return;
+        }
+        const deviceToUpdate = Object.assign(Object.assign({}, JSON.parse(JSON.stringify(deviceToChange))), { user: data.user });
         if (deviceToChange.user !== authenticatedUserEmail) {
             res.sendStatus(401);
         }
@@ -133,9 +143,9 @@ let DevicesController = class DevicesController {
 __decorate([
     common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Post('create'),
-    __param(0, common_1.Body()), __param(1, common_1.Req()),
+    __param(0, common_1.Body()), __param(1, common_1.Req()), __param(2, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [device_schema_1.ICreateDeviceData, Object]),
+    __metadata("design:paramtypes", [device_schema_1.ICreateDeviceData, Object, Object]),
     __metadata("design:returntype", Promise)
 ], DevicesController.prototype, "setDevice", null);
 __decorate([
@@ -147,7 +157,7 @@ __decorate([
 ], DevicesController.prototype, "updateDevice", null);
 __decorate([
     common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
-    common_1.Post('change-user'),
+    common_1.Post('changeUser'),
     __param(0, common_1.Body()), __param(1, common_1.Req()), __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [device_schema_1.IChangeDeviceUserData, Object, Object]),
