@@ -104,7 +104,6 @@ let DevicesController = class DevicesController {
     async deleteDevice(params, req, res) {
         const authenticatedUserEmail = this.authService.getUserFromToken(req);
         const device = await this.devicesService.findOne({ deviceId: params.id });
-        console.log(device);
         if (!device) {
             res.sendStatus(404);
             return;
@@ -178,6 +177,7 @@ let DevicesController = class DevicesController {
 __decorate([
     common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Post('create'),
+    swagger_1.ApiBearerAuth(),
     __param(0, common_1.Body()), __param(1, common_1.Req()), __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [device_schema_1.ICreateDeviceData, Object, Object]),
@@ -192,6 +192,7 @@ __decorate([
 ], DevicesController.prototype, "updateDevice", null);
 __decorate([
     common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
+    swagger_1.ApiBearerAuth(),
     common_1.Post('changeUser'),
     __param(0, common_1.Body()), __param(1, common_1.Req()), __param(2, common_1.Res()),
     __metadata("design:type", Function),

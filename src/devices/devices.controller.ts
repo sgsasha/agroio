@@ -21,6 +21,7 @@ export class DevicesController {
 
   @UseGuards(JwtAuthGuard)
   @Post('create')
+  @ApiBearerAuth()
   async setDevice(@Body() device: ICreateDeviceData, @Req() req, @Res() res): Promise<void> {
     const authenticatedUserEmail = this.authService.getUserFromToken(req);
     const deviceToCreate = {
@@ -64,6 +65,7 @@ export class DevicesController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Post('changeUser')
   async updateDeviceUser(@Body() data: IChangeDeviceUserData, @Req() req, @Res() res): Promise<void> {
     const authenticatedUserEmail = this.authService.getUserFromToken(req);
@@ -123,7 +125,6 @@ export class DevicesController {
   async deleteDevice(@Param() params, @Req() req, @Res() res): Promise<void> {
     const authenticatedUserEmail = this.authService.getUserFromToken(req);
     const device = await this.devicesService.findOne({deviceId: params.id});
-    console.log(device);
     if (!device) {
       res.sendStatus(404);
       return;
