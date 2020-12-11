@@ -117,8 +117,8 @@ export class DevicesController {
       total: allItems.length
     }
   }
-
-  @UseGuards(JwtAuthGuard)
+  // todo: uncomment when login will be implemented on device side
+  // @UseGuards(JwtAuthGuard)
   @Get(':id')
   @ApiBearerAuth()
   @ApiResponse({ status: 200, type: DeviceDto })

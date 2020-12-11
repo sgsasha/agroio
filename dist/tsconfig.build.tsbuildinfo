@@ -1191,6 +1191,11 @@
         "signature": "61215c1a376bbe8f51cab4cc4ddbf3746387015113c37a84d981d4738c21b878",
         "affectsGlobalScope": false
       },
+      "../../node_modules/@types/events/index.d.ts": {
+        "version": "400db42c3a46984118bff14260d60cec580057dc1ab4c2d7310beb643e4f5935",
+        "signature": "400db42c3a46984118bff14260d60cec580057dc1ab4c2d7310beb643e4f5935",
+        "affectsGlobalScope": false
+      },
       "../node_modules/@types/node/child_process.d.ts": {
         "version": "7361f763742de595bddfbcebde5db9fee3f7964c8a2b93fb81c77d0adb9a9658",
         "signature": "7361f763742de595bddfbcebde5db9fee3f7964c8a2b93fb81c77d0adb9a9658",
@@ -1982,7 +1987,7 @@
         "affectsGlobalScope": false
       },
       "../src/devices/devices.controller.ts": {
-        "version": "d5f329c1f8737ea026151f371f0fc916bc7fdc5696938cdf0ebb1edf05aa364d",
+        "version": "fe333fa11e3e0156f8010a8a4478416d4baa3761118997b0313d81bc92d24206",
         "signature": "26afe9d77ebedfbd6a49cd8607e2846878581b881dd7b1b24c28bbe0b37b7753",
         "affectsGlobalScope": false
       },
@@ -2454,6 +2459,16 @@
       "../node_modules/@types/yargs/index.d.ts": {
         "version": "f0ed104b5564e9fda6de99e1f489207e7aad5bdf3f7c679aa327756d1f0a90a5",
         "signature": "f0ed104b5564e9fda6de99e1f489207e7aad5bdf3f7c679aa327756d1f0a90a5",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/minimatch/index.d.ts": {
+        "version": "1d1e6bd176eee5970968423d7e215bfd66828b6db8d54d17afec05a831322633",
+        "signature": "1d1e6bd176eee5970968423d7e215bfd66828b6db8d54d17afec05a831322633",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/glob/index.d.ts": {
+        "version": "d852d6282c8dc8156d26d6bda83ab4bde51fee05ba2fe0ecdc165ddda009d3ee",
+        "signature": "d852d6282c8dc8156d26d6bda83ab4bde51fee05ba2fe0ecdc165ddda009d3ee",
         "affectsGlobalScope": false
       }
     },
@@ -4960,6 +4975,18 @@
         "../node_modules/date-fns/typings.d.ts",
         "../src/auth/auth.service.ts",
         "../src/users/user.schema.ts"
+      ],
+      "../../node_modules/@types/events/index.d.ts": [
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../../node_modules/@types/glob/index.d.ts": [
+        "../../node_modules/@types/minimatch/index.d.ts",
+        "../node_modules/@types/node/events.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../../node_modules/@types/minimatch/index.d.ts": [
+        "../node_modules/date-fns/typings.d.ts"
       ]
     },
     "exportedModulesMap": {
@@ -7326,6 +7353,18 @@
       "../src/users/users.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/users/user.schema.ts"
+      ],
+      "../../node_modules/@types/events/index.d.ts": [
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../../node_modules/@types/glob/index.d.ts": [
+        "../../node_modules/@types/minimatch/index.d.ts",
+        "../node_modules/@types/node/events.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../../node_modules/@types/minimatch/index.d.ts": [
+        "../node_modules/date-fns/typings.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": []

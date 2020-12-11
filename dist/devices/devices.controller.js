@@ -220,7 +220,6 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], DevicesController.prototype, "getFilteredDeviceList", null);
 __decorate([
-    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Get(':id'),
     swagger_1.ApiBearerAuth(),
     swagger_1.ApiResponse({ status: 200, type: device_schema_1.DeviceDto }),
