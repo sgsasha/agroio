@@ -102,14 +102,10 @@ let DevicesController = class DevicesController {
         };
     }
     async deleteDevice(params, req, res) {
-        const authenticatedUserEmail = this.authService.getUserFromToken(req);
         const device = await this.devicesService.findOne({ deviceId: params.id });
         if (!device) {
             res.sendStatus(404);
             return;
-        }
-        if (device.user !== authenticatedUserEmail) {
-            res.sendStatus(401);
         }
         else {
             this.checkOnlineStatus([device]);

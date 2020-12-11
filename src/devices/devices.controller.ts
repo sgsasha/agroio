@@ -123,14 +123,11 @@ export class DevicesController {
   @ApiBearerAuth()
   @ApiResponse({ status: 200, type: DeviceDto })
   async deleteDevice(@Param() params, @Req() req, @Res() res): Promise<void> {
-    const authenticatedUserEmail = this.authService.getUserFromToken(req);
+    // const authenticatedUserEmail = this.authService.getUserFromToken(req);
     const device = await this.devicesService.findOne({deviceId: params.id});
     if (!device) {
       res.sendStatus(404);
       return;
-    }
-    if (device.user !== authenticatedUserEmail) {
-      res.sendStatus(401);
     } else {
       this.checkOnlineStatus([device]);
       const deviceToSend = await this.devicesService.findOne({deviceId: params.id});

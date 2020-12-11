@@ -1987,7 +1987,7 @@
         "affectsGlobalScope": false
       },
       "../src/devices/devices.controller.ts": {
-        "version": "fe333fa11e3e0156f8010a8a4478416d4baa3761118997b0313d81bc92d24206",
+        "version": "ca54d67f576f08e4c1de6bfbc60fc6fa34c511fcb599612fde8c2799427db9c8",
         "signature": "26afe9d77ebedfbd6a49cd8607e2846878581b881dd7b1b24c28bbe0b37b7753",
         "affectsGlobalScope": false
       },
