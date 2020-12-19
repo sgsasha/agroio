@@ -67,6 +67,16 @@ __decorate([
     swagger_1.ApiProperty(),
     __metadata("design:type", Number)
 ], DeviceDto.prototype, "waterLevel", void 0);
+__decorate([
+    mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
+    __metadata("design:type", Date)
+], DeviceDto.prototype, "firstActivityDate", void 0);
+__decorate([
+    mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
+    __metadata("design:type", Date)
+], DeviceDto.prototype, "lastActivityDate", void 0);
 DeviceDto = __decorate([
     mongoose_1.Schema()
 ], DeviceDto);

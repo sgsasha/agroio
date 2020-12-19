@@ -48,6 +48,14 @@ export class DeviceDto {
   @Prop()
   @ApiProperty()
   waterLevel?: number;
+
+  @Prop()
+  @ApiProperty()
+  firstActivityDate?: Date;
+
+  @Prop()
+  @ApiProperty()
+  lastActivityDate?: Date;
 }
 
 export abstract class ICreateDeviceData {

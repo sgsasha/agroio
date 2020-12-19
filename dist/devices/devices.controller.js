@@ -52,6 +52,12 @@ let DevicesController = class DevicesController {
     async updateDevice(device) {
         const deviceToChange = await this.devicesService.findOne({ deviceId: device.deviceId });
         const deviceToUpdate = Object.assign(Object.assign({}, device), { user: deviceToChange.user });
+        if (!deviceToUpdate.isOnline) {
+            deviceToUpdate.firstActivityDate = new Date();
+        }
+        else {
+            deviceToUpdate.lastActivityDate = new Date();
+        }
         await this.devicesService.update(deviceToUpdate);
         const lastMoistureReport = await this.moistureService.getLatest({ deviceId: device.deviceId });
         if (lastMoistureReport) {

@@ -11,6 +11,8 @@ export declare class DeviceDto {
     minMoistureThreshold?: number;
     maxMoistureThreshold?: number;
     waterLevel?: number;
+    firstActivityDate?: Date;
+    lastActivityDate?: Date;
 }
 export declare abstract class ICreateDeviceData {
     deviceId: number;

@@ -51,6 +51,11 @@ export class DevicesController {
       ...device,
       user: deviceToChange.user,
     };
+    if (!deviceToUpdate.isOnline) {
+      deviceToUpdate.firstActivityDate = new Date();
+    } else {
+      deviceToUpdate.lastActivityDate = new Date();
+    }
     await this.devicesService.update(deviceToUpdate);
     const lastMoistureReport = await this.moistureService.getLatest({deviceId: device.deviceId});
     // if there is a report, add one once in 4 mins, otherwise create moisture report
