@@ -52,6 +52,7 @@ let DevicesController = class DevicesController {
     async updateDevice(device) {
         const deviceToChange = await this.devicesService.findOne({ deviceId: device.deviceId });
         const deviceToUpdate = Object.assign(Object.assign({}, device), { user: deviceToChange.user });
+        console.log(deviceToUpdate);
         if (!deviceToUpdate.isOnline) {
             deviceToUpdate.firstActivityDate = new Date();
         }
