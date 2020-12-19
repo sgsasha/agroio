@@ -51,8 +51,7 @@ export class DevicesController {
       ...device,
       user: deviceToChange.user,
     };
-    console.log(deviceToUpdate);
-    if (!deviceToUpdate.isOnline) {
+    if (!deviceToChange.isOnline) {
       deviceToUpdate.firstActivityDate = new Date();
     }
     deviceToUpdate.lastActivityDate = new Date();
