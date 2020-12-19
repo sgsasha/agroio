@@ -10,8 +10,8 @@ export declare class DevicesController {
     setDevice(device: ICreateDeviceData, req: any, res: any): Promise<void>;
     updateDevice(device: DeviceDto): Promise<void>;
     updateDeviceUser(data: IChangeDeviceUserData, req: any, res: any): Promise<void>;
-    getDeviceList(req: any): Promise<DeviceDto[]>;
     getFilteredDeviceList(deviceData: IDeviceListReqData, req: any): Promise<IDeviceListResponse>;
+    getFilteredDeviceList2(deviceData: IDeviceListReqData, req: any): Promise<IDeviceListResponse>;
     deleteDevice(params: any, req: any, res: any): Promise<void>;
     getDeviceById(params: any, req: any, res: any): Promise<void>;
     private checkOnlineStatus;

@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DeviceSchema = exports.IDeviceListResponse = exports.IDeviceListReqData = exports.IDeviceFilters = exports.IPagination = exports.IChangeDeviceUserData = exports.ICreateDeviceData = exports.DeviceDto = void 0;
+exports.DeviceSchema = exports.IDeviceListResponse = exports.IDeviceListReqData = exports.IDeviceFilters = exports.ISorting = exports.IPagination = exports.IChangeDeviceUserData = exports.ICreateDeviceData = exports.DeviceDto = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const swagger_1 = require("@nestjs/swagger");
 let DeviceDto = class DeviceDto {
@@ -110,12 +110,31 @@ __decorate([
     __metadata("design:type", Number)
 ], IPagination.prototype, "pageSize", void 0);
 exports.IPagination = IPagination;
+class ISorting {
+}
+__decorate([
+    swagger_1.ApiProperty(),
+    __metadata("design:type", String)
+], ISorting.prototype, "sortBy", void 0);
+__decorate([
+    swagger_1.ApiProperty(),
+    __metadata("design:type", Boolean)
+], ISorting.prototype, "sortDesc", void 0);
+exports.ISorting = ISorting;
 class IDeviceFilters {
 }
 __decorate([
     swagger_1.ApiProperty(),
-    __metadata("design:type", IPagination)
-], IDeviceFilters.prototype, "paging", void 0);
+    __metadata("design:type", Boolean)
+], IDeviceFilters.prototype, "isOnline", void 0);
+__decorate([
+    swagger_1.ApiProperty(),
+    __metadata("design:type", Boolean)
+], IDeviceFilters.prototype, "isMoistureThresholdEnabled", void 0);
+__decorate([
+    swagger_1.ApiProperty(),
+    __metadata("design:type", String)
+], IDeviceFilters.prototype, "deviceId", void 0);
 exports.IDeviceFilters = IDeviceFilters;
 class IDeviceListReqData {
 }
@@ -123,6 +142,14 @@ __decorate([
     swagger_1.ApiProperty(),
     __metadata("design:type", IDeviceFilters)
 ], IDeviceListReqData.prototype, "filters", void 0);
+__decorate([
+    swagger_1.ApiProperty(),
+    __metadata("design:type", IPagination)
+], IDeviceListReqData.prototype, "paging", void 0);
+__decorate([
+    swagger_1.ApiProperty(),
+    __metadata("design:type", ISorting)
+], IDeviceListReqData.prototype, "sorting", void 0);
 exports.IDeviceListReqData = IDeviceListReqData;
 class IDeviceListResponse {
 }

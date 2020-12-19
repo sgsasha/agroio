@@ -31,9 +31,10 @@ export class DevicesService {
     return this.deviceModel.find({user: email}).exec();
   }
 
-  async getFilteredList(query: any, pagination: any): Promise<DeviceDto[]> {
+  async getFilteredList(query: any, pagination: any, sorting?: any): Promise<DeviceDto[]> {
     return this.deviceModel
         .find(query)
+        .sort({[sorting?.sortBy]: sorting?.sortDesc ? 1 : -1})
         .limit(pagination.pageSize)
         .skip(pagination.pageSize * pagination.page)
         .exec();

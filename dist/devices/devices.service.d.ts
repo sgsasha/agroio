@@ -6,7 +6,7 @@ export declare class DevicesService {
     create(deviceDto: DeviceDto): Promise<void>;
     update(deviceData: Partial<DeviceDto>): Promise<void>;
     findAll(email: string): Promise<DeviceDto[]>;
-    getFilteredList(query: any, pagination: any): Promise<DeviceDto[]>;
+    getFilteredList(query: any, pagination: any, sorting?: any): Promise<DeviceDto[]>;
     delete(query: any): Promise<DeviceDto[]>;
     findOne(query: any): Promise<DeviceDto>;
 }

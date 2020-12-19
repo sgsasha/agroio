@@ -79,14 +79,34 @@ export abstract class IPagination {
   pageSize: number;
 }
 
+export abstract class ISorting {
+  @ApiProperty()
+  sortBy: string;
+
+  @ApiProperty()
+  sortDesc: boolean;
+}
+
 export abstract class IDeviceFilters {
   @ApiProperty()
-  paging: IPagination;
+  isOnline: boolean;
+
+  @ApiProperty()
+  isMoistureThresholdEnabled: boolean;
+
+  @ApiProperty()
+  deviceId: string;
 }
 
 export abstract class IDeviceListReqData {
   @ApiProperty()
   filters: IDeviceFilters;
+
+  @ApiProperty()
+  paging: IPagination;
+
+  @ApiProperty()
+  sorting: ISorting;
 }
 
 export abstract class IDeviceListResponse {

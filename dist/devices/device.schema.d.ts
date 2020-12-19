@@ -25,11 +25,19 @@ export declare abstract class IPagination {
     page: number;
     pageSize: number;
 }
+export declare abstract class ISorting {
+    sortBy: string;
+    sortDesc: boolean;
+}
 export declare abstract class IDeviceFilters {
-    paging: IPagination;
+    isOnline: boolean;
+    isMoistureThresholdEnabled: boolean;
+    deviceId: string;
 }
 export declare abstract class IDeviceListReqData {
     filters: IDeviceFilters;
+    paging: IPagination;
+    sorting: ISorting;
 }
 export declare abstract class IDeviceListResponse {
     items: DeviceDto[];

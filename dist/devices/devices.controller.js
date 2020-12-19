@@ -88,13 +88,19 @@ let DevicesController = class DevicesController {
             res.sendStatus(200);
         }
     }
-    async getDeviceList(req) {
-        const authenticatedUserEmail = this.authService.getUserFromToken(req);
-        const allDevices = await this.devicesService.findAll(authenticatedUserEmail);
-        await this.checkOnlineStatus(allDevices);
-        return await this.devicesService.findAll(authenticatedUserEmail);
-    }
     async getFilteredDeviceList(deviceData, req) {
+        const authenticatedUserEmail = this.authService.getUserFromToken(req);
+        const query = Object.assign({ user: authenticatedUserEmail }, deviceData.filters);
+        const allDevices = await this.devicesService.getFilteredList(query, deviceData.paging, deviceData.sorting);
+        await this.checkOnlineStatus(allDevices);
+        const data = await this.devicesService.getFilteredList(query, deviceData.paging, deviceData.sorting);
+        const allItems = await this.devicesService.findAll(authenticatedUserEmail);
+        return {
+            items: data,
+            total: allItems.length
+        };
+    }
+    async getFilteredDeviceList2(deviceData, req) {
         const authenticatedUserEmail = this.authService.getUserFromToken(req);
         const allDevices = await this.devicesService.getFilteredList({ user: authenticatedUserEmail }, deviceData.filters.paging);
         await this.checkOnlineStatus(allDevices);
@@ -201,14 +207,14 @@ __decorate([
 ], DevicesController.prototype, "updateDeviceUser", null);
 __decorate([
     common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
-    common_1.Get('list'),
+    common_1.Post('list'),
     swagger_1.ApiBearerAuth(),
-    swagger_1.ApiResponse({ status: 200, type: device_schema_1.DeviceDto, isArray: true }),
-    __param(0, common_1.Req()),
+    swagger_1.ApiResponse({ status: 200, type: device_schema_1.IDeviceListResponse, isArray: true }),
+    __param(0, common_1.Body()), __param(1, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [device_schema_1.IDeviceListReqData, Object]),
     __metadata("design:returntype", Promise)
-], DevicesController.prototype, "getDeviceList", null);
+], DevicesController.prototype, "getFilteredDeviceList", null);
 __decorate([
     common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Post('list2'),
@@ -218,7 +224,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [device_schema_1.IDeviceListReqData, Object]),
     __metadata("design:returntype", Promise)
-], DevicesController.prototype, "getFilteredDeviceList", null);
+], DevicesController.prototype, "getFilteredDeviceList2", null);
 __decorate([
     common_1.Get(':id'),
     swagger_1.ApiBearerAuth(),

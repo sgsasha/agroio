@@ -94,27 +94,44 @@ export class DevicesController {
     }
   }
 
-  // todo: deprecate
   @UseGuards(JwtAuthGuard)
-  @Get('list')
-  @ApiBearerAuth()
-  @ApiResponse({ status: 200, type: DeviceDto, isArray: true })
-  async getDeviceList(@Req() req): Promise<DeviceDto[]> {
-    const authenticatedUserEmail = this.authService.getUserFromToken(req);
-    const allDevices = await this.devicesService.findAll(authenticatedUserEmail);
-    await this.checkOnlineStatus(allDevices);
-    return await this.devicesService.findAll(authenticatedUserEmail);
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Post('list2')
+  @Post('list')
   @ApiBearerAuth()
   @ApiResponse({ status: 200, type: IDeviceListResponse, isArray: true })
   async getFilteredDeviceList(@Body() deviceData: IDeviceListReqData, @Req() req): Promise<IDeviceListResponse> {
     const authenticatedUserEmail = this.authService.getUserFromToken(req);
-    const allDevices = await this.devicesService.getFilteredList({user: authenticatedUserEmail}, deviceData.filters.paging);
+    const query = {
+      user: authenticatedUserEmail,
+      ...deviceData.filters
+    };
+    const allDevices = await this.devicesService.getFilteredList(
+        query,
+        deviceData.paging,
+        deviceData.sorting
+    );
     await this.checkOnlineStatus(allDevices);
-    const data = await this.devicesService.getFilteredList({user: authenticatedUserEmail}, deviceData.filters.paging);
+    const data = await this.devicesService.getFilteredList(
+        query,
+        deviceData.paging,
+        deviceData.sorting
+    );
+    const allItems = await this.devicesService.findAll(authenticatedUserEmail);
+    return {
+      items: data,
+      total: allItems.length
+    }
+  }
+
+  // todo: deprecate
+  @UseGuards(JwtAuthGuard)
+  @Post('list2')
+  @ApiBearerAuth()
+  @ApiResponse({ status: 200, type: IDeviceListResponse, isArray: true })
+  async getFilteredDeviceList2(@Body() deviceData: IDeviceListReqData, @Req() req): Promise<IDeviceListResponse> {
+    const authenticatedUserEmail = this.authService.getUserFromToken(req);
+    const allDevices = await this.devicesService.getFilteredList({user: authenticatedUserEmail}, (deviceData as any).filters.paging);
+    await this.checkOnlineStatus(allDevices);
+    const data = await this.devicesService.getFilteredList({user: authenticatedUserEmail}, (deviceData as any).filters.paging);
     const allItems = await this.devicesService.findAll(authenticatedUserEmail);
     return {
       items: data,
