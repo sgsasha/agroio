@@ -55,9 +55,7 @@ let DevicesController = class DevicesController {
         if (!deviceToUpdate.isOnline) {
             deviceToUpdate.firstActivityDate = new Date();
         }
-        else {
-            deviceToUpdate.lastActivityDate = new Date();
-        }
+        deviceToUpdate.lastActivityDate = new Date();
         await this.devicesService.update(deviceToUpdate);
         const lastMoistureReport = await this.moistureService.getLatest({ deviceId: device.deviceId });
         if (lastMoistureReport) {
