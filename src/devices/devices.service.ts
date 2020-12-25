@@ -34,7 +34,7 @@ export class DevicesService {
   async getFilteredList(query: any, pagination: any, sorting?: any): Promise<DeviceDto[]> {
     return this.deviceModel
         .find(query)
-        .sort({[sorting?.sortBy]: sorting?.sortDesc ? 1 : -1})
+        .sort({[sorting?.sortBy]: sorting?.sortDesc ? -1 : 1})
         .limit(pagination.pageSize)
         .skip(pagination.pageSize * pagination.page)
         .exec();

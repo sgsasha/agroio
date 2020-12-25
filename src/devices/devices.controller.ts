@@ -100,6 +100,11 @@ export class DevicesController {
   @ApiResponse({ status: 200, type: IDeviceListResponse, isArray: true })
   async getFilteredDeviceList(@Body() deviceData: IDeviceListReqData, @Req() req): Promise<IDeviceListResponse> {
     const authenticatedUserEmail = this.authService.getUserFromToken(req);
+    if (deviceData.filters) {
+      if (deviceData.filters.deviceId === "") {
+        delete deviceData.filters.deviceId;
+      }
+    }
     const query = {
       user: authenticatedUserEmail,
       ...deviceData.filters

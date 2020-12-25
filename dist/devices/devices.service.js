@@ -44,7 +44,7 @@ let DevicesService = class DevicesService {
     async getFilteredList(query, pagination, sorting) {
         return this.deviceModel
             .find(query)
-            .sort({ [sorting === null || sorting === void 0 ? void 0 : sorting.sortBy]: (sorting === null || sorting === void 0 ? void 0 : sorting.sortDesc) ? 1 : -1 })
+            .sort({ [sorting === null || sorting === void 0 ? void 0 : sorting.sortBy]: (sorting === null || sorting === void 0 ? void 0 : sorting.sortDesc) ? -1 : 1 })
             .limit(pagination.pageSize)
             .skip(pagination.pageSize * pagination.page)
             .exec();

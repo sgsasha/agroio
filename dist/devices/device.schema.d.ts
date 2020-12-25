@@ -33,6 +33,7 @@ export declare abstract class IDeviceFilters {
     isOnline: boolean;
     isMoistureThresholdEnabled: boolean;
     deviceId: string;
+    [key: string]: any;
 }
 export declare abstract class IDeviceListReqData {
     filters: IDeviceFilters;

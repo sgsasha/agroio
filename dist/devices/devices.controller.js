@@ -90,6 +90,11 @@ let DevicesController = class DevicesController {
     }
     async getFilteredDeviceList(deviceData, req) {
         const authenticatedUserEmail = this.authService.getUserFromToken(req);
+        if (deviceData.filters) {
+            if (deviceData.filters.deviceId === "") {
+                delete deviceData.filters.deviceId;
+            }
+        }
         const query = Object.assign({ user: authenticatedUserEmail }, deviceData.filters);
         const allDevices = await this.devicesService.getFilteredList(query, deviceData.paging, deviceData.sorting);
         await this.checkOnlineStatus(allDevices);

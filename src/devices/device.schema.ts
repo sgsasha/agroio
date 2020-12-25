@@ -96,6 +96,8 @@ export abstract class IDeviceFilters {
 
   @ApiProperty()
   deviceId: string;
+
+  [key:string]: any;
 }
 
 export abstract class IDeviceListReqData {
