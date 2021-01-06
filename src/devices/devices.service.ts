@@ -31,6 +31,10 @@ export class DevicesService {
     return this.deviceModel.find({user: email}).exec();
   }
 
+  async getTotal(query: any = {}) {
+    return this.deviceModel.find(query).count().exec();
+  }
+
   async getFilteredList(query: any, pagination: any, sorting?: any): Promise<DeviceDto[]> {
     return this.deviceModel
         .find(query)

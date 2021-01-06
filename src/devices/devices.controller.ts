@@ -120,10 +120,9 @@ export class DevicesController {
         deviceData.paging,
         deviceData.sorting
     );
-    const allItems = await this.devicesService.findAll(authenticatedUserEmail);
     return {
       items: data,
-      total: allItems.length
+      total: await this.devicesService.getTotal(query)
     }
   }
 

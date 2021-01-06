@@ -41,6 +41,9 @@ let DevicesService = class DevicesService {
     async findAll(email) {
         return this.deviceModel.find({ user: email }).exec();
     }
+    async getTotal(query = {}) {
+        return this.deviceModel.find(query).count().exec();
+    }
     async getFilteredList(query, pagination, sorting) {
         return this.deviceModel
             .find(query)

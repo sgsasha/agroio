@@ -99,10 +99,9 @@ let DevicesController = class DevicesController {
         const allDevices = await this.devicesService.getFilteredList(query, deviceData.paging, deviceData.sorting);
         await this.checkOnlineStatus(allDevices);
         const data = await this.devicesService.getFilteredList(query, deviceData.paging, deviceData.sorting);
-        const allItems = await this.devicesService.findAll(authenticatedUserEmail);
         return {
             items: data,
-            total: allItems.length
+            total: await this.devicesService.getTotal(query)
         };
     }
     async getFilteredDeviceList2(deviceData, req) {
