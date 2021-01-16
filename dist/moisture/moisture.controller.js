@@ -56,6 +56,9 @@ let MoistureController = class MoistureController {
     async getMoistureList(params) {
         return await this.moistureService.findAll({ deviceId: params.id });
     }
+    async getGroupedMoistures(params) {
+        return await this.moistureService.getGroupedByDayMoistures();
+    }
     async getFilteredMoistureList(data, req, res) {
         console.log(data);
         const query = this.moistureService.getFilterQuery(data);
@@ -87,6 +90,15 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], MoistureController.prototype, "getMoistureList", null);
+__decorate([
+    common_1.Get('device/:id'),
+    swagger_1.ApiBearerAuth(),
+    swagger_1.ApiResponse({ status: 200, type: moisture_schema_1.MoistureDto }),
+    __param(0, common_1.Param()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], MoistureController.prototype, "getGroupedMoistures", null);
 __decorate([
     common_1.Post('list'),
     swagger_1.ApiBearerAuth(),

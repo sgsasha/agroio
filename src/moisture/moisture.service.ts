@@ -17,6 +17,29 @@ export class MoistureService {
     return this.moistureModel.find(query).exec();
   }
 
+  public async getGroupedByDayMoistures(): Promise<IMoistureData[]> {
+    return this.moistureModel.aggregate([
+      {
+        $project:
+          {
+            // year: { $year: "$date" },
+            // month: { $month: "$date" },
+            // day: { $dayOfMonth: "$date" },
+            yearMonthDay: { $dateToString: { format: "%Y-%m-%d", date: "$date" } },
+            _id: "$id",
+            value: "$moisture"
+          }
+      },
+      {
+        $group:
+          {
+            _id: "$yearMonthDay",
+            moisture: { $avg: "$value" }
+          }
+      }
+    ]);
+  }
+
   // eslint-disable-next-line @typescript-eslint/ban-types
   public async getLatest(query: Object = {}): Promise<IMoistureData> {
     const moistureData = await this.moistureModel.find(query).limit(1).sort({$natural:-1}).exec();

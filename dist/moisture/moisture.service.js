@@ -27,6 +27,23 @@ let MoistureService = class MoistureService {
     async findAll(query = {}) {
         return this.moistureModel.find(query).exec();
     }
+    async getGroupedByDayMoistures() {
+        return this.moistureModel.aggregate([
+            {
+                $project: {
+                    yearMonthDay: { $dateToString: { format: "%Y-%m-%d", date: "$date" } },
+                    _id: "$id",
+                    value: "$moisture"
+                }
+            },
+            {
+                $group: {
+                    _id: "$yearMonthDay",
+                    moisture: { $avg: "$value" }
+                }
+            }
+        ]);
+    }
     async getLatest(query = {}) {
         const moistureData = await this.moistureModel.find(query).limit(1).sort({ $natural: -1 }).exec();
         return moistureData[0];
