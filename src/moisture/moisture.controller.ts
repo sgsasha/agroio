@@ -54,7 +54,7 @@ export class MoistureController {
   @ApiBearerAuth()
   @ApiResponse({ status: 200, type: MoistureDto })
   async getGroupedMoistures(@Param() params): Promise<IMoistureData[]> {
-    return await this.moistureService.getGroupedByDayMoistures();
+    return await this.moistureService.getGroupedByDayMoistures(params.id);
   }
 
   @Post('list')

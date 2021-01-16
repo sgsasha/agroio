@@ -17,14 +17,14 @@ export class MoistureService {
     return this.moistureModel.find(query).exec();
   }
 
-  public async getGroupedByDayMoistures(): Promise<IMoistureData[]> {
+  public async getGroupedByDayMoistures(deviceId): Promise<IMoistureData[]> {
     return this.moistureModel.aggregate([
+      {
+        $match: { deviceId: Number(deviceId) },
+      },
       {
         $project:
           {
-            // year: { $year: "$date" },
-            // month: { $month: "$date" },
-            // day: { $dayOfMonth: "$date" },
             yearMonthDay: { $dateToString: { format: "%Y-%m-%d", date: "$date" } },
             _id: "$id",
             value: "$moisture"

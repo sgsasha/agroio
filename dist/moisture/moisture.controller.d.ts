@@ -10,5 +10,6 @@ export declare class MoistureController {
     constructor(moistureService: MoistureService, authService: AuthService, devicesService: DevicesService);
     setMoisture(req: Request): Promise<void>;
     getMoistureList(params: any): Promise<IMoistureData[]>;
+    getGroupedMoistures(params: any): Promise<IMoistureData[]>;
     getFilteredMoistureList(data: MoistureRequestDto, req: any, res: any): Promise<void>;
 }

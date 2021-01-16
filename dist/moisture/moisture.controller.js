@@ -57,7 +57,7 @@ let MoistureController = class MoistureController {
         return await this.moistureService.findAll({ deviceId: params.id });
     }
     async getGroupedMoistures(params) {
-        return await this.moistureService.getGroupedByDayMoistures();
+        return await this.moistureService.getGroupedByDayMoistures(params.id);
     }
     async getFilteredMoistureList(data, req, res) {
         console.log(data);

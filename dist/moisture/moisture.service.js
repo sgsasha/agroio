@@ -27,8 +27,11 @@ let MoistureService = class MoistureService {
     async findAll(query = {}) {
         return this.moistureModel.find(query).exec();
     }
-    async getGroupedByDayMoistures() {
+    async getGroupedByDayMoistures(deviceId) {
         return this.moistureModel.aggregate([
+            {
+                $match: { deviceId: Number(deviceId) },
+            },
             {
                 $project: {
                     yearMonthDay: { $dateToString: { format: "%Y-%m-%d", date: "$date" } },
