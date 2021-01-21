@@ -197,7 +197,7 @@ export class DevicesController {
     const promisesArray= [];
     for (const device of devices) {
       promisesArray.push(
-        new Promise(async (resolve) => {
+        new Promise<void>(async (resolve) => {
           const lastMoistureReport = await this.moistureService.getLatest({deviceId: device.deviceId, date: { $exists: true }});
           if (lastMoistureReport) {
             const lastActivityDate = lastMoistureReport.date;
