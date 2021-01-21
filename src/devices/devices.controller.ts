@@ -29,6 +29,7 @@ export class DevicesController {
       user: authenticatedUserEmail,
       isOnline: false,
       isPumpRunning: false,
+      disconnect: false,
       temperature: 0,
       moisture: 0,
       isMoistureThresholdEnabled: false,
@@ -44,6 +45,19 @@ export class DevicesController {
     }
   }
 
+  // protected, sending this one from applications
+  @UseGuards(JwtAuthGuard)
+  @Post('edit')
+  async editDevice(@Body() device: DeviceDto): Promise<void> {
+    const deviceToChange = await this.devicesService.findOne({deviceId: device.deviceId});
+    const deviceToUpdate = {
+      ...device,
+      user: deviceToChange.user,
+    };
+    await this.devicesService.update(deviceToUpdate);
+  }
+
+  // no protection for now, this one is for arduino device
   @Post('update')
   async updateDevice(@Body() device: DeviceDto): Promise<void> {
     const deviceToChange = await this.devicesService.findOne({deviceId: device.deviceId});

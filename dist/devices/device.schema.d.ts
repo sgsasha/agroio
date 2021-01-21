@@ -10,6 +10,7 @@ export declare class DeviceDto {
     isMoistureThresholdEnabled?: boolean;
     minMoistureThreshold?: number;
     maxMoistureThreshold?: number;
+    disconnect?: boolean;
     waterLevel?: number;
     firstActivityDate?: Date;
     lastActivityDate?: Date;

@@ -8,6 +8,7 @@ export declare class DevicesController {
     private readonly moistureService;
     constructor(devicesService: DevicesService, authService: AuthService, moistureService: MoistureService);
     setDevice(device: ICreateDeviceData, req: any, res: any): Promise<void>;
+    editDevice(device: DeviceDto): Promise<void>;
     updateDevice(device: DeviceDto): Promise<void>;
     updateDeviceUser(data: IChangeDeviceUserData, req: any, res: any): Promise<void>;
     getFilteredDeviceList(deviceData: IDeviceListReqData, req: any): Promise<IDeviceListResponse>;

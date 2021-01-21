@@ -65,6 +65,11 @@ __decorate([
 __decorate([
     mongoose_1.Prop(),
     swagger_1.ApiProperty(),
+    __metadata("design:type", Boolean)
+], DeviceDto.prototype, "disconnect", void 0);
+__decorate([
+    mongoose_1.Prop(),
+    swagger_1.ApiProperty(),
     __metadata("design:type", Number)
 ], DeviceDto.prototype, "waterLevel", void 0);
 __decorate([

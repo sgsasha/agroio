@@ -34,6 +34,7 @@ let DevicesController = class DevicesController {
             user: authenticatedUserEmail,
             isOnline: false,
             isPumpRunning: false,
+            disconnect: false,
             temperature: 0,
             moisture: 0,
             isMoistureThresholdEnabled: false,
@@ -48,6 +49,11 @@ let DevicesController = class DevicesController {
         catch (e) {
             res.sendStatus(409);
         }
+    }
+    async editDevice(device) {
+        const deviceToChange = await this.devicesService.findOne({ deviceId: device.deviceId });
+        const deviceToUpdate = Object.assign(Object.assign({}, device), { user: deviceToChange.user });
+        await this.devicesService.update(deviceToUpdate);
     }
     async updateDevice(device) {
         const deviceToChange = await this.devicesService.findOne({ deviceId: device.deviceId });
@@ -193,6 +199,14 @@ __decorate([
     __metadata("design:paramtypes", [device_schema_1.ICreateDeviceData, Object, Object]),
     __metadata("design:returntype", Promise)
 ], DevicesController.prototype, "setDevice", null);
+__decorate([
+    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
+    common_1.Post('edit'),
+    __param(0, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [device_schema_1.DeviceDto]),
+    __metadata("design:returntype", Promise)
+], DevicesController.prototype, "editDevice", null);
 __decorate([
     common_1.Post('update'),
     __param(0, common_1.Body()),

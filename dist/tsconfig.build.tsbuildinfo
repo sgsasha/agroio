@@ -1191,6 +1191,11 @@
         "signature": "61215c1a376bbe8f51cab4cc4ddbf3746387015113c37a84d981d4738c21b878",
         "affectsGlobalScope": false
       },
+      "../../node_modules/@types/events/index.d.ts": {
+        "version": "400db42c3a46984118bff14260d60cec580057dc1ab4c2d7310beb643e4f5935",
+        "signature": "400db42c3a46984118bff14260d60cec580057dc1ab4c2d7310beb643e4f5935",
+        "affectsGlobalScope": false
+      },
       "../node_modules/@types/node/child_process.d.ts": {
         "version": "7361f763742de595bddfbcebde5db9fee3f7964c8a2b93fb81c77d0adb9a9658",
         "signature": "7361f763742de595bddfbcebde5db9fee3f7964c8a2b93fb81c77d0adb9a9658",
@@ -1687,8 +1692,8 @@
         "affectsGlobalScope": false
       },
       "../src/devices/device.schema.ts": {
-        "version": "c230056a9bf35e46c9ef830517e61d9317d6b9d06fd2e149e38692ea370dfec6",
-        "signature": "1a4e8df2e9fa92c6215f17d5ae4d8f55b360db5c4af523a7fdf435a9deb752e6",
+        "version": "bf1920584ec2bba261e90ee71ea6728e267ceb0b3ae21271da04c6a336d96003",
+        "signature": "24fb591ad1ba27148386669bf66e1ddbe35b16af5345ddfaf587439f18be11c1",
         "affectsGlobalScope": false
       },
       "../src/devices/devices.service.ts": {
@@ -1982,8 +1987,8 @@
         "affectsGlobalScope": false
       },
       "../src/devices/devices.controller.ts": {
-        "version": "26ab5b708c83e3050696f9187208c7510d53d926601b4822a6d8f8ee748b91d7",
-        "signature": "75887dade6b34e30f43b3f8dd8f048f29ebdf0a2a1d1f776c8710f0ce8387775",
+        "version": "512f15d7606e54b9cdfbc77111868a635a0b6cd236e2f559c1f0d372e491df6f",
+        "signature": "f1e49d8e31d5d5b5393f8368d140666804870c980ee0dc02f3dc9f059a8d1bfb",
         "affectsGlobalScope": false
       },
       "../src/devices/devices.module.ts": {
@@ -2454,6 +2459,16 @@
       "../node_modules/@types/yargs/index.d.ts": {
         "version": "f0ed104b5564e9fda6de99e1f489207e7aad5bdf3f7c679aa327756d1f0a90a5",
         "signature": "f0ed104b5564e9fda6de99e1f489207e7aad5bdf3f7c679aa327756d1f0a90a5",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/minimatch/index.d.ts": {
+        "version": "1d1e6bd176eee5970968423d7e215bfd66828b6db8d54d17afec05a831322633",
+        "signature": "1d1e6bd176eee5970968423d7e215bfd66828b6db8d54d17afec05a831322633",
+        "affectsGlobalScope": false
+      },
+      "../../node_modules/@types/glob/index.d.ts": {
+        "version": "d852d6282c8dc8156d26d6bda83ab4bde51fee05ba2fe0ecdc165ddda009d3ee",
+        "signature": "d852d6282c8dc8156d26d6bda83ab4bde51fee05ba2fe0ecdc165ddda009d3ee",
         "affectsGlobalScope": false
       }
     },
@@ -4960,6 +4975,18 @@
         "../node_modules/date-fns/typings.d.ts",
         "../src/auth/auth.service.ts",
         "../src/users/user.schema.ts"
+      ],
+      "../../node_modules/@types/events/index.d.ts": [
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../../node_modules/@types/glob/index.d.ts": [
+        "../../node_modules/@types/minimatch/index.d.ts",
+        "../node_modules/@types/node/events.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../../node_modules/@types/minimatch/index.d.ts": [
+        "../node_modules/date-fns/typings.d.ts"
       ]
     },
     "exportedModulesMap": {
@@ -7326,6 +7353,18 @@
       "../src/users/users.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
         "../src/users/user.schema.ts"
+      ],
+      "../../node_modules/@types/events/index.d.ts": [
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../../node_modules/@types/glob/index.d.ts": [
+        "../../node_modules/@types/minimatch/index.d.ts",
+        "../node_modules/@types/node/events.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/date-fns/typings.d.ts"
+      ],
+      "../../node_modules/@types/minimatch/index.d.ts": [
+        "../node_modules/date-fns/typings.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": []

@@ -44,6 +44,10 @@ export class DeviceDto {
   @Prop()
   @ApiProperty()
   maxMoistureThreshold?: number;
+
+  @Prop()
+  @ApiProperty()
+  disconnect?: boolean;
   
   @Prop()
   @ApiProperty()
